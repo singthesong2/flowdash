@@ -67,11 +67,13 @@ body {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 18px;
-  padding: 16px 24px;
+  /*padding: 16px 24px;*/
+  padding: 16px 0;
 }
 
 .stat-card {
-  min-height: 86px;
+  /*min-height: 86px;*/
+  height: 12vh;
   padding: 20px 24px;
   background-color: #ffffff;
   border: 1px solid #dfe4ec;
@@ -182,19 +184,21 @@ body {
 
 /* 0708 정현우 css 끝 */
 /* 07/08 최우원 작업 시작 */
-section {
+.todo_section {
   display: flex;
   flex-wrap: nowrap;
-  justify-content: center;
+  /*justify-content: center;*/
+  justify-content: space-between;
   border: 1px solid #000000;
   gap: 2rem;
   height: 60vh;
+  margin-bottom: 4rem;
 }
 
 .todo-list,
 .in-progress-list,
 .done-list {
-  width: 25%;
+  width: 40%;
   border: 1px solid #000000;
   display: flex;
   flex-wrap: nowrap;
@@ -228,6 +232,13 @@ h2 {
   background-color: #6c757d;
   color: white;
   font-size: 0.8rem;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  border-top: 3px solid #dbdbdb;
+  padding-top: 50px;
 }
 
 /* 07/08 최우원 작업 끝 */
