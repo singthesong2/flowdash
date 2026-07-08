@@ -1,116 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<section class="search-section">
-  
-  <div class="search-all-box">
-    
-    <div class="search-left-box">
-      
-      <div class="search-search-box">
-        <input type="search" placeholder="할 일 검색...">
-        <button type="button" class="search-btn">🔍</button>
-
-      <div class="date-div">
-        <select name="date-select">
-          <option>전체 기간</option>
-          <option>오늘</option>
-          <option>최근 7일</option>
-        </select>
-        <select name="prio-select">
-          <option> 전체 우선순위</option>
-          <option>낮음</option>
-          <option>중간</option>
-          <option>높음</option>
-        </select>
-        <select name="array-select">
-          <option>정렬: 오름차순 ↑</option>
-          <option>정렬: 내림차순 ↓</option>
-        </select>
-      </div>
-    </div>
-
-    <button type="button" class="add-work">+ 새 할 일</button>
-    
-  </div>
-
-  <div class="prio-div">
-    <button type="button" class="prio-btn">정렬: 오름차순</button>
-    <button type="button" class="all-data-reset">전체 데이터 초기화</button>
-  </div>
-
-  <dialog class="new-dial"open>
-    <form method="dialog" class="add-dial">
-      <h2>새 할 일</h2>
-
-      <div class="title-dial">
-        <label>제목*</label>
-        <input type="text" placeholder="할 일을 입력하세요...">
-      </div>
-
-      <div class="date-dial">
-        <label>마감일</label>
-        <input type="date">
-      </div>
-
-      <div class="prio-dial">
-        <label>우선순위</label>
-        <select>
-          <option>낮음</option>
-          <option>중간</option>
-          <option>높음</option>
-        </select>
-      </div>
-
-      <div class="dial-btn">
-        <button type="button" class="dial-cancle-btn">취소</button>
-        <button type="submit" class="dial-add-btn">추가하기</button>
-      </div>
-    </form>
-  </dialog>
-  
-</section>
-=======
-<!doctype html>
-<html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="reset.css" />
-    <link rel="stylesheet" href="base.css" />
-  </head>
-  <!--07-08 조민호 통계 대시보드 시작-->
-  <body>
-    <section class="stats-section" aria-label="Todo statistics">
-      <article class="stat-card">
-        <h3 class="stat-title">Total Tasks</h3>
-        <p class="stat-number" id="stat-total">2</p>
-      </article>
-
-      <article class="stat-card">
-        <h3 class="stat-title">To Do</h3>
-        <p class="stat-number" id="stat-todo">0</p>
-      </article>
-
-      <article class="stat-card">
-        <h3 class="stat-title">In Progress</h3>
-        <p class="stat-number" id="stat-doing">1</p>
-      </article>
-
-      <article class="stat-card">
-        <h3 class="stat-title">Done</h3>
-        <p class="stat-number" id="stat-done">1</p>
-      </article>
-
-      <article class="stat-card">
-        <h3 class="stat-title">Achievement</h3>
-        <p class="stat-number achievement" id="stat-achievement">50%</p>
-        <!--07-08 조민호 통계 대시보드 종료-->
-      </article>
-    </section>
-  </body>
-</html>
->>>>>>> dce75a443da7bd57d25fd6904485d622f8b59736
-=======
 <!doctype html>
 <html lang="ko">
     <head>
@@ -172,7 +59,79 @@
     </article>
     <!-- 0708 조민호 통계대쉬보드 작업 끝 -->
     </section>
+<!-- 0708 서치 정현우 -->
+
+<section class="search-section">
+  
+  <div class="search-div">
+    
+    <div class="search-left-group">
+      <div class="search-box">
+        <input type="search" placeholder="할 일 검색...">
+        <button type="button" class="search-btn">🔍</button>
+      </div>
+
+      <div class="date-div">
+        <select name="date-select">
+          <option>전체 기간</option>
+          <option>오늘</option>
+          <option>최근 7일</option>
+        </select>
+        <select name="prio-select">
+          <option>전체 우선순</option>
+          <option>낮음</option>
+          <option>중간</option>
+          <option>높음</option>
+          </select>
+        <select name="array-select">
+          <option>정렬: 오름차순 ↑</option>
+          <option>정렬: 내림차순 ↓</option>
+        </select>
+      </div>
+    </div>
+
+    <button type="button" class="add-work">+ 새 할 일</button>
+    
+  </div>
+
+  <div class="prio-div">
+    <button type="button" class="prio-btn">정렬: 오름차순</button>
+    <button type="button" class="all-data-reset">전체 데이터 초기화</button>
+  </div>
+
+  <dialog class="new-dial">
+
+  <form method="dialog" class="add-dial">
+    <h2>새 할 일</h2>
+
+    <div class="title-dial">
+      <label>제목*</label>
+      <input type="text" placeholder="할 일을 입력하세요...">
+    </div>
+
+    <div class="date-dial">
+      <label>마감일</label>
+      <input type="date">
+    </div>
+
+    <div class="prio-dial">
+      <label>우선순위</label>
+      <select>
+        <option>낮음</option>
+        <option>중간</option>
+        <option>높음</option>
+      </select>
+    </div>
+
+    <div class="dial-btn">
+      <button type="button" class="dial-cancle-btn">취소</button>
+      <button type="submit" class="dial-add-btn">추가하기</button>
+    </div>
+  </form>
+
+</dialog>
+  
+</section>
+<!-- 0708 서치 정현우 -->
     </body>
 </html>
-
->>>>>>> 32f164bd4d88a99605579ecd6a5a984422f89c52
