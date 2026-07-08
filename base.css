@@ -61,6 +61,8 @@ body {
 }
 /* 0708 정우석 헤더 작업 끝*/
 
+/* 0708 조민호 통계대쉬보드 작업*/
+
 .stats-section {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -129,3 +131,5 @@ body {
     grid-template-columns: repeat(5, 1fr);
   }
 }
+
+/* 0708 조민호 통계대쉬보드 작업 끝*/
