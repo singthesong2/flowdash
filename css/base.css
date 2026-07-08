@@ -5,6 +5,62 @@ body {
   color: #1f2937;
 }
 
+/* 0708 정우석*/
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 40px auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 22px;
+  border-radius: 12px;
+  border: 1px solid #e0e5eb;
+}
+
+.header-text-box h1 {
+  margin-top: 0;
+  margin-bottom: 4px;
+  font-size: 22px;
+}
+
+.header-date {
+  color: #5c6f8a;
+  font-weight: 400;
+  font-size: 14px;
+  margin: 0;
+  letter-spacing: -0.1px;
+}
+
+.nickname-display {
+  color: #5f42f0;
+  font-weight: bold;
+}
+
+.theme-toggle-btn {
+  background: none;
+  border: 1px solid #e0e5eb;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.theme-toggle-btn:hover {
+  background-color: #f1f5f9;
+  border-color: #5f42f0;
+  color: #5f42f0;
+}
+/* 0708 정우석 헤더 작업 끝*/
+
 .stats-section {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
