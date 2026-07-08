@@ -1,3 +1,5 @@
+
+
 body {
   margin: 0;
   background-color: #f6f8fc;
@@ -133,3 +135,53 @@ body {
 }
 
 /* 0708 조민호 통계대쉬보드 작업 끝*/
+
+
+
+/* 0708 정현우 css 시작 */
+.search-all-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  padding: 15px 20px;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+}
+
+.search-left-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.search-search-box {
+  display: flex;
+  align-items: center;
+}
+
+.date-div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.prio-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.add-work {
+  background-color: #5c3be6;
+  color: #ffffff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* 0708 정현우 css 끝 */
