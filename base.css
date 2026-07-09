@@ -142,8 +142,12 @@ body {
 /* 0708 조민호 통계대쉬보드 작업 끝*/
 
 /* 0708 정현우 css 시작 */
+/* 0709 정현우 @media 쿼리추가 */
+.search-section {
+  width: 100%;
+}
 
-.search-all-box {
+.search-div {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -152,31 +156,35 @@ body {
   border-radius: 12px;
   border: 1px solid #e0e5eb;
   gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.search-left-box {
+.search-left-group {
   display: flex;
   align-items: center;
-  flex: 1;
   gap: 15px;
+  flex: 1;
 }
 
-.search-search-box {
+.search-box {
   display: flex;
   align-items: center;
-  flex: 1.5;
   border: 1px solid #dfe4ec;
   border-radius: 8px;
   padding: 8px 12px;
   background-color: #ffffff;
+  flex: 1;
+  min-width: 150px;
 }
 
-.search-search-box .search-input {
+.search-box input[type="search"] {
   border: 0;
   font-size: 14px;
   color: #1f2937;
   width: 100%;
   outline: none;
+  background: transparent;
 }
 
 .search-btn {
@@ -184,43 +192,42 @@ body {
   border: none;
   cursor: pointer;
   font-size: 14px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .date-div {
   display: flex;
   align-items: center;
-  flex: 3;
   gap: 12px;
+  flex: 2;
 }
 
 .date-div select {
-  flex: 1;
-  min-width: 0;
+  padding: 8px 12px;
   border: 1px solid #dfe4ec;
   border-radius: 8px;
-  padding: 10px 12px;
   font-size: 14px;
   color: #1f2937;
+  outline: none;
   background-color: #ffffff;
   cursor: pointer;
-  outline: none;
-  font-weight: 600;
+  flex: 1;
+  min-width: 100px;
 }
 
 .add-work {
   background-color: #5c3be6;
   color: #ffffff;
-  padding: 12px 24px;
   border: none;
   border-radius: 8px;
+  padding: 10px 24px;
   font-size: 14px;
-  font-weight: bold;
+  font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
-}
-
-.add-work:hover {
-  background-color: #4a2ec3;
 }
 
 .prio-div {
@@ -234,11 +241,10 @@ body {
 .prio-btn {
   background-color: #ffffff;
   border: 1px solid #dfe4ec;
-  border-radius: 6px;
-  padding: 6px 12px;
+  border-radius: 20px;
+  padding: 6px 14px;
   font-size: 12px;
-  font-weight: 600;
-  color: #3f5f93;
+  color: #1f2937;
   cursor: pointer;
 }
 
@@ -247,7 +253,7 @@ body {
   border: none;
   color: #dc2626;
   font-size: 13px;
-  font-weight: bold;
+  font-weight: 500;
   cursor: pointer;
 }
 
@@ -393,6 +399,7 @@ body {
 }
 
 /* 0708 정현우 css 끝 */
+/* 0709 정현우 @media 쿼리추가 */
 
 
 /* 07/08 최우원 작업 시작 */
@@ -462,7 +469,7 @@ footer {
   .todo_section {
     flex-direction: column;
     align-items: center;
-    background-color: #ff0000;
+
     height: auto;
   }
 
