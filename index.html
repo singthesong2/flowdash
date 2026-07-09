@@ -85,13 +85,14 @@
         </article>
         <!-- 0708 조민호 통계대쉬보드 작업 끝 -->
       </section>
-      <!-- 0708 서치 정현우 -->
 
-      <section class="search-section">
-        <div class="search-div">
-          <div class="search-left-group">
-            <div class="search-box">
-              <input type="search" placeholder="할 일 검색..." />
+
+      <!-- 0708 정현우 서치부분 시작 -->
+       <section class="search-section">
+        <div class="search-all-box">
+          <div class="search-left-box">
+            <div class="search-search-box">
+              <input type="search" class="search-input" placeholder="할 일 검색..." aria-label="할 일 검색창" />
               <button type="button" class="search-btn">🔍</button>
             </div>
 
@@ -102,7 +103,7 @@
                 <option>최근 7일</option>
               </select>
               <select name="prio-select">
-                <option>전체 우선순</option>
+                <option>전체 우선순위</option>
                 <option>낮음</option>
                 <option>중간</option>
                 <option>높음</option>
@@ -119,25 +120,20 @@
 
         <div class="prio-div">
           <button type="button" class="prio-btn">정렬: 오름차순</button>
-          <button type="button" class="all-data-reset">
-            전체 데이터 초기화
-          </button>
+          <button type="button" class="all-data-reset">전체 데이터 초기화</button>
         </div>
 
         <dialog class="new-dial">
           <form method="dialog" class="add-dial">
             <h2>새 할 일</h2>
-
             <div class="title-dial">
               <label>제목*</label>
               <input type="text" placeholder="할 일을 입력하세요..." />
             </div>
-
             <div class="date-dial">
               <label>마감일</label>
               <input type="date" />
             </div>
-
             <div class="prio-dial">
               <label>우선순위</label>
               <select>
@@ -146,7 +142,6 @@
                 <option>높음</option>
               </select>
             </div>
-
             <div class="dial-btn">
               <button type="button" class="dial-cancle-btn">취소</button>
               <button type="submit" class="dial-add-btn">추가하기</button>
@@ -154,7 +149,9 @@
           </form>
         </dialog>
       </section>
-      <!-- 0708 서치 정현우 -->
+      <!-- 0708 정현우 서치부분 끝-->
+
+
       <!--07/08 최우원 시작-->
       <section class="todo_section">
         <div class="todo-list">

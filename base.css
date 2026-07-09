@@ -137,6 +137,7 @@ body {
 /* 0708 조민호 통계대쉬보드 작업 끝*/
 
 /* 0708 정현우 css 시작 */
+
 .search-all-box {
   display: flex;
   align-items: center;
@@ -144,31 +145,61 @@ body {
   background-color: #ffffff;
   padding: 15px 20px;
   border-radius: 12px;
-  border: 1px solid #e9ecef;
+  border: 1px solid #e0e5eb;
+  gap: 20px;
 }
 
 .search-left-box {
   display: flex;
   align-items: center;
+  flex: 1;
   gap: 15px;
 }
 
 .search-search-box {
   display: flex;
   align-items: center;
+  flex: 1.5;
+  border: 1px solid #dfe4ec;
+  border-radius: 8px;
+  padding: 8px 12px;
+  background-color: #ffffff;
+}
+
+.search-search-box .search-input {
+  border: 0;
+  font-size: 14px;
+  color: #1f2937;
+  width: 100%;
+  outline: none;
+}
+
+.search-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
 }
 
 .date-div {
   display: flex;
   align-items: center;
-  gap: 10px;
+  flex: 3;
+  gap: 12px;
 }
 
-.prio-div {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 15px;
+.date-div select {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid #dfe4ec;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+  color: #1f2937;
+  background-color: #ffffff;
+  cursor: pointer;
+  outline: none;
+  font-weight: 600;
 }
 
 .add-work {
@@ -180,9 +211,108 @@ body {
   font-size: 14px;
   font-weight: bold;
   cursor: pointer;
+  white-space: nowrap;
+}
+
+.add-work:hover {
+  background-color: #4a2ec3;
+}
+
+.prio-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 15px;
+  padding: 0 5px;
+}
+
+.prio-btn {
+  background-color: #ffffff;
+  border: 1px solid #dfe4ec;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #3f5f93;
+  cursor: pointer;
+}
+
+.all-data-reset {
+  background: none;
+  border: none;
+  color: #dc2626;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.new-dial {
+  border: 1px solid #e0e5eb;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  width: 360px;
+  background-color: #ffffff;
+}
+
+.add-dial h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #1f2937;
+}
+
+.title-dial, .date-dial, .prio-dial {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.add-dial label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #5c6f8a;
+}
+
+.add-dial input, .add-dial select {
+  border: 1px solid #dfe4ec;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 14px;
+  outline: none;
+}
+
+.dial-btn {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.dial-cancle-btn {
+  background-color: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #64748b;
+}
+
+.dial-add-btn {
+  background-color: #5c3be6;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 14px;
+  color: #ffffff;
+  cursor: pointer;
 }
 
 /* 0708 정현우 css 끝 */
+
+
 /* 07/08 최우원 작업 시작 */
 .todo_section {
   display: flex;
