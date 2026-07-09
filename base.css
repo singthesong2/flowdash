@@ -8,7 +8,8 @@ body {
 /* 0708 정우석*/
 .container {
   max-width: 1200px;
-  width: 100%;
+  /*width: 100%;*/
+  width: 80%;
   margin: 40px auto;
 }
 
@@ -17,7 +18,8 @@ body {
   justify-content: space-between;
   align-items: center;
   background-color: #fff;
-  padding: 22px;
+  /*padding: 22px;*/
+  padding: 20px;
   border-radius: 12px;
   border: 1px solid #e0e5eb;
 }
@@ -106,10 +108,12 @@ body {
   color: #3f3fc4;
 }
 
-@media (max-width: 767px) {
+@media (min-width: 320px) and (max-width: 768px) {
   .stats-section {
-    grid-template-columns: 1fr;
-    padding: 12px;
+    /*grid-template-columns: 1fr;*/
+    grid-template-columns: repeat(2, 1fr);
+    /*padding: 12px;*/
+    padding: 12px 0 12px;
     gap: 12px;
   }
 
@@ -120,11 +124,12 @@ body {
 
 @media (min-width: 768px) and (max-width: 1199px) {
   .stats-section {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .stat-card:last-child {
-    grid-column: span 2;
+    /*grid-column: span 2;*/
+    grid-column: span 1;
   }
 }
 
@@ -398,7 +403,7 @@ body {
   justify-content: space-between;
   border: 1px solid #000000;
   gap: 2rem;
-  height: 60vh;
+  /*height: 60vh;*/
   margin-bottom: 4rem;
 }
 
@@ -406,6 +411,7 @@ body {
 .in-progress-list,
 .done-list {
   width: 40%;
+  height: 400px;
   border: 1px solid #000000;
   display: flex;
   flex-wrap: nowrap;
@@ -449,3 +455,22 @@ footer {
 }
 
 /* 07/08 최우원 작업 끝 */
+
+/* 07/09 최우원 작업 시작 */
+
+@media (max-width: 768px) {
+  .todo_section {
+    flex-direction: column;
+    align-items: center;
+    background-color: #ff0000;
+    height: auto;
+  }
+
+  .todo-list,
+  .in-progress-list,
+  .done-list {
+    width: 100%;
+  }
+}
+
+/* 07/09 최우원 작업 끝 */
