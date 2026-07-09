@@ -275,13 +275,6 @@ body {
   color: #5c6f8a;
 }
 
-.add-dial input, .add-dial select {
-  border: 1px solid #dfe4ec;
-  border-radius: 6px;
-  padding: 8px 12px;
-  font-size: 14px;
-  outline: none;
-}
 
 .dial-btn {
   display: flex;
@@ -308,6 +301,90 @@ body {
   font-size: 14px;
   color: #ffffff;
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .search-all-box {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .search-left-box {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .date-div {
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+  }
+
+  .search-search-box {
+    width: 100%;
+  }
+
+  .date-div select {
+    width: 100%;
+  }
+
+  .add-work {
+    width: 100%;
+    text-align: center;
+    padding: 12px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-all-box {
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .search-left-box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+  }
+
+  .search-search-box,
+  .date-div,
+  .add-work {
+    width: 100% !important;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 768px) {
+  .search-all-box {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 12px;
+    gap: 12px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .search-all-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    gap: 12px;
+  }
+  
+  .search-left-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+  }
 }
 
 /* 0708 정현우 css 끝 */
