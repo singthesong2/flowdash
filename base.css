@@ -155,7 +155,7 @@ body {
   padding: 15px 20px;
   border-radius: 12px;
   border: 1px solid #e0e5eb;
-  gap: 20px;
+  gap: 15px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -164,7 +164,7 @@ body {
   display: flex;
   align-items: center;
   gap: 15px;
-  flex: 1;
+  flex: none;
 }
 
 .search-box {
@@ -174,8 +174,7 @@ body {
   border-radius: 8px;
   padding: 8px 12px;
   background-color: #ffffff;
-  flex: 1;
-  min-width: 150px;
+  width: 200px;
 }
 
 .search-box input[type="search"] {
@@ -202,7 +201,6 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
-  flex: 2;
 }
 
 .date-div select {
@@ -214,8 +212,9 @@ body {
   outline: none;
   background-color: #ffffff;
   cursor: pointer;
-  flex: 1;
-  min-width: 100px;
+  width: auto;
+  min-width: 120px;
+  font-weight: 600;
 }
 
 .add-work {
@@ -223,11 +222,16 @@ body {
   color: #ffffff;
   border: none;
   border-radius: 8px;
-  padding: 10px 24px;
+  padding: 12px 24px;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
 }
 
 .prio-div {
@@ -257,94 +261,188 @@ body {
   cursor: pointer;
 }
 
-.new-dial {
-  border: 1px solid #e0e5eb;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  padding: 24px;
-  width: 360px;
-  background-color: #ffffff;
-}
-
-.add-dial h2 {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: #1f2937;
-}
-
-.title-dial, .date-dial, .prio-dial {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-bottom: 16px;
-}
-
-.add-dial label {
-  font-size: 13px;
-  font-weight: 600;
-  color: #5c6f8a;
-}
-
-
-.dial-btn {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  margin-top: 24px;
-}
-
-.dial-cancle-btn {
-  background-color: #f1f5f9;
-  border: 1px solid #e2e8f0;
-  border-radius: 6px;
-  padding: 8px 16px;
-  font-size: 14px;
-  cursor: pointer;
-  color: #64748b;
-}
-
-.dial-add-btn {
-  background-color: #5c3be6;
-  border: none;
-  border-radius: 6px;
-  padding: 8px 16px;
-  font-size: 14px;
-  color: #ffffff;
-  cursor: pointer;
-}
-
 @media (max-width: 768px) {
-  .search-all-box {
+  .search-div {
     flex-direction: column;
+    align-items: stretch;
     gap: 15px;
-    padding: 15px;
   }
-
-  .search-left-box {
+  
+  .search-left-group {
     flex-direction: column;
-    width: 100%;
+    align-items: stretch;
     gap: 12px;
   }
 
   .date-div {
     flex-direction: column;
-    width: 100%;
+    align-items: stretch;
     gap: 8px;
   }
 
-  .search-search-box {
-    width: 100%;
-  }
-
-  .date-div select {
+  .search-box {
     width: 100%;
   }
 
   .add-work {
     width: 100%;
-    text-align: center;
-    padding: 12px 0;
+  }
+}
+.prio-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 15px;
+  padding: 0 5px;
+}
+
+.prio-btn {
+  background-color: #ffffff;
+  border: 1px solid #dfe4ec;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 12px;
+  color: #1f2937;
+  cursor: pointer;
+}
+
+.all-data-reset {
+  background: none;
+  border: none;
+  color: #dc2626;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .search-div {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+  
+  .search-left-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .date-div {
+    flex-direction: column;
+    align-items: stretch;
+    gap: px;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .add-work {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+.prio-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+  padding: 0 5px;
+}
+
+.prio-btn {
+  background-color: #ffffff;
+  border: 1px solid #dfe4ec;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 12px;
+  color: #1f2937;
+  cursor: pointer;
+}
+
+.all-data-reset {
+  background: none;
+  border: none;
+  color: #dc2626;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .search-div {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+  
+  .search-left-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .date-div {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .add-work {
+    width: 100%;
+  }
+}
+
+.prio-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 15px;
+  padding: 0 5px;
+}
+
+.prio-btn {
+  background-color: #ffffff;
+  border: 1px solid #dfe4ec;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 12px;
+  color: #1f2937;
+  cursor: pointer;
+}
+
+.all-data-reset {
+  background: none;
+  border: none;
+  color: #dc2626;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .search-div {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+  
+  .search-left-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .date-div {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .add-work {
+    width: 100%;
   }
 }
 
