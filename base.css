@@ -8,7 +8,7 @@ body {
 /* 0708 정우석*/
 .container {
   max-width: 1200px;
-  /*width: 100%;*/
+  /*widht 100%에서 변경*/
   width: 80%;
   margin: 40px auto;
 }
@@ -18,6 +18,8 @@ body {
   justify-content: space-between;
   align-items: center;
   background-color: #fff;
+  /*padding 22px에서 20px로 변경*/
+  padding: 20px;
   /*padding: 22px;*/
   padding: 20px;
   border-radius: 12px;
@@ -62,6 +64,32 @@ body {
   color: #5f42f0;
 }
 /* 0708 정우석 헤더 작업 끝*/
+
+/* 0710 정우석 닉네임 편집 작업 시작 */
+.nickname-display {
+  cursor: pointer;
+  padding: 0;
+  border-bottom: 2px solid transparent;
+  transition: background-color 0.2s;
+}
+
+.nickname-display:hover {
+  border-color: #5f42f0;
+}
+
+.nickname-input {
+  font-size: 1em;
+  font-weight: bold;
+  color: #5f32f0;
+  border: 1px solid #1a56db;
+  border-radius: 0.2em;
+  outline: none;
+  padding: 0 0.2em;
+  margin: 0;
+  background-color: #f6f6fc;
+  box-sizing: border-box;
+}
+/* 0710 정우석 닉네임 편집 작업 끝 */
 
 /* 0708 조민호 통계대쉬보드 작업*/
 
@@ -126,13 +154,12 @@ body {
   .stats-section {
     grid-template-columns: repeat(3, 1fr);
   }
-
   .stat-card:last-child {
     /*grid-column: span 2;*/
     grid-column: span 1;
   }
 }
-
+/* 0709 정우석, 최우원 모바일 반응형 작업끝*/
 @media (min-width: 1200px) {
   .stats-section {
     grid-template-columns: repeat(5, 1fr);
@@ -306,45 +333,22 @@ body {
   cursor: pointer;
 }
 
-.all-data-reset {
-  background: none;
-  border: none;
-  color: #dc2626;
+.title-dial,
+.date-dial,
+.prio-dial {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.add-dial label {
   font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
+  font-weight: 600;
+  color: #5c6f8a;
 }
 
-@media (max-width: 768px) {
-  .search-div {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 15px;
-  }
-
-  .search-left-group {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
-  }
-
-  .date-div {
-    flex-direction: column;
-    align-items: stretch;
-    gap: px;
-  }
-
-  .search-box {
-    width: 100%;
-  }
-
-  .add-work {
-    width: 100%;
-    margin-left: 0;
-  }
-}
-
-.prio-div {
+.dial-btn {
   display: flex;
   align-items: center;
   justify-content: space-between;
