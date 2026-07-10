@@ -156,12 +156,27 @@
 
             <div class="title-dial">
               <label>제목*</label>
-              <input type="text" placeholder="할 일을 입력하세요..." />
+              <input
+                class="title-input"
+                ,
+                type="text"
+                placeholder="할 일을 입력하세요..."
+              />
+            </div>
+
+            <div class="text-dial">
+              <label>내용</label>
+              <input
+                class="content-input"
+                ,
+                type="text"
+                placeholder="내용을 입력하세요..."
+              />
             </div>
 
             <div class="date-dial">
               <label>마감일</label>
-              <input type="date" />
+              <input class="date-input" , type="date" />
             </div>
 
             <div class="prio-dial">
@@ -170,6 +185,15 @@
                 <option>낮음</option>
                 <option>중간</option>
                 <option>높음</option>
+              </select>
+            </div>
+
+            <div class="status-dial">
+              <label>상태</label>
+              <select>
+                <option>할 일</option>
+                <option>진행중</option>
+                <option>완료</option>
               </select>
             </div>
 
@@ -207,6 +231,26 @@
       <footer>&copy; 2026 FlowDash. All rights reserved.</footer>
       <!--07/08 최우원 끝-->
     </div>
+
+    <!--07/10 최우원 시작-->
+    <template class="todo-template">
+      <article class="todo-card">
+        <h3 class="todo-card__title-text"></h3>
+
+        <p class="todo-card__content-text"></p>
+
+        <div class="todo-card__info">
+          <span class="todo-card__date">
+            <span class="todo-card__icon">📅</span>
+            <span class="todo-card__date-text"></span>
+          </span>
+
+          <span class="todo-card__priority"></span>
+        </div>
+      </article>
+    </template>
+    <!--07/10 최우원 끝-->
+
+    <script defer src="app.js"></script>
   </body>
-  <script src="app.js"></script>
 </html>

@@ -499,7 +499,42 @@ body {
 /* 0708 정현우 css 끝 */
 /* 0709 정현우 @media 쿼리추가 */
 
+/* 07/10 최우원 작업 시작 */
+
+.todo-card {
+  background: #fff;
+  border: 1px solid #dfe4ec;
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 10px;
+}
+
+.todo-card__title {
+  margin-bottom: 6px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.todo-card__content {
+  margin-bottom: 6px;
+  font-size: 10px;
+}
+
+.todo-card__info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.todo-card__priority {
+  font-weight: bold;
+  color: #5f42f0;
+}
+
+/* 07/10 최우원 작업 끝 */
+
 /* 07/08 최우원 작업 시작 */
+
 .todo_section {
   display: flex;
   flex-wrap: nowrap;
@@ -515,7 +550,8 @@ body {
 .in-progress-list,
 .done-list {
   width: 40%;
-  height: 400px;
+  min-height: 330px;
+  height: auto;
   border: 1px solid #000000;
   display: flex;
   flex-wrap: nowrap;
