@@ -3,6 +3,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const todoModal = document.querySelector(".new-dial");
   const closeModalBtn = document.querySelector(".dial-cancle-btn");
   const todoForm = document.querySelector(".add-dial");
+  const allDeleteData = document.querySelector(".all-data-reset");
 
   const todoList = document.querySelector(".todo-list");
   const inProgressList = document.querySelector(".in-progress-list");
@@ -10,6 +11,15 @@ window.addEventListener("DOMContentLoaded", () => {
   const todoCount = document.querySelector(".todo-count");
   const inProgressCount = document.querySelector(".in-progress-count");
   const doneCount = document.querySelector(".done-count");
+
+  const todoItems = document.querySelector(".todo-items");
+  const inProgressItems = document.querySelector(".in-progress-items");
+  const doneItems = document.querySelector(".done-items");
+  const todoEmpty = document.querySelector(".todo-list .hidden-message");
+  const inProgressEmpty = document.querySelector(
+    ".in-progress-list .hidden-message",
+  );
+  const doneEmpty = document.querySelector(".done-list .hidden-message");
 
   if (openModalBtns.length > 0 && todoModal) {
     openModalBtns.forEach((btn) => {
@@ -25,6 +35,32 @@ window.addEventListener("DOMContentLoaded", () => {
       todoForm.reset();
     };
   }
+
+  // 7/11 새벽, 전체 삭제 및 완료된일 없음 메세지 처리 시작
+
+  const updateHiddenMsg = (item, numCount, empty) => {
+    const count = item.children.length;
+
+    numCount.textContent = count;
+
+    if (count === 0) {
+      empty.classList.remove("hidden");
+    } else {
+      empty.classList.add("hidden");
+    }
+  };
+
+  allDeleteData.addEventListener("click", () => {
+    document.querySelector(".todo-items").replaceChildren();
+    document.querySelector(".in-progress-items").replaceChildren();
+    document.querySelector(".done-items").replaceChildren();
+
+    updateHiddenMsg(todoItems, todoCount, todoEmpty);
+    updateHiddenMsg(inProgressItems, inProgressCount, inProgressEmpty);
+    updateHiddenMsg(doneItems, doneCount, doneEmpty);
+  });
+
+  // 7/11 새벽, 전체 삭제 및 완료된일 없음 메세지 처리 끝
 
   if (todoForm) {
     todoForm.onsubmit = (e) => {
@@ -59,17 +95,14 @@ window.addEventListener("DOMContentLoaded", () => {
         `[${prioValue}]`;
 
       if (statusValue === "할 일") {
-        document.querySelector(".todo-list").appendChild(newCard);
-        const currentNum = parseInt(todoCount.textContent, 10) || 0;
-        todoCount.textContent = currentNum + 1;
+        document.querySelector(".todo-items").appendChild(newCard);
+        updateHiddenMsg(todoItems, todoCount, todoEmpty);
       } else if (statusValue === "진행중") {
-        document.querySelector(".in-progress-list").appendChild(newCard);
-        const currentNum = parseInt(inProgressCount.textContent, 10) || 0;
-        inProgressCount.textContent = currentNum + 1;
+        document.querySelector(".in-progress-items").appendChild(newCard);
+        updateHiddenMsg(inProgressItems, inProgressCount, inProgressEmpty);
       } else {
-        document.querySelector(".done-list").appendChild(newCard);
-        const currentNum = parseInt(doneCount.textContent, 10) || 0;
-        doneCount.textContent = currentNum + 1;
+        document.querySelector(".done-items").appendChild(newCard);
+        updateHiddenMsg(doneItems, doneCount, doneEmpty);
       }
 
       todoModal.close();
