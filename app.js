@@ -77,7 +77,54 @@ window.addEventListener("DOMContentLoaded", () => {
     };
   }
 });
-// 0710 조민호 검색 칩 + 할 일 검색 필터 시작
+
+/* 0710 정우석 닉네임 작업 시작*/
+const nicknameSpan = document.getElementById("nickname");
+
+if (nicknameSpan) {
+  const savedNickname = localStorage.getItem("userNickname");
+  if (savedNickname) {
+    nicknameSpan.textContent = savedNickname;
+  }
+
+  nicknameSpan.addEventListener("click", () => {
+    const currentName = nicknameSpan.textContent;
+
+    const input = document.createElement("input");
+    input.type = "text";
+    input.value = currentName;
+    input.classList.add("nickname-input");
+    input.maxLength = 10;
+
+    input.style.width = `${Math.max(currentName.length * 0.62, 3.2)}em`;
+
+    nicknameSpan.replaceWith(input);
+    input.focus();
+
+    input.addEventListener("input", () => {
+      input.style.width = `${Math.max(input.value.length * 0.62, 3.2)}em`;
+    });
+
+    const saveNickname = () => {
+      const newName = input.value.trim() || currentName;
+      nicknameSpan.textContent = newName;
+      localStorage.setItem("userNickname", newName);
+      input.replaceWith(nicknameSpan);
+    };
+
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        input.removeEventListener("blur", saveNickname);
+        saveNickname();
+      }
+    });
+
+    input.addEventListener("blur", saveNickname);
+  });
+}
+/* 0710 정우석 닉네임 작업 끝*/
+
+// 0710 조민호 검색 칩 시작
 document.addEventListener("DOMContentLoaded", () => {
   const minhoSearchInput = document.querySelector("#todo-search-input");
   const minhoSearchChip = document.querySelector("#search-chip");
@@ -93,49 +140,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (keyword === "") {
       minhoSearchChip.classList.add("is-hidden");
       minhoSearchChipText.textContent = "";
-    } else {
-      minhoSearchChip.classList.remove("is-hidden");
-      minhoSearchChipText.textContent = `"${keyword}"`;
+      return;
     }
+
+    minhoSearchChip.classList.remove("is-hidden");
+    minhoSearchChipText.textContent = `"${keyword}"`;
   }
 
-  function filterTodoCards() {
-    const keyword = minhoSearchInput.value.trim().toLowerCase();
+  minhoSearchInput.addEventListener("input", updateSearchChip);
 
-    const titleElements = document.querySelectorAll(".todo-card__title-text");
-
-    titleElements.forEach((titleElement) => {
-      const card = titleElement.closest(".todo-card");
-
-      if (!card) {
-        return;
-      }
-
-      const contentElement = card.querySelector(".todo-card__content-text");
-
-      const titleText = titleElement.textContent.toLowerCase();
-      const contentText = contentElement
-        ? contentElement.textContent.toLowerCase()
-        : "";
-
-      const isMatched =
-        titleText.includes(keyword) || contentText.includes(keyword);
-
-      if (isMatched) {
-        card.style.display = "";
-      } else {
-        card.style.display = "none";
-      }
-    });
-  }
-
-  function handleSearchInput() {
-    updateSearchChip();
-    filterTodoCards();
-  }
-
-  minhoSearchInput.addEventListener("input", handleSearchInput);
-
-  handleSearchInput();
+  updateSearchChip();
 });
-// 0710 조민호 검색 칩 + 할 일 검색 필터 끝
+// 0710 조민호 검색 칩 끝
