@@ -63,6 +63,32 @@ body {
 }
 /* 0708 정우석 헤더 작업 끝*/
 
+/* 0710 정우석 닉네임 편집 작업 시작 */
+.nickname-display {
+  cursor: pointer;
+  padding: 0;
+  border-bottom: 2px solid transparent;
+  transition: background-color 0.2s;
+}
+
+.nickname-display:hover {
+  border-color: #5f42f0;
+}
+
+.nickname-input {
+  font-size: 1em;
+  font-weight: bold;
+  color: #5f32f0;
+  border: 1px solid #1a56db;
+  border-radius: 0.2em;
+  outline: none;
+  padding: 0 0.2em;
+  margin: 0;
+  background-color: #f6f6fc;
+  box-sizing: border-box;
+}
+/* 0710 정우석 닉네임 편집 작업 끝 */
+
 /* 0708 조민호 통계대쉬보드 작업*/
 
 .stats-section {
