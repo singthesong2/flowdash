@@ -267,7 +267,7 @@ body {
     align-items: stretch;
     gap: 15px;
   }
-  
+
   .search-left-group {
     flex-direction: column;
     align-items: stretch;
@@ -321,7 +321,7 @@ body {
     align-items: stretch;
     gap: 15px;
   }
-  
+
   .search-left-group {
     flex-direction: column;
     align-items: stretch;
@@ -377,7 +377,7 @@ body {
     align-items: stretch;
     gap: 15px;
   }
-  
+
   .search-left-group {
     flex-direction: column;
     align-items: stretch;
@@ -428,7 +428,7 @@ body {
     align-items: stretch;
     gap: 15px;
   }
-  
+
   .search-left-group {
     flex-direction: column;
     align-items: stretch;
@@ -486,7 +486,7 @@ body {
     padding: 12px;
     gap: 12px;
   }
-  
+
   .search-left-box {
     display: flex;
     flex-direction: row;
@@ -498,7 +498,6 @@ body {
 
 /* 0708 정현우 css 끝 */
 /* 0709 정현우 @media 쿼리추가 */
-
 
 /* 07/08 최우원 작업 시작 */
 .todo_section {
@@ -579,3 +578,43 @@ footer {
 }
 
 /* 07/09 최우원 작업 끝 */
+/* 0710 조민호 검색 칩 시작 */
+
+.prio-div {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 15px;
+  padding: 0 5px;
+}
+
+.all-data-reset {
+  margin-left: auto;
+}
+
+.search-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: #ffffff;
+  border: 1px solid #dfe4ec;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 12px;
+  color: #1f2937;
+  cursor: default;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
+}
+
+/* 검색어 부분 강조 */
+.search-chip #search-chip-text {
+  color: #5c3be6;
+  font-weight: 700;
+}
+
+.search-chip.is-hidden {
+  display: none;
+}
+
+/* 0710 조민호 검색 칩 끝 */
