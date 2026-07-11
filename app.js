@@ -177,7 +177,7 @@ if (nicknameSpan) {
 }
 /* 0710 정우석 닉네임 작업 끝*/
 
-// 0710 조민호 검색 칩 시작
+// 0711 조민호 검색 칩 + 할 일 검색 필터 시작
 document.addEventListener("DOMContentLoaded", () => {
   const minhoSearchInput = document.querySelector("#todo-search-input");
   const minhoSearchChip = document.querySelector("#search-chip");
@@ -193,15 +193,45 @@ document.addEventListener("DOMContentLoaded", () => {
     if (keyword === "") {
       minhoSearchChip.classList.add("is-hidden");
       minhoSearchChipText.textContent = "";
-      return;
+    } else {
+      minhoSearchChip.classList.remove("is-hidden");
+      minhoSearchChipText.textContent = `"${keyword}"`;
     }
-
-    minhoSearchChip.classList.remove("is-hidden");
-    minhoSearchChipText.textContent = `"${keyword}"`;
   }
 
-  minhoSearchInput.addEventListener("input", updateSearchChip);
+  function filterTodoCards() {
+    const keyword = minhoSearchInput.value.trim().toLowerCase();
+    const todoCards = document.querySelectorAll(".todo-card");
 
-  updateSearchChip();
+    todoCards.forEach((card) => {
+      const titleElement = card.querySelector(".todo-card__title-text");
+      const contentElement = card.querySelector(".todo-card__content-text");
+
+      const titleText = titleElement
+        ? titleElement.textContent.toLowerCase()
+        : "";
+
+      const contentText = contentElement
+        ? contentElement.textContent.toLowerCase()
+        : "";
+
+      const isMatched =
+        titleText.includes(keyword) || contentText.includes(keyword);
+
+      if (isMatched) {
+        card.style.display = "";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  }
+
+  function handleSearchInput() {
+    updateSearchChip();
+    filterTodoCards();
+  }
+
+  minhoSearchInput.addEventListener("input", handleSearchInput);
+  handleSearchInput();
 });
-// 0710 조민호 검색 칩 끝
+// 0711 조민호 검색 칩 + 할 일 검색 필터 끝
