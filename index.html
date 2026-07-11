@@ -126,43 +126,59 @@
                 </svg>
               </button>
             </div>
-
+            <!-- 0711 조민호 현우님 부분 수정 작업 시작 -->
             <div class="date-div">
-              <select name="date-select">
+              <select id="period-select" name="date-select">
                 <option>전체 기간</option>
                 <option>오늘</option>
                 <option>최근 7일</option>
               </select>
-              <select name="prio-select">
-                <option>전체 우선순</option>
+
+              <select id="priority-select" name="prio-select">
+                <option>전체 우선순위</option>
                 <option>낮음</option>
                 <option>중간</option>
                 <option>높음</option>
               </select>
-              <select name="array-select">
+
+              <select id="sort-select" name="array-select">
                 <option>정렬: 오름차순 ↑</option>
                 <option>정렬: 내림차순 ↓</option>
               </select>
             </div>
           </div>
-
+          <!-- 0711 조민호 현우님 부분 수정 작업 끝 -->
           <button type="button" class="add-work">+ 새 할 일</button>
         </div>
-
+        <!-- 0711 조민호 검색 칩 수정 작업 시작 -->
         <div class="prio-div">
-          <button type="button" class="prio-btn">정렬: 오름차순</button>
+          <div class="filter-chip-group">
+            <button type="button" class="prio-btn" id="period-chip">
+              기간: <span id="period-chip-text">전체</span>
+            </button>
 
-          <!-- 0710 조민호 검색 칩 시작 -->
-          <button type="button" class="search-chip is-hidden" id="search-chip">
-            검색: <span id="search-chip-text"></span>
-          </button>
-          <!-- 0710 조민호 검색 칩 끝 -->
+            <button type="button" class="prio-btn" id="sort-chip">
+              정렬: <span id="sort-chip-text">오름차순</span>
+            </button>
+
+            <button
+              type="button"
+              class="search-chip is-hidden"
+              id="search-chip"
+            >
+              검색: <span id="search-chip-text"></span>
+            </button>
+
+            <button type="button" class="prio-btn is-hidden" id="priority-chip">
+              우선순위: <span id="priority-chip-text"></span>
+            </button>
+          </div>
 
           <button type="button" class="all-data-reset">
             전체 데이터 초기화
           </button>
         </div>
-
+        <!-- 0711 조민호 검색 칩 수정 작업 끝 -->
         <dialog class="new-dial">
           <form method="dialog" class="add-dial">
             <h2>새 할 일</h2>
