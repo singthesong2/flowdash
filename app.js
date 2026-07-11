@@ -134,14 +134,11 @@ window.addEventListener("DOMContentLoaded", () => {
 /* 0710 정우석 닉네임 작업 시작*/
 const nicknameSpan = document.getElementById("nickname");
 
-if (nicknameSpan) {
-  const savedNickname = localStorage.getItem("userNickname");
-  if (savedNickname) {
-    nicknameSpan.textContent = savedNickname;
-  }
+function bindNicknameClick(element) {
+  if (!element) return;
 
-  nicknameSpan.addEventListener("click", () => {
-    const currentName = nicknameSpan.textContent;
+  element.addEventListener("click", () => {
+    const currentName = element.textContent;
 
     const input = document.createElement("input");
     input.type = "text";
@@ -151,7 +148,7 @@ if (nicknameSpan) {
 
     input.style.width = `${Math.max(currentName.length * 0.62, 3.2)}em`;
 
-    nicknameSpan.replaceWith(input);
+    element.replaceWith(input);
     input.focus();
 
     input.addEventListener("input", () => {
@@ -159,10 +156,17 @@ if (nicknameSpan) {
     });
 
     const saveNickname = () => {
-      const newName = input.value.trim() || currentName;
-      nicknameSpan.textContent = newName;
+      const newName = input.value.trim() || currentName || "FlowDash";
+
+      const newSpan = document.createElement("span");
+      newSpan.id = "nickname";
+      newSpan.className = "nickname-display";
+      newSpan.textContent = newName;
+
       localStorage.setItem("userNickname", newName);
-      input.replaceWith(nicknameSpan);
+      input.replaceWith(newSpan);
+
+      bindNicknameClick(newSpan);
     };
 
     input.addEventListener("keydown", (e) => {
@@ -175,7 +179,63 @@ if (nicknameSpan) {
     input.addEventListener("blur", saveNickname);
   });
 }
+
+if (nicknameSpan) {
+  const savedNickname = localStorage.getItem("userNickname");
+  if (savedNickname) {
+    nicknameSpan.textContent = savedNickname;
+  } else {
+    nicknameSpan.textContent = "FlowDash";
+  }
+  bindNicknameClick(nicknameSpan);
+}
 /* 0710 정우석 닉네임 작업 끝*/
+
+// 0711 정우석 인사말 닉네임 작업 시작 //
+const greetingSpan = document.getElementById("greeting-message");
+
+const updateGreetingmessage = () => {
+  if (!greetingSpan) return;
+
+  const currentHour = new Date().getHours();
+  let greeting = "안녕하세요";
+
+  if (currentHour >= 5 && currentHour < 11) {
+    greeting = "좋은 아침이에요";
+  } else if (currentHour >= 11 && currentHour < 17) {
+    greeting = "좋은 오후에요";
+  } else if (currentHour >= 17 && currentHour < 22) {
+    greeting = "좋은 저녁이에요";
+  }
+
+  greetingSpan.textContent = greeting + ",";
+};
+updateGreetingmessage();
+
+// 0711 정우석 인사말 닉네임 작업 끝 0710 정우석 닉네임 작업 끝*/
+
+// 0711 정우석 인사말 닉네임 작업 시작 //
+const greetingSpan = document.getElementById("greeting-message");
+
+const updateGreetingmessage = () => {
+  if (!greetingSpan) return;
+
+  const currentHour = new Date().getHours();
+  let greeting = "안녕하세요";
+
+  if (currentHour >= 5 && currentHour < 11) {
+    greeting = "좋은 아침이에요";
+  } else if (currentHour >= 11 && currentHour < 17) {
+    greeting = "좋은 오후에요";
+  } else if (currentHour >= 17 && currentHour < 22) {
+    greeting = "좋은 저녁이에요";
+  }
+
+  greetingSpan.textContent = greeting + ",";
+};
+updateGreetingmessage();
+
+// 0711 정우석 인사말 닉네임 작업 끝/* 0710 정우석 닉네임 작업 끝*/
 
 // 0711 조민호 검색/기간/우선순위/정렬 필터 시작
 document.addEventListener("DOMContentLoaded", () => {
