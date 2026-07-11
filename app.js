@@ -1,4 +1,24 @@
 window.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("theme-toggle");
+
+  if (btn) {
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "dark") {
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.remove("dark");
+    }
+
+    btn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+
+      const isDark = document.body.classList.contains("dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    });
+  }
+  /*정우석 0711 다크모드 추가 끝 */
+
   const openModalBtns = document.querySelectorAll(".add-work");
   const todoModal = document.querySelector(".new-dial");
   const closeModalBtn = document.querySelector(".dial-cancle-btn");
