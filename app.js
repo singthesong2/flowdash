@@ -193,6 +193,7 @@ if (nicknameSpan) {
 
 // 0711 정우석 인사말 닉네임 작업 시작 //
 const greetingSpan = document.getElementById("greeting-message");
+const currentDateP = document.getElementById("current-date");
 
 const updateGreetingmessage = () => {
   if (!greetingSpan) return;
@@ -207,35 +208,23 @@ const updateGreetingmessage = () => {
   } else if (currentHour >= 17 && currentHour < 22) {
     greeting = "좋은 저녁이에요";
   }
-
   greetingSpan.textContent = greeting + ",";
 };
+const updateCurrentDate = () => {
+  if (!currentDateP) return;
+
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = today.getMonth() + 1;
+  const date = today.getDate();
+
+  currentDateP.textContent = `${year}년 ${month}월 ${date}일`;
+};
+
 updateGreetingmessage();
+updateCurrentDate();
 
 // 0711 정우석 인사말 닉네임 작업 끝 0710 정우석 닉네임 작업 끝*/
-
-// 0711 정우석 인사말 닉네임 작업 시작 //
-const greetingSpan = document.getElementById("greeting-message");
-
-const updateGreetingmessage = () => {
-  if (!greetingSpan) return;
-
-  const currentHour = new Date().getHours();
-  let greeting = "안녕하세요";
-
-  if (currentHour >= 5 && currentHour < 11) {
-    greeting = "좋은 아침이에요";
-  } else if (currentHour >= 11 && currentHour < 17) {
-    greeting = "좋은 오후에요";
-  } else if (currentHour >= 17 && currentHour < 22) {
-    greeting = "좋은 저녁이에요";
-  }
-
-  greetingSpan.textContent = greeting + ",";
-};
-updateGreetingmessage();
-
-// 0711 정우석 인사말 닉네임 작업 끝/* 0710 정우석 닉네임 작업 끝*/
 
 // 0711 조민호 검색/기간/우선순위/정렬 필터 시작
 document.addEventListener("DOMContentLoaded", () => {
