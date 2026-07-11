@@ -56,6 +56,22 @@ window.addEventListener("DOMContentLoaded", () => {
     };
   }
 
+  // 7/11 개별삭제 구현 시작
+  const DeleteData = (items, count, empty) => {
+    items.addEventListener("click", (e) => {
+      if (!e.target.classList.contains("todo_card_delete")) return;
+
+      e.target.closest(".todo-card").remove();
+
+      updateHiddenMsg(items, count, empty);
+    });
+  };
+
+  DeleteData(todoItems, todoCount, todoEmpty);
+  DeleteData(inProgressItems, inProgressCount, inProgressEmpty);
+  DeleteData(doneItems, doneCount, doneEmpty);
+  // 7/11 개별삭제 구현 끝
+
   // 7/11 새벽, 전체 삭제 및 완료된일 없음 메세지 처리 시작
 
   const updateHiddenMsg = (item, numCount, empty) => {
