@@ -49,10 +49,14 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+
   if (closeModalBtn && todoModal && todoForm) {
     closeModalBtn.onclick = () => {
       todoModal.close();
       todoForm.reset();
+
+      const titleError = todoForm.querySelector("#title-error");
+      if (titleError) titleError.style.display = "none";
     };
   }
 
@@ -116,10 +120,24 @@ window.addEventListener("DOMContentLoaded", () => {
       const prioValue = prioSelect ? prioSelect.value : "낮음";
       const statusValue = statusSelect ? statusSelect.value : "할 일";
 
+// 에러메세지 정현우
+      const titleError = todoForm.querySelector("#title-error");
       if (!titleValue) {
-        alert("내용을 입력하세요");
+        if (titleError) titleError.style.display = "block";
         return;
+      } else {
+        if (titleError) titleError.style.display = "none";
       }
+
+      if (titleInput && !titleInput.dataset.listenerAdded) {
+        titleInput.addEventListener("input", () => {
+          if (titleInput.value.trim() && titleError) {
+            titleError.style.display = "none";
+          }
+        });
+        titleInput.dataset.listenerAdded = "true";
+      }
+// 에러메세지 정현우
 
       const newCard = template.content.firstElementChild.cloneNode(true);
 
