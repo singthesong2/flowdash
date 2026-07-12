@@ -125,12 +125,6 @@ window.addEventListener("DOMContentLoaded", () => {
       const seconds = String(currentTime.getSeconds()).padStart(2, "0");
       const timeValue = `${hours}:${minutes}:${seconds}`;
 
-      const currentTime = new Date();
-      const hours = String(currentTime.getHours()).padStart(2, "0");
-      const minutes = String(currentTime.getMinutes()).padStart(2, "0");
-      const seconds = String(currentTime.getSeconds()).padStart(2, "0");
-      const timeValue = `${hours}:${minutes}:${seconds}`;
-
       // 에러메세지 정현우
       const titleError = todoForm.querySelector("#title-error");
       if (!titleValue) {
