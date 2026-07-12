@@ -1066,7 +1066,8 @@ body.dark .todo-card__title-text {
   color: #f1f5f9;
 }
 body.dark .todo-card__content-text,
-body.dark .todo-card__date-text {
+body.dark .todo-card__date-text,
+body.dark .todo-card__info span {
   color: #94a3b8;
 }
 body.dark .prio-btn {
