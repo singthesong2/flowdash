@@ -181,8 +181,10 @@ body.dark .theme-toggle-btn .bi-sun-fill {
 
 /* 0708 조민호 통계대쉬보드 작업 끝*/
 
+
 /* 0708 정현우 css 시작 */
 /* 0709 정현우 @media 쿼리추가 */
+/* 0711 새할일창 css 추가 */
 .search-section {
   width: 100%;
 }
@@ -299,6 +301,131 @@ body.dark .theme-toggle-btn .bi-sun-fill {
   font-size: 13px;
   font-weight: 500;
   cursor: pointer;
+}
+
+dialog.new-dial {
+  border: 1px solid #e0e5eb;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  padding: 28px;
+  width: 100%;
+  max-width: 440px;
+  background-color: #ffffff;
+}
+
+dialog.new-dial::backdrop {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.add-dial {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.add-dial h2 {
+  margin: 0 0 4px 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.title-dial,
+.text-dial,
+.date-dial,
+.prio-dial,
+.status-dial {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.add-dial label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #4b5563;
+}
+
+.add-dial input[type="text"],
+.add-dial input[type="date"],
+.add-dial select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1px solid #dfe4ec;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #1f2937;
+  background-color: #ffffff;
+  outline: none;
+  appearance: none;
+}
+
+.status-dial {
+  position: relative;
+}
+
+.status-dial select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%234b5563' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 14px) center;
+  padding-right: 40px;
+}
+
+.radio-group {
+  display: flex;
+  gap: 10px;
+}
+
+.radio-group input[type="radio"] {
+  display: none;
+}
+
+.radio-group label {
+  flex: 1;
+  text-align: center;
+  padding: 10px 0;
+  border: 1px solid #dfe4ec;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.radio-group .label-high { color: #dc2626; border-color: #fca5a5; }
+.radio-group .label-mid { color: #d97706; border-color: #fcd34d; }
+.radio-group .label-low { color: #059669; border-color: #6ee7b7; }
+
+.radio-group input[id="prio-high"]:checked + label { background-color: #dc2626; color: #ffffff; border-color: #dc2626; }
+.radio-group input[id="prio-mid"]:checked + label { background-color: #d97706; color: #ffffff; border-color: #d97706; }
+.radio-group input[id="prio-low"]:checked + label { background-color: #059669; color: #ffffff; border-color: #059669; }
+
+.dial-btn {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.dial-cancle-btn,
+.dial-add-btn {
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+}
+
+.dial-cancle-btn {
+  background-color: #f3f4f6;
+  color: #4b5563;
+}
+
+.dial-add-btn {
+  background-color: #7950F2;
+  color: #ffffff;
 }
 
 @media (max-width: 768px) {
@@ -535,9 +662,137 @@ body.dark .theme-toggle-btn .bi-sun-fill {
     flex: 1;
   }
 }
+dialog.new-dial {
+  border: 1px solid #e0e5eb;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+  width: 100%;
+  max-width: 400px;
+  background-color: #ffffff;
+}
 
+dialog.new-dial::backdrop {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.add-dial {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.add-dial h2 {
+  margin: 0 0 4px 0;
+  font-size: 20px;
+  font-weight: bold;
+  color: #1f2937;
+}
+
+.title-dial,
+.content-dial,
+.date-dial,
+.prio-dial,
+.dial-dial {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.add-dial label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #4b5563;
+}
+
+.add-dial input[type="text"],
+.add-dial input[type="date"],
+.add-dial textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border: 1px solid #dfe4ec;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #1f2937;
+  background-color: #ffffff;
+  outline: none;
+}
+
+.add-dial textarea {
+  resize: none;
+  height: 70px;
+}
+
+.radio-group,
+.dial-check {
+  display: flex;
+  gap: 8px;
+}
+
+.radio-group input[type="radio"],
+.dial-check input[type="radio"] {
+  display: none;
+}
+
+.radio-group label,
+.dial-check label {
+  flex: 1;
+  text-align: center;
+  padding: 10px 0;
+  border: 1px solid #dfe4ec;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #4b5563;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+.radio-group input[type="radio"]:checked + label,
+.dial-check input[type="radio"]:checked + label {
+  background-color: #7950F2;
+  color: #ffffff;
+  border-color: #7950F2;
+}
+
+.dial-btn {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.dial-cancle-btn,
+.dial-add-btn {
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.dial-cancle-btn {
+  background-color: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  color: #4b5563;
+}
+
+.dial-add-btn {
+  background-color: #7950F2;
+  border: 1px solid #7950F2;
+  color: #ffffff;
+}
+
+.error-msg {
+  color: #ef4444;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
 /* 0708 정현우 css 끝 */
 /* 0709 정현우 @media 쿼리추가 */
+/* 0711 새할일창 css 추가 */
+
 
 /* 07/10 최우원 작업 시작 */
 
