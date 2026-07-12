@@ -885,11 +885,30 @@ dialog.new-dial::backdrop {
   font-size: 12px;
 }
 
+/* 07/12 최우원 추가 및 수정 */
+
 .todo-card__priority {
   font-weight: bold;
-  color: #5f42f0;
+  font-size: 12px;
+  margin: 3px 0;
 }
 
+.todo-card__priority_low {
+  color: #17c200;
+  background-color: #e6ffe2;
+}
+
+.todo-card__priority_medium {
+  color: #ff8d02;
+  background-color: #fff9a3;
+}
+
+.todo-card__priority_high {
+  color: #ff2121;
+  background-color: #ffc6c6;
+}
+
+/* 07/12 최우원 추가 및 수정 */
 /* 07/10 최우원 작업 끝 */
 
 /* 07/08 최우원 작업 시작 */
@@ -925,6 +944,10 @@ dialog.new-dial::backdrop {
   align-items: center;
   border-bottom: 3px solid #dbdbdb;
   padding: 0 0.6vw 0.6vw;
+}
+
+.in-progress-list .title {
+  border-bottom: 3px solid #ab72fb;
 }
 
 h2 {
