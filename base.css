@@ -791,6 +791,18 @@ body.dark .date-div select {
 body.dark .search-box input[type="search"] {
   color: #f1f5f9;
 }
+
+body.dark .theme-toggle-btn {
+  background-color: transparent;
+  border-color: #765eed;
+  color: #765eed;
+}
+body.dark .theme-toggle-btn:hover {
+  background-color: #2b3547;
+  border-color: #765eed;
+  color: #765eed;
+}
+
 /* 0711 정우석 다크모드 작업 끝 */
 
 /* 0711 조민호 필터 칩 개선 작업 시작 */
