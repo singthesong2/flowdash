@@ -49,7 +49,6 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-
   if (closeModalBtn && todoModal && todoForm) {
     closeModalBtn.onclick = () => {
       todoModal.close();
@@ -120,7 +119,13 @@ window.addEventListener("DOMContentLoaded", () => {
       const prioValue = prioSelect ? prioSelect.value : "낮음";
       const statusValue = statusSelect ? statusSelect.value : "할 일";
 
-// 에러메세지 정현우
+      const currentTime = new Date();
+      const hours = String(currentTime.getHours()).padStart(2, "0");
+      const minutes = String(currentTime.getMinutes()).padStart(2, "0");
+      const seconds = String(currentTime.getSeconds()).padStart(2, "0");
+      const timeValue = `${hours}:${minutes}:${seconds}`;
+
+      // 에러메세지 정현우
       const titleError = todoForm.querySelector("#title-error");
       if (!titleValue) {
         if (titleError) titleError.style.display = "block";
@@ -137,7 +142,7 @@ window.addEventListener("DOMContentLoaded", () => {
         });
         titleInput.dataset.listenerAdded = "true";
       }
-// 에러메세지 정현우
+      // 에러메세지 정현우
 
       const newCard = template.content.firstElementChild.cloneNode(true);
 
@@ -145,6 +150,7 @@ window.addEventListener("DOMContentLoaded", () => {
       newCard.querySelector(".todo-card__content-text").textContent = textValue;
       newCard.querySelector(".todo-card__date-text").textContent =
         dateValue || "기한 없음";
+      newCard.querySelector(".todo-card__time").textContent = timeValue;
       newCard.querySelector(".todo-card__priority").textContent =
         `[${prioValue}]`;
 
