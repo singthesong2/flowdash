@@ -1261,3 +1261,20 @@ body,
     border-color 0.3s ease,
     box-shadow 0.3s ease;
 }
+/* 0712 조민호 정렬 토글 버튼 시작 */
+.sort-toggle-btn {
+  height: 40px;
+  padding: 0 16px;
+  border: 1px solid #d9e0ec;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #111827;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.sort-toggle-btn:hover {
+  border-color: #7950f2;
+}
+/* 0712 조민호 정렬 토글 버튼 끝 */

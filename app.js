@@ -177,7 +177,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const searchInput = document.querySelector("#todo-search-input");
     const periodSelect = document.querySelector("#period-select");
     const prioritySelect = document.querySelector("#priority-select");
-    const sortSelect = document.querySelector("#sort-select");
+    const sortButton = document.querySelector("#sort-toggle-btn");
 
     if (searchInput) {
       searchInput.value = "";
@@ -191,8 +191,9 @@ window.addEventListener("DOMContentLoaded", () => {
       prioritySelect.value = "전체 우선순위";
     }
 
-    if (sortSelect) {
-      sortSelect.value = "정렬: 오름차순 ↑";
+    if (sortButton) {
+      sortButton.dataset.sort = "asc";
+      sortButton.textContent = "정렬: 오름차순 ↑";
     }
 
     if (searchInput) {
@@ -406,7 +407,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const periodSelect = document.querySelector("#period-select");
   const prioritySelect = document.querySelector("#priority-select");
-  const sortSelect = document.querySelector("#sort-select");
+  const sortButton = document.querySelector("#sort-toggle-btn");
 
   const periodChip = document.querySelector("#period-chip");
   const periodChipText = document.querySelector("#period-chip-text");
@@ -423,7 +424,7 @@ document.addEventListener("DOMContentLoaded", () => {
     !searchInput ||
     !periodSelect ||
     !prioritySelect ||
-    !sortSelect ||
+    !sortButton ||
     !periodChip ||
     !periodChipText ||
     !sortChip ||
@@ -440,14 +441,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const keyword = searchInput.value.trim();
     const periodValue = periodSelect.value;
     const priorityValue = prioritySelect.value;
-    const sortValue = sortSelect.value;
+    const sortValue = sortButton.dataset.sort;
     if (periodValue === "전체 기간") {
       periodChipText.textContent = "전체";
     } else {
       periodChipText.textContent = periodValue;
     }
 
-    if (sortValue.includes("내림차순")) {
+    if (sortValue === "desc") {
       sortChipText.textContent = "내림차순";
     } else {
       sortChipText.textContent = "오름차순";
@@ -492,7 +493,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function sortTodoCards() {
-    const sortValue = sortSelect.value;
+    const sortValue = sortButton.dataset.sort;
 
     const boardLists = document.querySelectorAll(
       ".todo-items, .in-progress-items, .done-items",
@@ -510,7 +511,7 @@ document.addEventListener("DOMContentLoaded", () => {
           .querySelector(".todo-card__title-text")
           .textContent.trim();
 
-        if (sortValue.includes("내림차순")) {
+        if (sortValue === "desc") {
           return bTitle.localeCompare(aTitle, "ko");
         }
 
@@ -583,7 +584,17 @@ document.addEventListener("DOMContentLoaded", () => {
   searchInput.addEventListener("input", handleFilterChange);
   periodSelect.addEventListener("change", handleFilterChange);
   prioritySelect.addEventListener("change", handleFilterChange);
-  sortSelect.addEventListener("change", handleFilterChange);
+  sortButton.addEventListener("click", () => {
+    if (sortButton.dataset.sort === "asc") {
+      sortButton.dataset.sort = "desc";
+      sortButton.textContent = "정렬: 내림차순 ↓";
+    } else {
+      sortButton.dataset.sort = "asc";
+      sortButton.textContent = "정렬: 오름차순 ↑";
+    }
+
+    handleFilterChange();
+  });
 
   handleFilterChange();
 });
