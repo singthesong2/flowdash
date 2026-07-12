@@ -258,9 +258,11 @@
     <template class="todo-template">
       <article class="todo-card">
         <div class="todo-card_header">
-          <h3 class="todo-card__title-text"></h3>
+          <span class="todo-card__priority"></span>
           <span class="todo_card_delete">X</span>
         </div>
+
+        <h3 class="todo-card__title-text"></h3>
 
         <p class="todo-card__content-text"></p>
 
@@ -270,8 +272,6 @@
             <span class="todo-card__date-text"></span>
             <span class="todo-card__time"></span>
           </span>
-
-          <span class="todo-card__priority"></span>
         </div>
       </article>
     </template>

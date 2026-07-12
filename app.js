@@ -253,8 +253,19 @@ window.addEventListener("DOMContentLoaded", () => {
       newCard.querySelector(".todo-card__date-text").textContent =
         dateValue || "기한 없음";
       newCard.querySelector(".todo-card__time").textContent = timeValue;
-      newCard.querySelector(".todo-card__priority").textContent =
-        `[${prioValue}]`;
+
+      const priority = newCard.querySelector(".todo-card__priority");
+      priority.textContent = `${prioValue}`;
+
+      if (prioValue === "낮음") {
+        priority.classList.add("todo-card__priority_low");
+      }
+      if (prioValue === "중간") {
+        priority.classList.add("todo-card__priority_medium");
+      }
+      if (prioValue === "높음") {
+        priority.classList.add("todo-card__priority_high");
+      }
 
       if (statusValue === "할 일") {
         document.querySelector(".todo-items").appendChild(newCard);
