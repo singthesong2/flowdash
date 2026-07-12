@@ -31,7 +31,11 @@ window.addEventListener("DOMContentLoaded", () => {
   const todoCount = document.querySelector(".todo-count");
   const inProgressCount = document.querySelector(".in-progress-count");
   const doneCount = document.querySelector(".done-count");
-
+  const statTotal = document.querySelector("#stat-total");
+  const statTodo = document.querySelector("#stat-todo");
+  const statDoing = document.querySelector("#stat-doing");
+  const statDone = document.querySelector("#stat-done");
+  const statAchievement = document.querySelector("#stat-achievement");
   const todoItems = document.querySelector(".todo-items");
   const inProgressItems = document.querySelector(".in-progress-items");
   const doneItems = document.querySelector(".done-items");
@@ -65,7 +69,37 @@ window.addEventListener("DOMContentLoaded", () => {
       if (!e.target.classList.contains("todo_card_delete")) return;
 
       e.target.closest(".todo-card").remove();
+      // 0712 조민호 상단 통계 자동 갱신 시작
+      const updateStats = () => {
+        const todoNum = todoItems.children.length;
+        const doingNum = inProgressItems.children.length;
+        const doneNum = doneItems.children.length;
+        const totalNum = todoNum + doingNum + doneNum;
 
+        const achievementNum =
+          totalNum === 0 ? 0 : Math.round((doneNum / totalNum) * 100);
+
+        if (statTotal) {
+          statTotal.textContent = totalNum;
+        }
+
+        if (statTodo) {
+          statTodo.textContent = todoNum;
+        }
+
+        if (statDoing) {
+          statDoing.textContent = doingNum;
+        }
+
+        if (statDone) {
+          statDone.textContent = doneNum;
+        }
+
+        if (statAchievement) {
+          statAchievement.textContent = `${achievementNum}%`;
+        }
+      };
+      // 0712 조민호 상단 통계 자동 갱신 끝
       updateHiddenMsg(items, count, empty);
     });
   };
@@ -87,16 +121,83 @@ window.addEventListener("DOMContentLoaded", () => {
     } else {
       empty.classList.add("hidden");
     }
+
+    const todoNum = todoItems.children.length;
+    const doingNum = inProgressItems.children.length;
+    const doneNum = doneItems.children.length;
+    const totalNum = todoNum + doingNum + doneNum;
+
+    const achievementNum =
+      totalNum === 0 ? 0 : Math.round((doneNum / totalNum) * 100);
+
+    const statTotal = document.querySelector("#stat-total");
+    const statTodo = document.querySelector("#stat-todo");
+    const statDoing = document.querySelector("#stat-doing");
+    const statDone = document.querySelector("#stat-done");
+    const statAchievement = document.querySelector("#stat-achievement");
+
+    if (statTotal) {
+      statTotal.textContent = totalNum;
+    }
+
+    if (statTodo) {
+      statTodo.textContent = todoNum;
+    }
+
+    if (statDoing) {
+      statDoing.textContent = doingNum;
+    }
+
+    if (statDone) {
+      statDone.textContent = doneNum;
+    }
+
+    if (statAchievement) {
+      statAchievement.textContent = `${achievementNum}%`;
+    }
   };
 
   allDeleteData.addEventListener("click", () => {
-    document.querySelector(".todo-items").replaceChildren();
-    document.querySelector(".in-progress-items").replaceChildren();
-    document.querySelector(".done-items").replaceChildren();
+    updateHiddenMsg(todoItems, todoCount, todoEmpty);
+    updateHiddenMsg(inProgressItems, inProgressCount, inProgressEmpty);
+    updateHiddenMsg(doneItems, doneCount, doneEmpty);
+
+    document.querySelectorAll(".todo-card").forEach((card) => {
+      card.remove();
+    });
+
+    todoItems.replaceChildren();
+    inProgressItems.replaceChildren();
+    doneItems.replaceChildren();
 
     updateHiddenMsg(todoItems, todoCount, todoEmpty);
     updateHiddenMsg(inProgressItems, inProgressCount, inProgressEmpty);
     updateHiddenMsg(doneItems, doneCount, doneEmpty);
+
+    const searchInput = document.querySelector("#todo-search-input");
+    const periodSelect = document.querySelector("#period-select");
+    const prioritySelect = document.querySelector("#priority-select");
+    const sortSelect = document.querySelector("#sort-select");
+
+    if (searchInput) {
+      searchInput.value = "";
+    }
+
+    if (periodSelect) {
+      periodSelect.value = "전체 기간";
+    }
+
+    if (prioritySelect) {
+      prioritySelect.value = "전체 우선순위";
+    }
+
+    if (sortSelect) {
+      sortSelect.value = "정렬: 오름차순 ↑";
+    }
+
+    if (searchInput) {
+      searchInput.dispatchEvent(new Event("input"));
+    }
   });
 
   // 7/11 새벽, 전체 삭제 및 완료된일 없음 메세지 처리 끝
@@ -163,6 +264,11 @@ window.addEventListener("DOMContentLoaded", () => {
       } else {
         document.querySelector(".done-items").appendChild(newCard);
         updateHiddenMsg(doneItems, doneCount, doneEmpty);
+      }
+      const searchInputForUpdate = document.querySelector("#todo-search-input");
+
+      if (searchInputForUpdate) {
+        searchInputForUpdate.dispatchEvent(new Event("input"));
       }
 
       todoModal.close();
@@ -389,7 +495,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const sortValue = sortSelect.value;
 
     const boardLists = document.querySelectorAll(
-      ".todo-list, .in-progress-list, .done-list",
+      ".todo-items, .in-progress-items, .done-items",
     );
 
     boardLists.forEach((board) => {
