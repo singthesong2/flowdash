@@ -852,6 +852,29 @@ dialog.new-dial::backdrop {
   font-weight: bold;
 }
 
+/* 7/13 새벽, 완료된 할일 배경색 및 폰트 색상 변경 시작*/
+
+.todo-card-deletebackgroundcolor {
+  background-color: #cfcfcf;
+}
+
+.todo-card__title-deleteline {
+  text-decoration: line-through;
+  color: #838383;
+}
+
+.todo-card-deletebackgroundcolor .todo-card__content-text,
+.todo-card-deletebackgroundcolor .todo-card__icon,
+.todo-card-deletebackgroundcolor .todo-card__date-text,
+.todo-card-deletebackgroundcolor .todo-card__time,
+.todo-card-deletebackgroundcolor .todo-card__modify-icon,
+.todo-card-deletebackgroundcolor .todo-card__modify-date-text,
+.todo-card-deletebackgroundcolor .todo-card__modify-time {
+  color: #838383;
+}
+
+/* 7/13 새벽, 완료된 할일 배경색 및 폰트 색상 변경 끝*/
+
 .todo-card_header {
   display: flex;
   justify-content: space-between;
@@ -910,6 +933,23 @@ dialog.new-dial::backdrop {
 
 /* 07/12 최우원 추가 및 수정 */
 /* 07/10 최우원 작업 끝 */
+
+/* 7/13 수정시간 추가 */
+.todo-card__modify-icon {
+  font-size: 11px;
+}
+
+.todo-card__modify {
+  display: flex;
+  justify-content: start;
+  gap: 4px;
+  font-size: 12px;
+}
+
+.todo-card__modify.hidden {
+  display: none;
+}
+/* 7/13 수정시간 추가 */
 
 /* 07/08 최우원 작업 시작 */
 
