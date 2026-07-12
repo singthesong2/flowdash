@@ -799,9 +799,17 @@ dialog.new-dial::backdrop {
 .todo-card {
   background: #fff;
   border: 1px solid #dfe4ec;
+  box-shadow: 0 0 5px #6c6c6c;
+  transition: box-shadow 0.2s ease;
   border-radius: 8px;
   padding: 12px;
   margin-top: 10px;
+  cursor: pointer;
+}
+
+.todo-card:hover {
+  box-shadow: 0 0 8px #7a68fc;
+  transform: translateY(-1px);
 }
 
 .todo-card:hover .todo_card_delete {
@@ -824,7 +832,7 @@ dialog.new-dial::backdrop {
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
+  /*cursor: pointer;*/
   font-size: 13px;
   border-radius: 50%;
   background-color: #6c757d;
