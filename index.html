@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FlowDash</title>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="base.css" />
+  </head>
+  <body>
+    <!-- 0708 정우석 헤더작업 -->
+
+    <div class="container">
+      <div class="header">
+        <div class="header-text-box">
+          <h1>
+            <span id="greeting-message">안녕하세요</span>
+            <span id="nickname" class="nickname-display">Task</span>님
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="22"
+              height="22"
+              fill="currentColor"
+              class="bi bi-rocket-takeoff"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M9.752 6.193c.599.6 1.73.437 2.528-.362s.96-1.932.362-2.531c-.599-.6-1.73-.438-2.528.361-.798.8-.96 1.933-.362 2.532"
+              />
+              <path
+                d="M15.811 3.312c-.363 1.534-1.334 3.626-3.64 6.218l-.24 2.408a2.56 2.56 0 0 1-.732 1.526L8.817 15.85a.51.51 0 0 1-.867-.434l.27-1.899c.04-.28-.013-.593-.131-.956a9 9 0 0 0-.249-.657l-.082-.202c-.815-.197-1.578-.662-2.191-1.277-.614-.615-1.079-1.379-1.275-2.195l-.203-.083a10 10 0 0 0-.655-.248c-.363-.119-.675-.172-.955-.132l-1.896.27A.51.51 0 0 1 .15 7.17l2.382-2.386c.41-.41.947-.67 1.524-.734h.006l2.4-.238C9.005 1.55 11.087.582 12.623.208c.89-.217 1.59-.232 2.08-.188.244.023.435.06.57.093q.1.026.16.045c.184.06.279.13.351.295l.029.073a3.5 3.5 0 0 1 .157.721c.055.485.051 1.178-.159 2.065m-4.828 7.475.04-.04-.107 1.081a1.54 1.54 0 0 1-.44.913l-1.298 1.3.054-.38c.072-.506-.034-.993-.172-1.418a9 9 0 0 0-.164-.45c.738-.065 1.462-.38 2.087-1.006M5.205 5c-.625.626-.94 1.351-1.004 2.09a9 9 0 0 0-.45-.164c-.424-.138-.91-.244-1.416-.172l-.38.054 1.3-1.3c.245-.246.566-.401.91-.44l1.08-.107zm9.406-3.961c-.38-.034-.967-.027-1.746.163-1.558.38-3.917 1.496-6.937 4.521-.62.62-.799 1.34-.687 2.051.107.676.483 1.362 1.048 1.928.564.565 1.25.941 1.924 1.049.71.112 1.429-.067 2.048-.688 3.079-3.083 4.192-5.444 4.556-6.987.183-.771.18-1.345.138-1.713a3 3 0 0 0-.045-.283 3 3 0 0 0-.3-.041Z"
+              />
+              <path
+                d="M7.009 12.139a7.6 7.6 0 0 1-1.804-1.352A7.6 7.6 0 0 1 3.794 8.86c-1.102.992-1.965 5.054-1.839 5.18.125.126 3.936-.896 5.054-1.902Z"
+              />
+            </svg>
+          </h1>
+          <p id="current-date" class="header-date"></p>
+        </div>
+        <button id="theme-toggle" class="theme-toggle-btn" title="테마 변경">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            fill="currentColor"
+            class="bi bi-moon-stars"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286"
+            />
+            <path
+              d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.73 1.73 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.73 1.73 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.73 1.73 0 0 0 1.097-1.097zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.16 1.16 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.16 1.16 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732z"
+            />
+          </svg>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-sun-fill"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"
+            />
+          </svg>
+        </button>
+      </div>
+      <!-- 0708 정우석 헤더작업 끝 -->
+
+      <!-- 0708 조민호 통계대쉬보드 작업-->
+      <section class="stats-section" aria-label="Todo statistics">
+        <article class="stat-card">
+          <h3 class="stat-title">Total Tasks</h3>
+          <p class="stat-number" id="stat-total">2</p>
+        </article>
+
+        <article class="stat-card">
+          <h3 class="stat-title">To Do</h3>
+          <p class="stat-number" id="stat-todo">0</p>
+        </article>
+
+        <article class="stat-card">
+          <h3 class="stat-title">In Progress</h3>
+          <p class="stat-number" id="stat-doing">1</p>
+        </article>
+
+        <article class="stat-card">
+          <h3 class="stat-title">Done</h3>
+          <p class="stat-number" id="stat-done">1</p>
+        </article>
+
+        <article class="stat-card">
+          <h3 class="stat-title">Achievement</h3>
+          <p class="stat-number achievement" id="stat-achievement">50%</p>
+        </article>
+        <!-- 0708 조민호 통계대쉬보드 작업 끝 -->
+      </section>
+
+      <!-- 0708 정현우 서치부분 시작 -->
+      <!-- 0709 정현우 서치부분 (검색창 깨짐 > 수정중) -->
+      <section class="search-section">
+        <div class="search-div">
+          <div class="search-left-group">
+            <div class="search-box">
+              <input
+                id="todo-search-input"
+                type="search"
+                placeholder="할 일 검색..."
+              />
+              <button type="button" class="search-btn">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  x="0px"
+                  y="0px"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 50 50"
+                  style="fill: #7950f2"
+                >
+                  <path
+                    d="M 21 3 C 11.601563 3 4 10.601563 4 20 C 4 29.398438 11.601563 37 21 37 C 24.355469 37 27.460938 36.015625 30.09375 34.34375 L 42.375 46.625 L 46.625 42.375 L 34.5 30.28125 C 36.679688 27.421875 38 23.878906 38 20 C 38 10.601563 30.398438 3 21 3 Z M 21 7 C 28.199219 7 34 12.800781 34 20 C 34 27.199219 28.199219 33 21 33 C 13.800781 33 8 27.199219 8 20 C 8 12.800781 13.800781 7 21 7 Z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+            <!-- 0711 조민호 현우님 부분 수정 작업 시작 -->
+            <div class="date-div">
+              <select id="period-select" name="date-select">
+                <option>전체 기간</option>
+                <option>오늘</option>
+                <option>최근 7일</option>
+              </select>
+
+              <select id="priority-select" name="prio-select">
+                <option>전체 우선순위</option>
+                <option>낮음</option>
+                <option>중간</option>
+                <option>높음</option>
+              </select>
+
+              <select id="sort-select" name="array-select">
+                <option>정렬: 오름차순 ↑</option>
+                <option>정렬: 내림차순 ↓</option>
+              </select>
+            </div>
+          </div>
+          <!-- 0711 조민호 현우님 부분 수정 작업 끝 -->
+          <button type="button" class="add-work">+ 새 할 일</button>
+        </div>
+        <!-- 0711 조민호 검색 칩 수정 작업 시작 -->
+        <div class="prio-div">
+          <div class="filter-chip-group">
+            <button type="button" class="prio-btn" id="period-chip">
+              기간: <span id="period-chip-text">전체</span>
+            </button>
+
+            <button type="button" class="prio-btn" id="sort-chip">
+              정렬: <span id="sort-chip-text">오름차순</span>
+            </button>
+
+            <button
+              type="button"
+              class="search-chip is-hidden"
+              id="search-chip"
+            >
+              검색: <span id="search-chip-text"></span>
+            </button>
+
+            <button type="button" class="prio-btn is-hidden" id="priority-chip">
+              우선순위: <span id="priority-chip-text"></span>
+            </button>
+          </div>
+
+          <button type="button" class="all-data-reset">
+            전체 데이터 초기화
+          </button>
+        </div>
+        <!-- 0711 조민호 검색 칩 수정 작업 끝 -->
+        <dialog class="new-dial">
+          <form method="dialog" class="add-dial">
+            <h2>새 할 일</h2>
+
+            <div class="title-dial">
+              <label>제목*</label>
+              <input
+                class="title-input"
+                ,
+                type="text"
+                placeholder="할 일을 입력하세요..."
+              />
+            </div>
+
+            <div class="text-dial">
+              <label>내용</label>
+              <input
+                class="content-input"
+                ,
+                type="text"
+                placeholder="내용을 입력하세요..."
+              />
+            </div>
+
+            <div class="date-dial">
+              <label>마감일</label>
+              <input class="date-input" , type="date" />
+            </div>
+
+            <div class="prio-dial">
+              <label>우선순위</label>
+              <select>
+                <option>낮음</option>
+                <option>중간</option>
+                <option>높음</option>
+              </select>
+            </div>
+
+            <div class="status-dial">
+              <label>상태</label>
+              <select>
+                <option>할 일</option>
+                <option>진행중</option>
+                <option>완료</option>
+              </select>
+            </div>
+
+            <div class="dial-btn">
+              <button type="button" class="dial-cancle-btn">취소</button>
+              <button type="submit" class="dial-add-btn">추가하기</button>
+            </div>
+          </form>
+        </dialog>
+      </section>
+      <!-- 0708 정현우 서치부분 끝-->
+      <!-- 0709 정현우 서치부분 (검색창 깨짐 > 수정중) -->
+
+      <!--07/08 최우원 시작-->
+      <section class="todo_section">
+        <div class="todo-list">
+          <h2 class="title">
+            할 일
+            <span class="todo-count">0</span>
+          </h2>
+          <div class="todo-items"></div>
+          <p class="hidden-message">완료된 일이 없습니다.</p>
+        </div>
+        <div class="in-progress-list">
+          <h2 class="title">
+            진행중
+            <span class="in-progress-count">0</span>
+          </h2>
+          <div class="in-progress-items"></div>
+          <p class="hidden-message">완료된 일이 없습니다.</p>
+        </div>
+        <div class="done-list">
+          <h2 class="title">
+            완료
+            <span class="done-count">0</span>
+          </h2>
+          <div class="done-items"></div>
+          <p class="hidden-message">완료된 일이 없습니다.</p>
+        </div>
+      </section>
+      <footer>&copy; 2026 FlowDash. All rights reserved.</footer>
+      <!--07/08 최우원 끝-->
+    </div>
+
+    <!--07/10 최우원 시작-->
+    <template class="todo-template">
+      <article class="todo-card">
+        <div class="todo-card_header">
+          <h3 class="todo-card__title-text"></h3>
+          <span class="todo_card_delete">X</span>
+        </div>
+
+        <p class="todo-card__content-text"></p>
+
+        <div class="todo-card__info">
+          <span class="todo-card__date">
+            <span class="todo-card__icon">📅</span>
+            <span class="todo-card__date-text"></span>
+          </span>
+
+          <span class="todo-card__priority"></span>
+        </div>
+      </article>
+    </template>
+    <!--07/10 최우원 끝-->
+
+    <script defer src="app.js"></script>
+  </body>
+</html>

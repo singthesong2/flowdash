@@ -1,0 +1,22 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+li,
+table,
+caption,
+th,
+td,
+form,
+label {
+  margin: 0;
+  padding: 0;
+}

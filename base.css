@@ -1,0 +1,865 @@
+body {
+  margin: 0;
+  background-color: #f6f8fc;
+  font-family: Arial, sans-serif;
+  color: #1f2937;
+}
+
+/* 0708 정우석*/
+.container {
+  max-width: 1200px;
+  /*width: 100%;*/
+  width: 80%;
+  margin: 40px auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  /*padding: 22px;*/
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #e0e5eb;
+}
+
+.header-text-box h1 {
+  margin-top: 0;
+  margin-bottom: 4px;
+  font-size: 22px;
+}
+
+.header-date {
+  color: #5c6f8a;
+  font-weight: 400;
+  font-size: 14px;
+  margin: 0;
+  letter-spacing: -0.1px;
+}
+
+.nickname-display {
+  color: #5f42f0;
+  font-weight: bold;
+}
+
+.theme-toggle-btn {
+  background: none;
+  border: 1px solid #e0e5eb;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.theme-toggle-btn:hover {
+  background-color: #f1f5f9;
+  border-color: #5f42f0;
+  color: #5f42f0;
+}
+/* 0708 정우석 헤더 작업 끝*/
+
+/* 0711 정우석 다크모드 추가 */
+.theme-toggle-btn .bi-sun-fill,
+.theme-toggle-btn .bi-moon-stars {
+  display: none;
+}
+
+body:not(.dark) .theme-toggle-btn .bi-moon-stars {
+  display: block;
+}
+
+body.dark .theme-toggle-btn .bi-sun-fill {
+  display: block;
+}
+
+/* 0710 정우석 닉네임 편집 작업 시작 */
+.nickname-display {
+  cursor: pointer;
+  padding: 0;
+  border-bottom: 2px solid transparent;
+  transition: background-color 0.2s;
+}
+
+.nickname-display:hover {
+  border-color: #5f42f0;
+}
+
+.nickname-input {
+  font-size: 1em;
+  font-weight: bold;
+  color: #5f32f0;
+  border: 1px solid #1a56db;
+  border-radius: 0.2em;
+  outline: none;
+  padding: 0 0.2em;
+  margin: 0;
+  background-color: #f6f6fc;
+  box-sizing: border-box;
+}
+/* 0710 정우석 닉네임 편집 작업 끝 */
+
+/* 0708 조민호 통계대쉬보드 작업*/
+
+.stats-section {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+  /*padding: 16px 24px;*/
+  padding: 16px 0;
+}
+
+.stat-card {
+  /*min-height: 86px;*/
+  height: 12vh;
+  padding: 20px 24px;
+  background-color: #ffffff;
+  border: 1px solid #dfe4ec;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+}
+
+.stat-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.14);
+  border-color: #c9d3e3;
+}
+
+.stat-title {
+  margin: 0 0 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #3f5f93;
+}
+
+.stat-number {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1;
+  color: #1f2937;
+}
+
+.stat-number.achievement {
+  color: #3f3fc4;
+}
+
+@media (min-width: 320px) and (max-width: 768px) {
+  .stats-section {
+    /*grid-template-columns: 1fr;*/
+    grid-template-columns: repeat(2, 1fr);
+    /*padding: 12px;*/
+    padding: 12px 0 12px;
+    gap: 12px;
+  }
+
+  .stat-card {
+    padding: 18px 20px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .stats-section {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .stat-card:last-child {
+    /*grid-column: span 2;*/
+    grid-column: span 1;
+  }
+}
+
+@media (min-width: 1200px) {
+  .stats-section {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* 0708 조민호 통계대쉬보드 작업 끝*/
+
+/* 0708 정현우 css 시작 */
+/* 0709 정현우 @media 쿼리추가 */
+.search-section {
+  width: 100%;
+}
+
+.search-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  padding: 15px 20px;
+  border-radius: 12px;
+  border: 1px solid #e0e5eb;
+  gap: 15px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.search-left-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex: none;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  border: 1px solid #dfe4ec;
+  border-radius: 8px;
+  padding: 8px 12px;
+  background-color: #ffffff;
+  width: 200px;
+}
+
+.search-box input[type="search"] {
+  border: 0;
+  font-size: 14px;
+  color: #1f2937;
+  width: 100%;
+  outline: none;
+  background: transparent;
+}
+
+.search-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.date-div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.date-div select {
+  padding: 8px 12px;
+  border: 1px solid #dfe4ec;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #1f2937;
+  outline: none;
+  background-color: #ffffff;
+  cursor: pointer;
+  width: auto;
+  min-width: 120px;
+  font-weight: 600;
+}
+
+.add-work {
+  background-color: #5c3be6;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
+}
+
+.prio-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 15px;
+  padding: 0 5px;
+}
+
+.prio-btn {
+  background-color: #ffffff;
+  border: 1px solid #dfe4ec;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 12px;
+  color: #1f2937;
+  cursor: pointer;
+}
+
+.all-data-reset {
+  background: none;
+  border: none;
+  color: #dc2626;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .search-div {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+
+  .search-left-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .date-div {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .add-work {
+    width: 100%;
+  }
+}
+.prio-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 15px;
+  padding: 0 5px;
+}
+
+.prio-btn {
+  background-color: #ffffff;
+  border: 1px solid #dfe4ec;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 12px;
+  color: #1f2937;
+  cursor: pointer;
+}
+
+.all-data-reset {
+  background: none;
+  border: none;
+  color: #dc2626;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .search-div {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+
+  .search-left-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .date-div {
+    flex-direction: column;
+    align-items: stretch;
+    gap: px;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .add-work {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+.prio-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+  padding: 0 5px;
+}
+
+.prio-btn {
+  background-color: #ffffff;
+  border: 1px solid #dfe4ec;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 12px;
+  color: #1f2937;
+  cursor: pointer;
+}
+
+.all-data-reset {
+  background: none;
+  border: none;
+  color: #dc2626;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .search-div {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+
+  .search-left-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .date-div {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .add-work {
+    width: 100%;
+  }
+}
+
+.prio-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 15px;
+  padding: 0 5px;
+}
+
+.prio-btn {
+  background-color: #ffffff;
+  border: 1px solid #dfe4ec;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 12px;
+  color: #1f2937;
+  cursor: pointer;
+}
+
+.all-data-reset {
+  background: none;
+  border: none;
+  color: #dc2626;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .search-div {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+
+  .search-left-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .date-div {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .add-work {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-all-box {
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .search-left-box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+  }
+
+  .search-search-box,
+  .date-div,
+  .add-work {
+    width: 100% !important;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 768px) {
+  .search-all-box {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 12px;
+    gap: 12px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .search-all-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .search-left-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+  }
+}
+
+/* 0708 정현우 css 끝 */
+/* 0709 정현우 @media 쿼리추가 */
+
+/* 07/10 최우원 작업 시작 */
+
+.todo-card {
+  background: #fff;
+  border: 1px solid #dfe4ec;
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 10px;
+}
+
+.todo-card:hover .todo_card_delete {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.todo-card__title-text {
+  margin-bottom: 6px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.todo-card_header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.todo_card_delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 13px;
+  border-radius: 50%;
+  background-color: #6c757d;
+  color: white;
+  width: 20px;
+  height: 20px;
+  font-size: 0.7rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.1s;
+}
+
+.todo-card__content-text {
+  margin-bottom: 6px;
+  font-size: 10px;
+}
+
+.todo-card__info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.todo-card__priority {
+  font-weight: bold;
+  color: #5f42f0;
+}
+
+/* 07/10 최우원 작업 끝 */
+
+/* 07/08 최우원 작업 시작 */
+
+.todo_section {
+  display: flex;
+  flex-wrap: nowrap;
+  /*justify-content: center;*/
+  justify-content: space-between;
+  gap: 2rem;
+  /*height: 60vh;*/
+  margin-bottom: 4rem;
+}
+
+.todo-list,
+.in-progress-list,
+.done-list {
+  width: 40%;
+  min-height: 333px;
+  height: auto;
+  border: 1px solid #000000;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  background-color: #b6b6b6;
+  border-radius: 10px;
+  padding: 0.5vw;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid #dbdbdb;
+  padding: 0 0.6vw 0.6vw;
+}
+
+h2 {
+  font-size: 1rem;
+}
+
+.todo-count,
+.in-progress-count,
+.done-count {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #6c757d;
+  color: white;
+  font-size: 0.8rem;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  border-top: 3px solid #dbdbdb;
+  padding-top: 50px;
+}
+
+/* 07/08 최우원 작업 끝 */
+
+/* 07/09 최우원 작업 시작 */
+
+@media (max-width: 768px) {
+  .todo_section {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+  }
+
+  .todo-list,
+  .in-progress-list,
+  .done-list {
+    width: 100%;
+    min-height: 322px;
+  }
+}
+
+/* 07/09 최우원 작업 끝 */
+
+/* 07/10 최우원 작업 시작 */
+
+.hidden-message {
+  text-align: center;
+  color: #6c757d;
+  font-size: 0.9rem;
+  margin-top: 50px;
+}
+
+.hidden-message.hidden {
+  display: none;
+}
+/* 07/10 최우원 작업 끝 */
+/* 0710 조민호 검색 칩 시작 */
+
+.prio-div {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 15px;
+  padding: 0 5px;
+}
+
+.all-data-reset {
+  margin-left: auto;
+}
+
+.search-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: #ffffff;
+  border: 1px solid #dfe4ec;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 12px;
+  color: #1f2937;
+  cursor: default;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
+}
+
+/* 검색어 부분 강조 */
+.search-chip #search-chip-text {
+  color: #5c3be6;
+  font-weight: 700;
+}
+
+.search-chip.is-hidden {
+  display: none;
+}
+
+/* 0710 조민호 검색 칩 끝 */
+
+/* 0711 정우석 다크모드 추가 */
+body.dark {
+  background-color: #131820;
+  color: #f1f5f9;
+}
+
+body.dark .header,
+body.dark .stat-card,
+body.dark .search-div {
+  background-color: #1e2533;
+  border-color: #2b3547;
+  color: #f1f5f9;
+}
+
+body.dark .stat-number,
+body.dark .stat-title {
+  color: #f1f5f9;
+}
+
+body.dark .todo-list,
+body.dark .in-progress-list,
+body.dark .done-list {
+  background-color: #1e2533;
+  border-color: #2b3547;
+}
+body.dark .title {
+  border-bottom-color: #242f3e;
+  color: #f1f5f9;
+}
+
+body.dark .todo-card {
+  background-color: #171d26;
+  border-color: #2d384a;
+  color: #f1f5f9;
+}
+body.dark .todo-card__title-text {
+  color: #f1f5f9;
+}
+body.dark .todo-card__content-text,
+body.dark .todo-card__date-text {
+  color: #94a3b8;
+}
+body.dark .prio-btn {
+  background-color: #1b2330;
+  border-color: #2b3547;
+  color: #765eed;
+}
+body.dark .search-box,
+body.dark .date-div select {
+  background-color: #131820;
+  border-color: #2b3547;
+  color: #f1f5f9;
+}
+body.dark .search-box input[type="search"] {
+  color: #f1f5f9;
+}
+/* 0711 정우석 다크모드 작업 끝 */
+
+/* 0711 조민호 필터 칩 개선 작업 시작 */
+.prio-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 15px;
+  padding: 0 5px;
+}
+
+.filter-chip-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.prio-btn,
+.search-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: #ffffff;
+  border: 1px solid #dfe4ec;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 12px;
+  color: #1f2937;
+  cursor: default;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
+}
+
+.search-chip span,
+#period-chip-text,
+#sort-chip-text,
+#priority-chip-text {
+  color: #5c3be6;
+  font-weight: 700;
+}
+
+.is-hidden {
+  display: none;
+}
+
+.all-data-reset {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: #dc2626;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .prio-div {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .filter-chip-group {
+    width: 100%;
+  }
+
+  .all-data-reset {
+    margin-left: 0;
+  }
+}
+/* 0711 조민호 필터 칩 개선 작업 끝 */
