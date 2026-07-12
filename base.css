@@ -64,6 +64,16 @@ body {
 /* 0708 정우석 헤더 작업 끝*/
 
 /* 0711 정우석 다크모드 추가 */
+body {
+  margin: 0;
+  background-color: #f6f8fc;
+  font-family: Arial, sans-serif;
+  color: #1f2937;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
 .theme-toggle-btn .bi-sun-fill,
 .theme-toggle-btn .bi-moon-stars {
   display: none;
@@ -180,7 +190,6 @@ body.dark .theme-toggle-btn .bi-sun-fill {
 }
 
 /* 0708 조민호 통계대쉬보드 작업 끝*/
-
 
 /* 0708 정현우 css 시작 */
 /* 0709 정현우 @media 쿼리추가 */
@@ -393,13 +402,34 @@ dialog.new-dial::backdrop {
   transition: all 0.2s ease;
 }
 
-.radio-group .label-high { color: #dc2626; border-color: #fca5a5; }
-.radio-group .label-mid { color: #d97706; border-color: #fcd34d; }
-.radio-group .label-low { color: #059669; border-color: #6ee7b7; }
+.radio-group .label-high {
+  color: #dc2626;
+  border-color: #fca5a5;
+}
+.radio-group .label-mid {
+  color: #d97706;
+  border-color: #fcd34d;
+}
+.radio-group .label-low {
+  color: #059669;
+  border-color: #6ee7b7;
+}
 
-.radio-group input[id="prio-high"]:checked + label { background-color: #dc2626; color: #ffffff; border-color: #dc2626; }
-.radio-group input[id="prio-mid"]:checked + label { background-color: #d97706; color: #ffffff; border-color: #d97706; }
-.radio-group input[id="prio-low"]:checked + label { background-color: #059669; color: #ffffff; border-color: #059669; }
+.radio-group input[id="prio-high"]:checked + label {
+  background-color: #dc2626;
+  color: #ffffff;
+  border-color: #dc2626;
+}
+.radio-group input[id="prio-mid"]:checked + label {
+  background-color: #d97706;
+  color: #ffffff;
+  border-color: #d97706;
+}
+.radio-group input[id="prio-low"]:checked + label {
+  background-color: #059669;
+  color: #ffffff;
+  border-color: #059669;
+}
 
 .dial-btn {
   display: flex;
@@ -424,7 +454,7 @@ dialog.new-dial::backdrop {
 }
 
 .dial-add-btn {
-  background-color: #7950F2;
+  background-color: #7950f2;
   color: #ffffff;
 }
 
@@ -631,7 +661,7 @@ dialog.new-dial::backdrop {
   .search-search-box,
   .date-div,
   .add-work {
-    width: 100% !important;
+    width: 100%;
   }
 }
 
@@ -750,9 +780,9 @@ dialog.new-dial::backdrop {
 
 .radio-group input[type="radio"]:checked + label,
 .dial-check input[type="radio"]:checked + label {
-  background-color: #7950F2;
+  background-color: #7950f2;
   color: #ffffff;
-  border-color: #7950F2;
+  border-color: #7950f2;
 }
 
 .dial-btn {
@@ -778,8 +808,8 @@ dialog.new-dial::backdrop {
 }
 
 .dial-add-btn {
-  background-color: #7950F2;
-  border: 1px solid #7950F2;
+  background-color: #7950f2;
+  border: 1px solid #7950f2;
   color: #ffffff;
 }
 
@@ -792,7 +822,6 @@ dialog.new-dial::backdrop {
 /* 0708 정현우 css 끝 */
 /* 0709 정현우 @media 쿼리추가 */
 /* 0711 새할일창 css 추가 */
-
 
 /* 07/10 최우원 작업 시작 */
 
@@ -1138,3 +1167,96 @@ body.dark .theme-toggle-btn:hover {
   }
 }
 /* 0711 조민호 필터 칩 개선 작업 끝 */
+
+/* 0712 정우석 테마 추가 (라이트 모드) */
+
+:root {
+  --main-bg: #f6f8fc;
+  --main-text: #1f2937;
+  --text-muted: #5c6f8a;
+
+  --box-bg: #fff;
+  --box-border: #e0e5eb;
+
+  --card-bg: #fff;
+  --carod-vorder: #dfe4ec;
+  --card-text-muted: #6c757d;
+
+  --list-bg: #b6b6b6;
+  --list-border: #000;
+
+  --input-bg: #fff;
+  --btn-piro-bg: #fff;
+
+  --point-purple: #5f42f0;
+  --point-purpple-dark: #5c3bed;
+  --point-purple-light: #765eed;
+}
+
+/* 0712 정우석 테마 추가 (다크 모드) */
+
+body.dark {
+  --main-bg: #131820;
+  --main-text: #f1f5f9;
+  --text-muted: #f1f5f9;
+
+  --box-bg: #1e2533;
+  --box-border: #2b3547;
+
+  --card-bg: #171d26;
+  --card-border: #2d384a;
+  --card-text-muted: #94a3b8;
+
+  --List-bg: #1e2533;
+  --List-border: #2b3547;
+
+  --input-bg: #131820;
+  --btn-prio-bg: #1b2330;
+}
+
+/* 0712 정우석 테마 추가 (카키색) */
+
+body.khaki {
+  --main-bg: #f4f5f0;
+  --main-text: #2b3014;
+  --text-muted: #596139;
+
+  --box-bg: #e2e4d5;
+  --box-border: #c0c4ac;
+
+  --card-bg: #fff;
+  --card-border: #d1d5c2;
+  --card-text-mueted: #737c51;
+
+  --List-bg: #d5d8c5;
+  --List-border: #a4a890;
+
+  --input-bg: #f4f5f0;
+  --btn-prio-bg: #ebede2;
+
+  --point-purple: #6b7844;
+  --point-purple-dark: #4b5320;
+  --point-purple-light: #8a9a86;
+}
+body,
+.header,
+.stat-card,
+.search-div,
+.search-box,
+.date-div select,
+.todo-list,
+.in-progress-list,
+.done-list,
+.title,
+.todo-card,
+.todo-card__title-text,
+.todo-card__content-text,
+.prio-btn,
+.search-chip,
+.theme-toggle-btn {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
