@@ -820,12 +820,21 @@ dialog.new-dial::backdrop {
   color: #ffffff;
 }
 
+<<<<<<< HEAD
 .error-msg {
   color: #ef4444;
+=======
+.title-error-msg {
+  color: #ff4d4f;
+>>>>>>> 682c375 (최신코드)
   font-size: 13px;
   font-weight: bold;
   margin-bottom: 2px;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 682c375 (최신코드)
 /* 0708 정현우 css 끝 */
 /* 0709 정현우 @media 쿼리추가 */
 /* 0711 새할일창 css 추가 */
