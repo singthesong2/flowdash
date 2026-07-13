@@ -1308,6 +1308,7 @@ body,
 .search-div,
 .search-box,
 .date-div select,
+.sort-toggle-btn,
 .todo-list,
 .in-progress-list,
 .done-list,
@@ -1326,18 +1327,34 @@ body,
 }
 /* 0712 조민호 정렬 토글 버튼 시작 */
 .sort-toggle-btn {
-  height: 40px;
-  padding: 0 16px;
-  border: 1px solid #d9e0ec;
+  padding: 7px 10px;
+  border: 1px solid #dfe4ec;
   border-radius: 8px;
-  background-color: #ffffff;
-  color: #111827;
   font-size: 14px;
-  font-weight: 700;
+  color: #1f2937;
+  outline: none;
+  background-color: #ffffff;
   cursor: pointer;
+  width: auto;
+  min-width: 120px;
+  font-weight: 600;
 }
 
 .sort-toggle-btn:hover {
   border-color: #7950f2;
 }
 /* 0712 조민호 정렬 토글 버튼 끝 */
+
+/* 0713 조민호 정렬 토글 버튼 다크모드 시작 */
+body.dark .sort-toggle-btn {
+  background-color: #131820;
+  border-color: #2b3547;
+  color: #f1f5f9;
+}
+
+body.dark .sort-toggle-btn:hover {
+  background-color: #131820;
+  border-color: #7950f2;
+  color: #f1f5f9;
+}
+/* 0713 조민호 정렬 토글 버튼 다크모드 끝 */
