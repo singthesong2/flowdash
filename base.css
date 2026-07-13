@@ -1130,6 +1130,8 @@ body.dark .todo-card__title-text {
 }
 body.dark .todo-card__content-text,
 body.dark .todo-card__date-text,
+body.dark .todo-card__modify-date-text,
+body.dark .todo-card__modify-time,
 body.dark .todo-card__info span {
   color: #94a3b8;
 }
