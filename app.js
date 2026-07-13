@@ -45,6 +45,12 @@ window.addEventListener("DOMContentLoaded", () => {
   );
   const doneEmpty = document.querySelector(".done-list .hidden-message");
 
+// 0712 정현우 에러메세지 추가
+const addForm = document.querySelector('.add-dial');
+const titleInput = document.querySelector('.title-input');
+const titleError = document.getElementById('title-error');
+
+
   if (openModalBtns.length > 0 && todoModal) {
     openModalBtns.forEach((btn) => {
       btn.onclick = () => {
