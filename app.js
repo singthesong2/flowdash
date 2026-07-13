@@ -256,14 +256,9 @@ window.addEventListener("DOMContentLoaded", () => {
           now.getMonth() + 1,
         ).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
 
-        /*const modifyTime = `${String(now.getHours()).padStart(2, "0")}:${String(
+        const modifyTime = `${String(now.getHours()).padStart(2, "0")}:${String(
           now.getMinutes(),
-        ).padStart(2, "0")}:${String(now.getSeconds()).padStart(2, "0")}`;*/
-
-        const h = String(currentTime.getHours()).padStart(2, "0");
-        const m = String(currentTime.getMinutes()).padStart(2, "0");
-        const s = String(currentTime.getSeconds()).padStart(2, "0");
-        const modifyTime = `${h}:${m}:${s}`;
+        ).padStart(2, "0")}:${String(now.getSeconds()).padStart(2, "0")}`;
 
         modifyCard.querySelector(".todo-card__title-text").textContent =
           titleValue;
