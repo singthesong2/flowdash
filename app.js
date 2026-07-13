@@ -209,6 +209,9 @@ const titleError = document.getElementById('title-error');
 
   // 7/11 새벽, 전체 삭제 및 완료된일 없음 메세지 처리 끝
 
+  // 7/13 개별 todo 클릭시 수정 시작
+  let modifyCard = null;
+
   if (todoForm) {
     todoForm.onsubmit = (e) => {
       e.preventDefault();
@@ -252,36 +255,153 @@ const titleError = document.getElementById('title-error');
       }
       // 에러메세지 정현우
 
-      const newCard = template.content.firstElementChild.cloneNode(true);
+      if (modifyCard) {
+        const now = new Date();
 
-      newCard.querySelector(".todo-card__title-text").textContent = titleValue;
-      newCard.querySelector(".todo-card__content-text").textContent = textValue;
-      newCard.querySelector(".todo-card__date-text").textContent =
-        dateValue || "기한 없음";
-      newCard.querySelector(".todo-card__time").textContent = timeValue;
+        const modifyDate = `${now.getFullYear()}-${String(
+          now.getMonth() + 1,
+        ).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
 
-      const priority = newCard.querySelector(".todo-card__priority");
-      priority.textContent = `${prioValue}`;
+        const modifyTime = `${String(now.getHours()).padStart(2, "0")}:${String(
+          now.getMinutes(),
+        ).padStart(2, "0")}:${String(now.getSeconds()).padStart(2, "0")}`;
 
-      if (prioValue === "낮음") {
-        priority.classList.add("todo-card__priority_low");
-      }
-      if (prioValue === "중간") {
-        priority.classList.add("todo-card__priority_medium");
-      }
-      if (prioValue === "높음") {
-        priority.classList.add("todo-card__priority_high");
-      }
+        modifyCard.querySelector(".todo-card__title-text").textContent =
+          titleValue;
 
-      if (statusValue === "할 일") {
-        document.querySelector(".todo-items").appendChild(newCard);
+        modifyCard.querySelector(".todo-card__content-text").textContent =
+          textValue;
+
+        modifyCard.querySelector(".todo-card__date-text").textContent =
+          dateValue || "기한 없음";
+
+        /*modifyCard.querySelector(".todo-card__time").textContent = timeValue;*/
+
+        const priority = modifyCard.querySelector(".todo-card__priority");
+        const modify = modifyCard.querySelector(".todo-card__modify");
+
+        priority.classList.remove(
+          "todo-card__priority_low",
+          "todo-card__priority_medium",
+          "todo-card__priority_high",
+        );
+
+        priority.textContent = prioValue;
+
+        if (prioValue === "낮음") {
+          priority.classList.add("todo-card__priority_low");
+        } else if (prioValue === "중간") {
+          priority.classList.add("todo-card__priority_medium");
+        } else {
+          priority.classList.add("todo-card__priority_high");
+        }
+
+        modifyCard.classList.remove("todo-card-deletebackgroundcolor");
+
+        modifyCard
+          .querySelector(".todo-card__title-text")
+          .classList.remove("todo-card__title-deleteline");
+
+        if (statusValue === "할 일") {
+          todoItems.appendChild(modifyCard);
+        } else if (statusValue === "진행중") {
+          inProgressItems.appendChild(modifyCard);
+        } else {
+          doneItems.appendChild(modifyCard);
+
+          modifyCard.classList.add("todo-card-deletebackgroundcolor");
+
+          modifyCard
+            .querySelector(".todo-card__title-text")
+            .classList.add("todo-card__title-deleteline");
+        }
+
+        modify.classList.remove("hidden");
+
+        modify.querySelector(".todo-card__modify-date-text").textContent =
+          modifyDate;
+
+        modify.querySelector(".todo-card__modify-time").textContent =
+          modifyTime;
+
         updateHiddenMsg(todoItems, todoCount, todoEmpty);
-      } else if (statusValue === "진행중") {
-        document.querySelector(".in-progress-items").appendChild(newCard);
         updateHiddenMsg(inProgressItems, inProgressCount, inProgressEmpty);
-      } else {
-        document.querySelector(".done-items").appendChild(newCard);
         updateHiddenMsg(doneItems, doneCount, doneEmpty);
+
+        modifyCard = null;
+      } else {
+        const newCard = template.content.firstElementChild.cloneNode(true);
+
+        newCard.addEventListener("click", (e) => {
+          if (e.target.closest(".todo_card_delete")) return;
+          modifyCard = newCard;
+
+          titleInput.value = modifyCard.querySelector(
+            ".todo-card__title-text",
+          ).textContent;
+
+          textInput.value = modifyCard.querySelector(
+            ".todo-card__content-text",
+          ).textContent;
+
+          const date = modifyCard.querySelector(
+            ".todo-card__date-text",
+          ).textContent;
+
+          dateInput.value = date === "기한 없음" ? "" : date;
+
+          prioSelect.value = modifyCard
+            .querySelector(".todo-card__priority")
+            .textContent.trim();
+
+          if (modifyCard.parentElement === todoItems) {
+            statusSelect.value = "할 일";
+          } else if (modifyCard.parentElement === inProgressItems) {
+            statusSelect.value = "진행중";
+          } else {
+            statusSelect.value = "완료";
+          }
+
+          todoModal.showModal();
+        });
+
+        newCard.querySelector(".todo-card__title-text").textContent =
+          titleValue;
+        newCard.querySelector(".todo-card__content-text").textContent =
+          textValue;
+        newCard.querySelector(".todo-card__date-text").textContent =
+          dateValue || "기한 없음";
+        newCard.querySelector(".todo-card__time").textContent = timeValue;
+
+        const priority = newCard.querySelector(".todo-card__priority");
+        priority.textContent = `${prioValue}`;
+
+        if (prioValue === "낮음") {
+          priority.classList.add("todo-card__priority_low");
+        }
+        if (prioValue === "중간") {
+          priority.classList.add("todo-card__priority_medium");
+        }
+        if (prioValue === "높음") {
+          priority.classList.add("todo-card__priority_high");
+        }
+
+        if (statusValue === "할 일") {
+          document.querySelector(".todo-items").appendChild(newCard);
+          updateHiddenMsg(todoItems, todoCount, todoEmpty);
+        } else if (statusValue === "진행중") {
+          document.querySelector(".in-progress-items").appendChild(newCard);
+          updateHiddenMsg(inProgressItems, inProgressCount, inProgressEmpty);
+        } else {
+          document.querySelector(".done-items").appendChild(newCard);
+          // 7/13 새벽, 완료된 할일 배경색 및 폰트 색상 변경 시작
+          newCard.classList.add("todo-card-deletebackgroundcolor");
+          newCard
+            .querySelector(".todo-card__title-text")
+            .classList.add("todo-card__title-deleteline");
+          // 7/13 새벽, 완료된 할일 배경색 및 폰트 색상 변경 끝
+          updateHiddenMsg(doneItems, doneCount, doneEmpty);
+        }
       }
       const searchInputForUpdate = document.querySelector("#todo-search-input");
 
@@ -289,11 +409,13 @@ const titleError = document.getElementById('title-error');
         searchInputForUpdate.dispatchEvent(new Event("input"));
       }
 
+      modifyCard = null;
       todoModal.close();
       todoForm.reset();
     };
   }
 });
+// 7/13 개별 todo 클릭시 수정 끝
 
 /* 0710 정우석 닉네임 작업 시작*/
 const nicknameSpan = document.getElementById("nickname");
