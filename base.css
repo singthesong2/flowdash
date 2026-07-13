@@ -200,13 +200,13 @@ body.dark .theme-toggle-btn .bi-sun-fill {
 
 .search-div {
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
   align-items: center;
+  justify-content: space-between;
   background-color: #ffffff;
-  padding: 16px;
-  border-radius: 16px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  padding: 15px 20px;
+  border-radius: 12px;
+  border: 1px solid #e0e5eb;
+  gap: 15px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -813,17 +813,12 @@ dialog.new-dial::backdrop {
   color: #ffffff;
 }
 
-
-.title-error-msg {
-  color: #ff4d4f;
+.error-msg {
+  color: #ef4444;
   font-size: 13px;
   font-weight: bold;
-  margin-left: 10px;
-  display: none;
+  margin-bottom: 2px;
 }
-
-
-
 /* 0708 정현우 css 끝 */
 /* 0709 정현우 @media 쿼리추가 */
 /* 0711 새할일창 css 추가 */
@@ -1209,24 +1204,6 @@ body.dark .theme-toggle-btn:hover {
   font-weight: 700;
 }
 
-#prio-high:checked + .label-high {
-  background-color: #ff4d4f;
-  border-color: #ff4d4f;
-  color: #ffffff;
-}
-
-#prio-mid:checked + .label-mid {
-  background-color: #fa8c16;
-  border-color: #fa8c16;
-  color: #ffffff;
-}
-
-#prio-low:checked + .label-low {
-  background-color: #52c41a;
-  border-color: #52c41a;
-  color: #ffffff;
-}
-
 .is-hidden {
   display: none;
 }
@@ -1269,7 +1246,7 @@ body.dark .theme-toggle-btn:hover {
   --box-border: #e0e5eb;
 
   --card-bg: #fff;
-  --carod-vorder: #dfe4ec;
+  --card-border: #dfe4ec;
   --card-text-muted: #6c757d;
 
   --list-bg: #b6b6b6;
