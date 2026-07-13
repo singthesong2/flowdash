@@ -45,11 +45,10 @@ window.addEventListener("DOMContentLoaded", () => {
   );
   const doneEmpty = document.querySelector(".done-list .hidden-message");
 
-// 0712 정현우 에러메세지 추가
-const addForm = document.querySelector('.add-dial');
-const titleInput = document.querySelector('.title-input');
-const titleError = document.getElementById('title-error');
-
+  // 0712 정현우 에러메세지 추가
+  const addForm = document.querySelector(".add-dial");
+  const titleInput = document.querySelector(".title-input");
+  const titleError = document.getElementById("title-error");
 
   if (openModalBtns.length > 0 && todoModal) {
     openModalBtns.forEach((btn) => {
@@ -221,13 +220,24 @@ const titleError = document.getElementById('title-error');
       const titleInput = todoForm.querySelector(".title-input");
       const textInput = todoForm.querySelector(".content-input");
       const dateInput = todoForm.querySelector(".date-input");
-      const prioSelect = todoForm.querySelector(".prio-dial select");
+      /*const prioSelect = todoForm.querySelector(
+        ".radio-group input[value]:checked",
+      );*/
       const statusSelect = todoForm.querySelector(".status-dial select");
+
+      const radioHigh = todoForm.querySelector("#prio-high");
+      const radioMid = todoForm.querySelector("#prio-mid");
+
+      let prioValue = "낮음";
+      if (radioHigh && radioHigh.checked) {
+        prioValue = "높음";
+      } else if (radioMid && radioMid.checked) {
+        prioValue = "중간";
+      }
 
       const titleValue = titleInput ? titleInput.value.trim() : "";
       const textValue = textInput ? textInput.value.trim() : "";
       const dateValue = dateInput ? dateInput.value : "";
-      const prioValue = prioSelect ? prioSelect.value : "낮음";
       const statusValue = statusSelect ? statusSelect.value : "할 일";
 
       const currentTime = new Date();
@@ -350,9 +360,19 @@ const titleError = document.getElementById('title-error');
 
           dateInput.value = date === "기한 없음" ? "" : date;
 
-          prioSelect.value = modifyCard
+          const cardPrio = modifyCard
             .querySelector(".todo-card__priority")
             .textContent.trim();
+          if (cardPrio.includes("낮음")) {
+            const radioLow = todoForm.querySelector("#prio-low");
+            if (radioLow) radioLow.checked = true;
+          } else if (cardPrio.includes("중간")) {
+            const radioMid = todoForm.querySelector("#prio-mid");
+            if (radioMid) radioMid.checked = true;
+          } else if (cardPrio.includes("높음")) {
+            const radioHigh = todoForm.querySelector("#prio-high");
+            if (radioHigh) radioHigh.checked = true;
+          }
 
           if (modifyCard.parentElement === todoItems) {
             statusSelect.value = "할 일";
