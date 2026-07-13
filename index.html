@@ -169,7 +169,7 @@
         <dialog class="new-dial">
           <form method="dialog" class="add-dial">
             <h2>새 할 일</h2>
-
+            <span id="title-error" class="title-error-msg">내용을 입력하세요</span></h2>
             <div class="title-dial">
               <label>제목*</label>
               <input
@@ -197,11 +197,31 @@
 
             <div class="prio-dial">
               <label>우선순위</label>
-              <select>
-                <option>낮음</option>
-                <option>중간</option>
-                <option>높음</option>
-              </select>
+              <div class="radio-group">
+                <input
+                  type="radio"
+                  id="prio-high"
+                  name="priority"
+                  value="높음"
+                />
+                <label for="prio-high" class="label-high">높음</label>
+
+                <input
+                  type="radio"
+                  id="prio-mid"
+                  name="priority"
+                  value="중간"
+                />
+                <label for="prio-mid" class="label-mid">중간</label>
+                <input
+                  type="radio"
+                  id="prio-low"
+                  name="priority"
+                  value="낮음"
+                  checked
+                />
+                <label for="prio-low" class="label-low">낮음</label>
+              </div>
             </div>
 
             <div class="status-dial">
