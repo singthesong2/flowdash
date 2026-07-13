@@ -1,8 +1,8 @@
 body {
   margin: 0;
-  background-color: #f6f8fc;
+  background-color: #e0e5eb;
   font-family: Arial, sans-serif;
-  color: #1f2937;
+  color: #131820;
 }
 
 /* 0708 정우석*/
@@ -57,7 +57,7 @@ body {
 }
 
 .theme-toggle-btn:hover {
-  background-color: #f1f5f9;
+  background-color: #e0e5eb;
   border-color: #5f42f0;
   color: #5f42f0;
 }
@@ -826,8 +826,8 @@ dialog.new-dial::backdrop {
 /* 07/10 최우원 작업 시작 */
 
 .todo-card {
-  background: #fff;
-  border: 1px solid #dfe4ec;
+  background: #f6f7f9;
+  border: 1px solid #e0e5eb;
   box-shadow: 0 0 5px #6c6c6c;
   transition: box-shadow 0.2s ease;
   border-radius: 8px;
@@ -855,7 +855,7 @@ dialog.new-dial::backdrop {
 /* 7/13 새벽, 완료된 할일 배경색 및 폰트 색상 변경 시작*/
 
 .todo-card-deletebackgroundcolor {
-  background-color: #cfcfcf;
+  background-color: #f6f7f9;
 }
 
 .todo-card__title-deleteline {
@@ -969,11 +969,11 @@ dialog.new-dial::backdrop {
   width: 40%;
   min-height: 333px;
   height: auto;
-  border: 1px solid #000000;
+  border: 1px solid rgba(0, 0, 0, 0.02);
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
-  background-color: #b6b6b6;
+  background-color: rgba(0, 0, 0, 0.02);
   border-radius: 10px;
   padding: 0.5vw;
 }
@@ -1099,8 +1099,8 @@ body.dark {
 body.dark .header,
 body.dark .stat-card,
 body.dark .search-div {
-  background-color: #1e2533;
-  border-color: #2b3547;
+  background-color: #171d26;
+  border-color: #263140;
   color: #f1f5f9;
 }
 
@@ -1112,7 +1112,7 @@ body.dark .stat-title {
 body.dark .todo-list,
 body.dark .in-progress-list,
 body.dark .done-list {
-  background-color: #1e2533;
+  background-color: rgba(0, 0, 0, 0.02);
   border-color: #2b3547;
 }
 body.dark .title {
@@ -1121,8 +1121,8 @@ body.dark .title {
 }
 
 body.dark .todo-card {
-  background-color: #171d26;
-  border-color: #2d384a;
+  background-color: #1f2733;
+  border-color: #263140;
   color: #f1f5f9;
 }
 body.dark .todo-card__title-text {
@@ -1269,8 +1269,8 @@ body.dark {
   --box-bg: #1e2533;
   --box-border: #2b3547;
 
-  --card-bg: #171d26;
-  --card-border: #2d384a;
+  --card-bg: #1f2733;
+  --card-border: #263140;
   --card-text-muted: #94a3b8;
 
   --List-bg: #1e2533;
