@@ -7,15 +7,9 @@
 
 body {
   margin: 0;
-<<<<<<< HEAD
   background-color: #e0e5eb;
-  font-family: Arial, sans-serif;
-  color: #131820;
-=======
-  background-color: #f6f8fc;
   font-family: "PretendardVariable", Arial, sans-serif;
-  color: #1f2937;
->>>>>>> 03a0191 (조민호 웹폰트 적용)
+  color: #131820;
 }
 
 /* 0708 정우석*/
@@ -80,7 +74,7 @@ body {
 body {
   margin: 0;
   background-color: #f6f8fc;
-  font-family: "AppleSDGothicNeoM", Arial, sans-serif;
+  font-family: "PretendardVariable", Arial, sans-serif;
   color: #1f2937;
   transition:
     background-color 0.3s ease,
