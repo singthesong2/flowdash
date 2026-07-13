@@ -1388,3 +1388,86 @@ select,
 textarea {
   font-family: "PretendardVariable", Arial, sans-serif;
 }
+
+/* 0714 조민호 새 할 일 모달 다크모드 시작 */
+body.dark dialog.new-dial {
+  background-color: #171d26;
+  border-color: #2b3547;
+  color: #f1f5f9;
+}
+
+body.dark .add-dial h2,
+body.dark .add-dial label {
+  color: #f1f5f9;
+}
+
+body.dark .add-dial input[type="text"],
+body.dark .add-dial input[type="date"],
+body.dark .add-dial select,
+body.dark .add-dial textarea {
+  background-color: #131820;
+  border-color: #2b3547;
+  color: #f1f5f9;
+}
+
+body.dark .add-dial input::placeholder,
+body.dark .add-dial textarea::placeholder {
+  color: #64748b;
+}
+
+body.dark .radio-group label,
+body.dark .dial-check label {
+  background-color: #131820;
+  border-color: #2b3547;
+  color: #f1f5f9;
+}
+
+body.dark .dial-cancle-btn {
+  background-color: #1f2733;
+  border: 1px solid #2b3547;
+  color: #f1f5f9;
+}
+
+body.dark .dial-add-btn {
+  background-color: #7950f2;
+  border: 1px solid #7950f2;
+  color: #ffffff;
+}
+
+body.dark dialog.new-dial::backdrop {
+  background-color: rgba(0, 0, 0, 0.65);
+}
+
+/* 날짜 input 아이콘도 다크모드에 맞게 */
+body.dark .add-dial input[type="date"] {
+  color-scheme: dark;
+}
+/* 0714 조민호 새 할 일 모달 다크모드 끝 */
+
+/* 0714 조민호 새 할 일 우선순위 버튼 다크모드 시작 */
+body.dark .radio-group .label-high {
+  color: #ff6b6b;
+  border-color: #ff6b6b;
+  background-color: #131820;
+}
+
+body.dark .radio-group .label-mid {
+  color: #f59e0b;
+  border-color: #f59e0b;
+  background-color: #131820;
+}
+
+body.dark .radio-group .label-low {
+  color: #22c55e;
+  border-color: #22c55e;
+  background-color: #131820;
+}
+
+body.dark #prio-high:checked + .label-high,
+body.dark #prio-mid:checked + .label-mid,
+body.dark #prio-low:checked + .label-low {
+  background-color: #7950f2;
+  border-color: #7950f2;
+  color: #ffffff;
+}
+/* 0714 조민호 새 할 일 우선순위 버튼 다크모드 끝 */
