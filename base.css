@@ -1,8 +1,8 @@
 body {
   margin: 0;
-  background-color: #f6f8fc;
+  background-color: #e0e5eb;
   font-family: Arial, sans-serif;
-  color: #1f2937;
+  color: #131820;
 }
 
 /* 0708 정우석*/
@@ -57,13 +57,23 @@ body {
 }
 
 .theme-toggle-btn:hover {
-  background-color: #f1f5f9;
+  background-color: #e0e5eb;
   border-color: #5f42f0;
   color: #5f42f0;
 }
 /* 0708 정우석 헤더 작업 끝*/
 
 /* 0711 정우석 다크모드 추가 */
+body {
+  margin: 0;
+  background-color: #f6f8fc;
+  font-family: Arial, sans-serif;
+  color: #1f2937;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
 .theme-toggle-btn .bi-sun-fill,
 .theme-toggle-btn .bi-moon-stars {
   display: none;
@@ -183,19 +193,20 @@ body.dark .theme-toggle-btn .bi-sun-fill {
 
 /* 0708 정현우 css 시작 */
 /* 0709 정현우 @media 쿼리추가 */
+/* 0711 새할일창 css 추가 */
 .search-section {
   width: 100%;
 }
 
 .search-div {
   display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
   align-items: center;
-  justify-content: space-between;
   background-color: #ffffff;
-  padding: 15px 20px;
-  border-radius: 12px;
-  border: 1px solid #e0e5eb;
-  gap: 15px;
+  padding: 16px;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   width: 100%;
   box-sizing: border-box;
 }
@@ -299,6 +310,152 @@ body.dark .theme-toggle-btn .bi-sun-fill {
   font-size: 13px;
   font-weight: 500;
   cursor: pointer;
+}
+
+dialog.new-dial {
+  border: 1px solid #e0e5eb;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  padding: 28px;
+  width: 100%;
+  max-width: 440px;
+  background-color: #ffffff;
+}
+
+dialog.new-dial::backdrop {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.add-dial {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.add-dial h2 {
+  margin: 0 0 4px 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.title-dial,
+.text-dial,
+.date-dial,
+.prio-dial,
+.status-dial {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.add-dial label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #4b5563;
+}
+
+.add-dial input[type="text"],
+.add-dial input[type="date"],
+.add-dial select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1px solid #dfe4ec;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #1f2937;
+  background-color: #ffffff;
+  outline: none;
+  appearance: none;
+}
+
+.status-dial {
+  position: relative;
+}
+
+.status-dial select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%234b5563' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 14px) center;
+  padding-right: 40px;
+}
+
+.radio-group {
+  display: flex;
+  gap: 10px;
+}
+
+.radio-group input[type="radio"] {
+  display: none;
+}
+
+.radio-group label {
+  flex: 1;
+  text-align: center;
+  padding: 10px 0;
+  border: 1px solid #dfe4ec;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.radio-group .label-high {
+  color: #dc2626;
+  border-color: #fca5a5;
+}
+.radio-group .label-mid {
+  color: #d97706;
+  border-color: #fcd34d;
+}
+.radio-group .label-low {
+  color: #059669;
+  border-color: #6ee7b7;
+}
+
+.radio-group input[id="prio-high"]:checked + label {
+  background-color: #dc2626;
+  color: #ffffff;
+  border-color: #dc2626;
+}
+.radio-group input[id="prio-mid"]:checked + label {
+  background-color: #d97706;
+  color: #ffffff;
+  border-color: #d97706;
+}
+.radio-group input[id="prio-low"]:checked + label {
+  background-color: #059669;
+  color: #ffffff;
+  border-color: #059669;
+}
+
+.dial-btn {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.dial-cancle-btn,
+.dial-add-btn {
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+}
+
+.dial-cancle-btn {
+  background-color: #f3f4f6;
+  color: #4b5563;
+}
+
+.dial-add-btn {
+  background-color: #7950f2;
+  color: #ffffff;
 }
 
 @media (max-width: 768px) {
@@ -504,7 +661,7 @@ body.dark .theme-toggle-btn .bi-sun-fill {
   .search-search-box,
   .date-div,
   .add-work {
-    width: 100% !important;
+    width: 100%;
   }
 }
 
@@ -535,18 +692,158 @@ body.dark .theme-toggle-btn .bi-sun-fill {
     flex: 1;
   }
 }
+dialog.new-dial {
+  border: 1px solid #e0e5eb;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+  width: 100%;
+  max-width: 400px;
+  background-color: #ffffff;
+}
+
+dialog.new-dial::backdrop {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.add-dial {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.add-dial h2 {
+  margin: 0 0 4px 0;
+  font-size: 20px;
+  font-weight: bold;
+  color: #1f2937;
+}
+
+.title-dial,
+.content-dial,
+.date-dial,
+.prio-dial,
+.dial-dial {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.add-dial label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #4b5563;
+}
+
+.add-dial input[type="text"],
+.add-dial input[type="date"],
+.add-dial textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border: 1px solid #dfe4ec;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #1f2937;
+  background-color: #ffffff;
+  outline: none;
+}
+
+.add-dial textarea {
+  resize: none;
+  height: 70px;
+}
+
+.radio-group,
+.dial-check {
+  display: flex;
+  gap: 8px;
+}
+
+.radio-group input[type="radio"],
+.dial-check input[type="radio"] {
+  display: none;
+}
+
+.radio-group label,
+.dial-check label {
+  flex: 1;
+  text-align: center;
+  padding: 10px 0;
+  border: 1px solid #dfe4ec;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #4b5563;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+.radio-group input[type="radio"]:checked + label,
+.dial-check input[type="radio"]:checked + label {
+  background-color: #7950f2;
+  color: #ffffff;
+  border-color: #7950f2;
+}
+
+.dial-btn {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.dial-cancle-btn,
+.dial-add-btn {
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.dial-cancle-btn {
+  background-color: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  color: #4b5563;
+}
+
+.dial-add-btn {
+  background-color: #7950f2;
+  border: 1px solid #7950f2;
+  color: #ffffff;
+}
+
+
+.title-error-msg {
+  color: #ff4d4f;
+  font-size: 13px;
+  font-weight: bold;
+  margin-left: 10px;
+  display: none;
+}
+
+
 
 /* 0708 정현우 css 끝 */
 /* 0709 정현우 @media 쿼리추가 */
+/* 0711 새할일창 css 추가 */
 
 /* 07/10 최우원 작업 시작 */
 
 .todo-card {
-  background: #fff;
-  border: 1px solid #dfe4ec;
+  background: #f6f7f9;
+  border: 1px solid #e0e5eb;
+  box-shadow: 0 0 5px #6c6c6c;
+  transition: box-shadow 0.2s ease;
   border-radius: 8px;
   padding: 12px;
   margin-top: 10px;
+  cursor: pointer;
+}
+
+.todo-card:hover {
+  box-shadow: 0 0 8px #7a68fc;
+  transform: translateY(-1px);
 }
 
 .todo-card:hover .todo_card_delete {
@@ -560,6 +857,29 @@ body.dark .theme-toggle-btn .bi-sun-fill {
   font-weight: bold;
 }
 
+/* 7/13 새벽, 완료된 할일 배경색 및 폰트 색상 변경 시작*/
+
+.todo-card-deletebackgroundcolor {
+  background-color: #f6f7f9;
+}
+
+.todo-card__title-deleteline {
+  text-decoration: line-through;
+  color: #838383;
+}
+
+.todo-card-deletebackgroundcolor .todo-card__content-text,
+.todo-card-deletebackgroundcolor .todo-card__icon,
+.todo-card-deletebackgroundcolor .todo-card__date-text,
+.todo-card-deletebackgroundcolor .todo-card__time,
+.todo-card-deletebackgroundcolor .todo-card__modify-icon,
+.todo-card-deletebackgroundcolor .todo-card__modify-date-text,
+.todo-card-deletebackgroundcolor .todo-card__modify-time {
+  color: #838383;
+}
+
+/* 7/13 새벽, 완료된 할일 배경색 및 폰트 색상 변경 끝*/
+
 .todo-card_header {
   display: flex;
   justify-content: space-between;
@@ -569,7 +889,7 @@ body.dark .theme-toggle-btn .bi-sun-fill {
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
+  /*cursor: pointer;*/
   font-size: 13px;
   border-radius: 50%;
   background-color: #6c757d;
@@ -593,12 +913,48 @@ body.dark .theme-toggle-btn .bi-sun-fill {
   font-size: 12px;
 }
 
+/* 07/12 최우원 추가 및 수정 */
+
 .todo-card__priority {
   font-weight: bold;
-  color: #5f42f0;
+  font-size: 12px;
+  margin: 3px 0;
 }
 
+.todo-card__priority_low {
+  color: #17c200;
+  background-color: #e6ffe2;
+}
+
+.todo-card__priority_medium {
+  color: #ff8d02;
+  background-color: #fff9a3;
+}
+
+.todo-card__priority_high {
+  color: #ff2121;
+  background-color: #ffc6c6;
+}
+
+/* 07/12 최우원 추가 및 수정 */
 /* 07/10 최우원 작업 끝 */
+
+/* 7/13 수정시간 추가 */
+.todo-card__modify-icon {
+  font-size: 11px;
+}
+
+.todo-card__modify {
+  display: flex;
+  justify-content: start;
+  gap: 4px;
+  font-size: 12px;
+}
+
+.todo-card__modify.hidden {
+  display: none;
+}
+/* 7/13 수정시간 추가 */
 
 /* 07/08 최우원 작업 시작 */
 
@@ -618,11 +974,11 @@ body.dark .theme-toggle-btn .bi-sun-fill {
   width: 40%;
   min-height: 333px;
   height: auto;
-  border: 1px solid #000000;
+  border: 1px solid rgba(0, 0, 0, 0.02);
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
-  background-color: #b6b6b6;
+  background-color: rgba(0, 0, 0, 0.02);
   border-radius: 10px;
   padding: 0.5vw;
 }
@@ -633,6 +989,10 @@ body.dark .theme-toggle-btn .bi-sun-fill {
   align-items: center;
   border-bottom: 3px solid #dbdbdb;
   padding: 0 0.6vw 0.6vw;
+}
+
+.in-progress-list .title {
+  border-bottom: 3px solid #ab72fb;
 }
 
 h2 {
@@ -744,8 +1104,8 @@ body.dark {
 body.dark .header,
 body.dark .stat-card,
 body.dark .search-div {
-  background-color: #1e2533;
-  border-color: #2b3547;
+  background-color: #171d26;
+  border-color: #263140;
   color: #f1f5f9;
 }
 
@@ -757,7 +1117,7 @@ body.dark .stat-title {
 body.dark .todo-list,
 body.dark .in-progress-list,
 body.dark .done-list {
-  background-color: #1e2533;
+  background-color: rgba(0, 0, 0, 0.02);
   border-color: #2b3547;
 }
 body.dark .title {
@@ -766,18 +1126,22 @@ body.dark .title {
 }
 
 body.dark .todo-card {
-  background-color: #171d26;
-  border-color: #2d384a;
+  background-color: #1f2733;
+  border-color: #263140;
   color: #f1f5f9;
 }
 body.dark .todo-card__title-text {
   color: #f1f5f9;
 }
 body.dark .todo-card__content-text,
-body.dark .todo-card__date-text {
+body.dark .todo-card__date-text,
+body.dark .todo-card__modify-date-text,
+body.dark .todo-card__modify-time,
+body.dark .todo-card__info span {
   color: #94a3b8;
 }
-body.dark .prio-btn {
+body.dark .prio-btn,
+body.dark .search-chip {
   background-color: #1b2330;
   border-color: #2b3547;
   color: #765eed;
@@ -791,6 +1155,18 @@ body.dark .date-div select {
 body.dark .search-box input[type="search"] {
   color: #f1f5f9;
 }
+
+body.dark .theme-toggle-btn {
+  background-color: transparent;
+  border-color: #765eed;
+  color: #765eed;
+}
+body.dark .theme-toggle-btn:hover {
+  background-color: #2b3547;
+  border-color: #765eed;
+  color: #765eed;
+}
+
 /* 0711 정우석 다크모드 작업 끝 */
 
 /* 0711 조민호 필터 칩 개선 작업 시작 */
@@ -833,6 +1209,24 @@ body.dark .search-box input[type="search"] {
   font-weight: 700;
 }
 
+#prio-high:checked + .label-high {
+  background-color: #ff4d4f;
+  border-color: #ff4d4f;
+  color: #ffffff;
+}
+
+#prio-mid:checked + .label-mid {
+  background-color: #fa8c16;
+  border-color: #fa8c16;
+  color: #ffffff;
+}
+
+#prio-low:checked + .label-low {
+  background-color: #52c41a;
+  border-color: #52c41a;
+  color: #ffffff;
+}
+
 .is-hidden {
   display: none;
 }
@@ -863,3 +1257,136 @@ body.dark .search-box input[type="search"] {
   }
 }
 /* 0711 조민호 필터 칩 개선 작업 끝 */
+
+/* 0712 정우석 테마 추가 (라이트 모드) */
+
+:root {
+  --main-bg: #f6f8fc;
+  --main-text: #1f2937;
+  --text-muted: #5c6f8a;
+
+  --box-bg: #fff;
+  --box-border: #e0e5eb;
+
+  --card-bg: #fff;
+  --carod-vorder: #dfe4ec;
+  --card-text-muted: #6c757d;
+
+  --list-bg: #b6b6b6;
+  --list-border: #000;
+
+  --input-bg: #fff;
+  --btn-piro-bg: #fff;
+
+  --point-purple: #5f42f0;
+  --point-purpple-dark: #5c3bed;
+  --point-purple-light: #765eed;
+}
+
+/* 0712 정우석 테마 추가 (다크 모드) */
+
+body.dark {
+  --main-bg: #131820;
+  --main-text: #f1f5f9;
+  --text-muted: #f1f5f9;
+
+  --box-bg: #1e2533;
+  --box-border: #2b3547;
+
+  --card-bg: #1f2733;
+  --card-border: #263140;
+  --card-text-muted: #94a3b8;
+
+  --List-bg: #1e2533;
+  --List-border: #2b3547;
+
+  --input-bg: #131820;
+  --btn-prio-bg: #1b2330;
+}
+
+/* 0712 정우석 테마 추가 (카키색) */
+
+body.khaki {
+  --main-bg: #f4f5f0;
+  --main-text: #2b3014;
+  --text-muted: #596139;
+
+  --box-bg: #e2e4d5;
+  --box-border: #c0c4ac;
+
+  --card-bg: #fff;
+  --card-border: #d1d5c2;
+  --card-text-mueted: #737c51;
+
+  --List-bg: #d5d8c5;
+  --List-border: #a4a890;
+
+  --input-bg: #f4f5f0;
+  --btn-prio-bg: #ebede2;
+
+  --point-purple: #6b7844;
+  --point-purple-dark: #4b5320;
+  --point-purple-light: #8a9a86;
+}
+body,
+.header,
+.stat-card,
+.search-div,
+.search-box,
+.date-div select,
+.sort-toggle-btn,
+.todo-list,
+.in-progress-list,
+.done-list,
+.title,
+.todo-card,
+.todo-card__title-text,
+.todo-card__content-text,
+.prio-btn,
+.search-chip,
+.theme-toggle-btn {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+/* 0712 조민호 정렬 토글 버튼 시작 */
+.sort-toggle-btn {
+  padding: 7px 10px;
+  border: 1px solid #dfe4ec;
+  border-radius: 20px;
+  font-size: 14px;
+  color: #1f2937;
+  outline: none;
+  background-color: #ffffff;
+  cursor: pointer;
+  width: auto;
+  min-width: 120px;
+  font-weight: 600;
+  height: 36px;
+  box-sizing: border-box;
+  line-height: 1;
+  font-family: inherit;
+  box-shadow: none;
+  appearance: none;
+}
+
+.sort-toggle-btn:hover {
+  border-color: #7950f2;
+}
+/* 0712 조민호 정렬 토글 버튼 끝 */
+
+/* 0713 조민호 정렬 토글 버튼 다크모드 시작 */
+body.dark .sort-toggle-btn {
+  background-color: #131820;
+  border-color: #2b3547;
+  color: #f1f5f9;
+}
+
+body.dark .sort-toggle-btn:hover {
+  background-color: #131820;
+  border-color: #7950f2;
+  color: #f1f5f9;
+}
+/* 0713 조민호 정렬 토글 버튼 다크모드 끝 */
