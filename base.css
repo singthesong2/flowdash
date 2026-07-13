@@ -1135,7 +1135,8 @@ body.dark .todo-card__modify-time,
 body.dark .todo-card__info span {
   color: #94a3b8;
 }
-body.dark .prio-btn {
+body.dark .prio-btn,
+body.dark .search-chip {
   background-color: #1b2330;
   border-color: #2b3547;
   color: #765eed;
