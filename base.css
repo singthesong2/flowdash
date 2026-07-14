@@ -1518,3 +1518,11 @@ body.dark footer {
   color: #abb1ba;
 }
 /* 0714 조민호 푸터 다크모드 끝 */
+/* 0714 조민호 보드 카운트 라이트모드 색상 시작 */
+body:not(.dark) .todo-count,
+body:not(.dark) .in-progress-count,
+body:not(.dark) .done-count {
+  background-color: #ffffff;
+  color: #000000;
+}
+/* 0714 조민호 보드 카운트 라이트모드 색상 끝 */
