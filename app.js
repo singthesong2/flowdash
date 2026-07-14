@@ -25,6 +25,20 @@ window.addEventListener("DOMContentLoaded", () => {
   const todoForm = document.querySelector(".add-dial");
   const allDeleteData = document.querySelector(".all-data-reset");
 
+  // 0714 조민호 삭제 확인 모달 시작
+  const deleteModal = document.querySelector(".delete-dial");
+  const deleteModalTitle = document.querySelector("#delete-modal-title");
+  const deleteModalMessage = document.querySelector("#delete-modal-message");
+  const deleteCancelBtn = document.querySelector(".delete-cancel-btn");
+  const deleteConfirmBtn = document.querySelector(".delete-confirm-btn");
+
+  let deleteMode = "";
+  let deleteTargetCard = null;
+  let deleteTargetItems = null;
+  let deleteTargetCount = null;
+  let deleteTargetEmpty = null;
+  // 0714 조민호 삭제 확인 모달 끝
+
   const todoList = document.querySelector(".todo-list");
   const inProgressList = document.querySelector(".in-progress-list");
   const doneList = document.querySelector(".done-list");
@@ -73,39 +87,17 @@ window.addEventListener("DOMContentLoaded", () => {
     items.addEventListener("click", (e) => {
       if (!e.target.classList.contains("todo_card_delete")) return;
 
-      e.target.closest(".todo-card").remove();
-      // 0712 조민호 상단 통계 자동 갱신 시작
-      const updateStats = () => {
-        const todoNum = todoItems.children.length;
-        const doingNum = inProgressItems.children.length;
-        const doneNum = doneItems.children.length;
-        const totalNum = todoNum + doingNum + doneNum;
+      deleteMode = "single";
+      deleteTargetCard = e.target.closest(".todo-card");
+      deleteTargetItems = items;
+      deleteTargetCount = count;
+      deleteTargetEmpty = empty;
 
-        const achievementNum =
-          totalNum === 0 ? 0 : Math.round((doneNum / totalNum) * 100);
+      deleteModalTitle.textContent = "할 일 삭제";
+      deleteModalMessage.innerHTML =
+        "이 할 일을 정말로 삭제하시겠습니까?<br />삭제한 할 일은 복구할 수 없습니다.";
 
-        if (statTotal) {
-          statTotal.textContent = totalNum;
-        }
-
-        if (statTodo) {
-          statTodo.textContent = todoNum;
-        }
-
-        if (statDoing) {
-          statDoing.textContent = doingNum;
-        }
-
-        if (statDone) {
-          statDone.textContent = doneNum;
-        }
-
-        if (statAchievement) {
-          statAchievement.textContent = `${achievementNum}%`;
-        }
-      };
-      // 0712 조민호 상단 통계 자동 갱신 끝
-      updateHiddenMsg(items, count, empty);
+      deleteModal.showModal();
     });
   };
 
@@ -163,49 +155,90 @@ window.addEventListener("DOMContentLoaded", () => {
   };
 
   allDeleteData.addEventListener("click", () => {
-    updateHiddenMsg(todoItems, todoCount, todoEmpty);
-    updateHiddenMsg(inProgressItems, inProgressCount, inProgressEmpty);
-    updateHiddenMsg(doneItems, doneCount, doneEmpty);
+    deleteMode = "all";
+    deleteModalTitle.textContent = "전체 데이터 초기화";
+    deleteModalMessage.innerHTML =
+      "모든 할 일을 정말로 삭제하시겠습니까?<br />삭제한 데이터는 복구할 수 없습니다.";
 
-    document.querySelectorAll(".todo-card").forEach((card) => {
-      card.remove();
-    });
-
-    todoItems.replaceChildren();
-    inProgressItems.replaceChildren();
-    doneItems.replaceChildren();
-
-    updateHiddenMsg(todoItems, todoCount, todoEmpty);
-    updateHiddenMsg(inProgressItems, inProgressCount, inProgressEmpty);
-    updateHiddenMsg(doneItems, doneCount, doneEmpty);
-
-    const searchInput = document.querySelector("#todo-search-input");
-    const periodSelect = document.querySelector("#period-select");
-    const prioritySelect = document.querySelector("#priority-select");
-    const sortButton = document.querySelector("#sort-toggle-btn");
-
-    if (searchInput) {
-      searchInput.value = "";
-    }
-
-    if (periodSelect) {
-      periodSelect.value = "전체 기간";
-    }
-
-    if (prioritySelect) {
-      prioritySelect.value = "전체 우선순위";
-    }
-
-    if (sortButton) {
-      sortButton.dataset.sort = "asc";
-      sortButton.textContent = "정렬: 오름차순 ↑";
-    }
-
-    if (searchInput) {
-      searchInput.dispatchEvent(new Event("input"));
-    }
+    deleteModal.showModal();
   });
 
+  // 7/11 새벽, 전체 삭제 및 완료된일 없음 메세지 처리 끝
+
+  // 0714 조민호 삭제 확인 모달 버튼 기능 시작
+  if (deleteModal && deleteCancelBtn && deleteConfirmBtn) {
+    deleteCancelBtn.addEventListener("click", () => {
+      deleteModal.close();
+
+      deleteMode = "";
+      deleteTargetCard = null;
+      deleteTargetItems = null;
+      deleteTargetCount = null;
+      deleteTargetEmpty = null;
+    });
+
+    deleteConfirmBtn.addEventListener("click", () => {
+      if (deleteMode === "single" && deleteTargetCard) {
+        deleteTargetCard.remove();
+
+        updateHiddenMsg(
+          deleteTargetItems,
+          deleteTargetCount,
+          deleteTargetEmpty,
+        );
+      }
+
+      if (deleteMode === "all") {
+        document.querySelectorAll(".todo-card").forEach((card) => {
+          card.remove();
+        });
+
+        todoItems.replaceChildren();
+        inProgressItems.replaceChildren();
+        doneItems.replaceChildren();
+
+        updateHiddenMsg(todoItems, todoCount, todoEmpty);
+        updateHiddenMsg(inProgressItems, inProgressCount, inProgressEmpty);
+        updateHiddenMsg(doneItems, doneCount, doneEmpty);
+
+        const searchInput = document.querySelector("#todo-search-input");
+        const periodSelect = document.querySelector("#period-select");
+        const prioritySelect = document.querySelector("#priority-select");
+        const sortButton = document.querySelector("#sort-toggle-btn");
+
+        if (searchInput) {
+          searchInput.value = "";
+        }
+
+        if (periodSelect) {
+          periodSelect.value = "전체 기간";
+        }
+
+        if (prioritySelect) {
+          prioritySelect.value = "전체 우선순위";
+        }
+
+        if (sortButton) {
+          sortButton.dataset.sort = "asc";
+          sortButton.textContent = "정렬: 오름차순 ↑";
+        }
+
+        if (searchInput) {
+          searchInput.dispatchEvent(new Event("input"));
+        }
+      }
+
+      deleteModal.close();
+
+      deleteMode = "";
+      deleteTargetCard = null;
+      deleteTargetItems = null;
+      deleteTargetCount = null;
+      deleteTargetEmpty = null;
+    });
+  }
+
+  // 0714 조민호 삭제 확인 모달 버튼 기능 끝
   // 7/11 새벽, 전체 삭제 및 완료된일 없음 메세지 처리 끝
 
   // 7/13 개별 todo 클릭시 수정 시작

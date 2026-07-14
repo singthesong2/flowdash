@@ -111,14 +111,20 @@
             </div>
             <!-- 0711 조민호 현우님 부분 수정 작업 시작 -->
             <div class="date-div">
-              <select id="period-select" name="date-select" style="display: none;">
+              <select
+                id="period-select"
+                name="date-select"
+                style="display: none"
+              >
                 <option value="전체 기간" selected>전체 기간</option>
                 <option value="오늘">오늘</option>
                 <option value="최근 7일">최근 7일</option>
               </select>
 
               <div class="custom-dropdown" id="custom-period-dropdown">
-                <button type="button" class="dropdown-trigger">전체 기간</button>
+                <button type="button" class="dropdown-trigger">
+                  전체 기간
+                </button>
                 <ul class="dropdown-menu">
                   <li data-value="전체 기간">전체 기간</li>
                   <li data-value="오늘">오늘</li>
@@ -178,7 +184,9 @@
         <dialog class="new-dial">
           <form method="dialog" class="add-dial">
             <h2>새 할 일</h2>
-            <span id="title-error" class="title-error-msg">내용을 입력하세요</span></h2>
+            <span id="title-error" class="title-error-msg"
+              >내용을 입력하세요</span
+            >
             <div class="title-dial">
               <label>제목*</label>
               <input
@@ -248,6 +256,21 @@
             </div>
           </form>
         </dialog>
+        <!-- 0714 조민호 삭제 확인 문구 시작 -->
+        <dialog class="delete-dial">
+          <div class="delete-dial-box">
+            <h2 id="delete-modal-title">할 일 삭제</h2>
+            <p id="delete-modal-message">
+              이 할 일을 정말로 삭제하시겠습니까?<br />
+              삭제한 할 일은 복구할 수 없습니다.
+            </p>
+            <div class="delete-dial-btn">
+              <button type="button" class="delete-cancel-btn">취소</button>
+              <button type="button" class="delete-confirm-btn">삭제</button>
+            </div>
+          </div>
+        </dialog>
+        <!-- 0714 조민호 삭제 확인 문구 끝 -->
       </section>
       <!-- 0708 정현우 서치부분 끝-->
       <!-- 0709 정현우 서치부분 (검색창 깨짐 > 수정중) -->
