@@ -843,6 +843,13 @@ if (customDropdown) {
     const selectedValue = li.dataset.value;
     trigger.textContent = selectedValue;
 
+    const firstLi = menu.firstElementChild;
+    if (selectedValue === "전체 기간") {
+      if (firstLi) firstLi.style.display = "none";
+    } else {
+      if (firstLi) firstLi.style.display = "block";
+    }
+
     if (realSelect) {
       realSelect.value = selectedValue;
       realSelect.dispatchEvent(new Event("change"));
@@ -875,6 +882,13 @@ if (customPriorityDropdown) {
 
     const selectedValue = li.dataset.value;
     trigger.textContent = selectedValue;
+
+    const firstLi = menu.firstElementChild;
+    if (selectedValue === "전체 우선순위") {
+      if (firstLi) firstLi.style.display = "none";
+    } else {
+      if (firstLi) firstLi.style.display = "block";
+    }
 
     if (realPrioritySelect) {
       realPrioritySelect.value = selectedValue;

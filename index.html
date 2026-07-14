@@ -126,28 +126,36 @@
                   전체 기간
                 </button>
                 <ul class="dropdown-menu">
-                  
+                  <li data-value="전체 기간">전체 기간</li>
                   <li data-value="오늘">오늘</li>
                   <li data-value="최근 7일">최근 7일</li>
                 </ul>
               </div>
 
+              <div class="custom-dropdown" id="custom-priority-dropdown">
+                <button type="button" class="dropdown-trigger">
+                  전체 우선순위
+                </button>
+                <ul class="dropdown-menu">
+                  <li data-value="전체 우선순위" class="default-option">
+                    전체 우선순위
+                  </li>
+                  <li data-value="낮음">낮음</li>
+                  <li data-value="중간">중간</li>
+                  <li data-value="높음">높음</li>
+                </ul>
+              </div>
 
-<div class="custom-dropdown" id="custom-priority-dropdown">
-  <button type="button" class="dropdown-trigger">전체 우선순위</button>
-  <ul class="dropdown-menu">
-    <li data-value="낮음">낮음</li>
-    <li data-value="중간">중간</li>
-    <li data-value="높음">높음</li>
-  </ul>
-</div>
-
-<select id="priority-select" name="prio-select" style="display: none;">
-  <option value="전체 우선순위" selected>전체 우선순위</option>
-  <option value="낮음">낮음</option>
-  <option value="중간">중간</option>
-  <option value="높음">높음</option>
-</select>
+              <select
+                id="priority-select"
+                name="prio-select"
+                style="display: none"
+              >
+                <option value="전체 우선순위" selected>전체 우선순위</option>
+                <option value="낮음">낮음</option>
+                <option value="중간">중간</option>
+                <option value="높음">높음</option>
+              </select>
 
               <button
                 type="button"
