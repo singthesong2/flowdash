@@ -823,10 +823,6 @@ body.dark .add-dial .dropdown-menu li:hover {
   color: #5c3be6;
 }
 
-
-
-
-
 /* 0708 정현우 css 끝 */
 /* 0709 정현우 @media 쿼리추가 */
 /* 0711 새할일창 css 추가 */
@@ -1677,5 +1673,9 @@ body.dark dialog.delete-dial::backdrop {
   max-height: 150px;
   opacity: 1;
   overflow: visible;
+}
+#custom-priority-dropdown:has(.dropdown-trigger:contains-text("전체 우선순위"))
+  .default-option {
+  display: none;
 }
 /* 0714 정우석 커스텀 드롭다운 끝 */
