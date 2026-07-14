@@ -203,6 +203,7 @@ body.dark .theme-toggle-btn .bi-sun-fill {
 /* 0711 새할일창 css 추가 */
 .search-section {
   width: 100%;
+  margin-bottom: 30px;
 }
 
 .search-div {
@@ -216,13 +217,14 @@ body.dark .theme-toggle-btn .bi-sun-fill {
   gap: 15px;
   width: 100%;
   box-sizing: border-box;
+  flex-wrap: wrap;
 }
 
 .search-left-group {
   display: flex;
   align-items: center;
   gap: 15px;
-  flex: none;
+  flex: 1.2;
 }
 
 .search-box {
@@ -232,7 +234,7 @@ body.dark .theme-toggle-btn .bi-sun-fill {
   border-radius: 8px;
   padding: 8px 12px;
   background-color: #ffffff;
-  width: 200px;
+  flex: 1;
 }
 
 .search-box input[type="search"] {
@@ -280,12 +282,11 @@ body.dark .theme-toggle-btn .bi-sun-fill {
   color: #ffffff;
   border: none;
   border-radius: 8px;
-  padding: 12px 24px;
+  padding: 12px 30px;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  white-space: nowrap;
-  flex: 1;
+  flex: 0.3;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -736,6 +737,10 @@ dialog.new-dial::backdrop {
   gap: 8px;
 }
 
+.date-dial {
+  display: none;
+}
+
 .add-dial label {
   font-size: 14px;
   font-weight: 600;
@@ -794,9 +799,9 @@ dialog.new-dial::backdrop {
 
 .dial-btn {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   gap: 12px;
-  margin-top: 8px;
+  margin-top: 10px;
 }
 
 .dial-cancle-btn,
@@ -919,6 +924,7 @@ dialog.new-dial::backdrop {
   display: flex;
   justify-content: space-between;
   font-size: 12px;
+  
 }
 
 /* 07/12 최우원 추가 및 수정 */
@@ -1207,6 +1213,7 @@ body.dark .theme-toggle-btn:hover {
   color: #1f2937;
   cursor: default;
   box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
+  white-space: nowrap;
 }
 
 .search-chip span,
