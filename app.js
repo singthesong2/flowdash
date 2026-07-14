@@ -450,7 +450,7 @@ function bindNicknameClick(element) {
     input.type = "text";
     input.value = currentName;
     input.classList.add("nickname-input");
-    input.maxLength = 10;
+    input.maxLength = 20;
 
     input.style.width = `${Math.max(currentName.length * 0.62, 3.2)}em`;
 
