@@ -1500,3 +1500,9 @@ body:not(.dark) #prio-low:checked + .label-low {
   color: #ffffff;
 }
 /* 0714 조민호 새 할 일 우선순위 버튼 라이트모드 선택 색상 끝 */
+/* 0714 조민호 푸터 다크모드 시작 */
+body.dark footer {
+  border-top-color: #263140;
+  color: #abb1ba;
+}
+/* 0714 조민호 푸터 다크모드 끝 */
