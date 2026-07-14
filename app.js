@@ -314,8 +314,21 @@ window.addEventListener("DOMContentLoaded", () => {
 
         if (statusValue === "할 일") {
           todoItems.appendChild(modifyCard);
+
+          modify.classList.remove("hidden");
+          modifyCard.querySelector(".todo-card__date-text").textContent =
+            modifyCard.dataset.originalDate;
+          modifyCard.querySelector(".todo-card__time").textContent =
+            modifyCard.dataset.originalTime;
         } else if (statusValue === "진행중") {
           inProgressItems.appendChild(modifyCard);
+
+          modify.classList.remove("hidden");
+          modifyCard.querySelector(".todo-card__date-text").textContent =
+            modifyCard.dataset.originalDate;
+
+          modifyCard.querySelector(".todo-card__time").textContent =
+            modifyCard.dataset.originalTime;
         } else {
           doneItems.appendChild(modifyCard);
 
@@ -324,15 +337,20 @@ window.addEventListener("DOMContentLoaded", () => {
           modifyCard
             .querySelector(".todo-card__title-text")
             .classList.add("todo-card__title-deleteline");
-        }
 
-        modify.classList.remove("hidden");
+          modifyCard.querySelector(".todo-card__date-text").textContent =
+            modifyDate;
+          modifyCard.querySelector(".todo-card__time").textContent = modifyTime;
+
+          modify.classList.add("hidden");
+        }
 
         modify.querySelector(".todo-card__modify-date-text").textContent =
           modifyDate;
 
         modify.querySelector(".todo-card__modify-time").textContent =
           modifyTime;
+        // 7/14 최우원 완료로 변경시, 완료시점으로 시간 변경 그리고 다시 수정때 다시 마감일과 수정시간 출력 끝
 
         updateHiddenMsg(todoItems, todoCount, todoEmpty);
         updateHiddenMsg(inProgressItems, inProgressCount, inProgressEmpty);
@@ -341,6 +359,11 @@ window.addEventListener("DOMContentLoaded", () => {
         modifyCard = null;
       } else {
         const newCard = template.content.firstElementChild.cloneNode(true);
+
+        // 7/14 최우원 시간 변경위한 시간 저장 데이터 시작
+        newCard.dataset.originalDate = dateValue || "기한 없음";
+        newCard.dataset.originalTime = timeValue;
+        // 7/14 최우원 시간 변경위한 시간 저장 데이터 끝
 
         newCard.addEventListener("click", (e) => {
           if (e.target.closest(".todo_card_delete")) return;
