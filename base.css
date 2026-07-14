@@ -746,15 +746,6 @@ body.khaki .custom-dropdown.is-active .dropdown-trigger {
   padding-bottom: 7px;
 }
 
-body .sort-toggle-btn:focus,
-body .sort-toggle-btn:active,
-body.dark .sort-toggle-btn:focus,
-body.dark .sort-toggle-btn:active {
-  border: 2px solid #5c3be6;
-  outline: none;
-  padding-top: 6px;
-  padding-bottom: 6px;
-}
 .search-section .search-box:focus-within {
   border-color: #5c3be6;
   box-shadow: 0 0 0 1px #5c3be6;
@@ -766,16 +757,6 @@ body.khaki .custom-dropdown.is-active .dropdown-trigger {
   border: 2px solid #5c3be6;
   padding-top: 7px;
   padding-bottom: 7px;
-}
-
-body .sort-toggle-btn:focus,
-body .sort-toggle-btn:active,
-body.dark .sort-toggle-btn:focus,
-body.dark .sort-toggle-btn:active {
-  border: 2px solid #5c3be6;
-  outline: none;
-  padding-top: 6px;
-  padding-bottom: 6px;
 }
 
 .add-dial input[type="text"]:focus,
@@ -1172,6 +1153,11 @@ body.dark #custom-period-dropdown .dropdown-menu li:hover {
   color: #765eed;
 }
 
+body.dark #custom-priority-dropdown.is-active .dropdown-trigger,
+body.dark #custom-period-dropdown.is-active .dropdown-trigger {
+  border: 2px solid #5c3be6;
+}
+
 /* 0711 정우석 다크모드 작업 끝 */
 
 /* 0711 조민호 필터 칩 개선 작업 시작 */
@@ -1222,7 +1208,7 @@ body.dark #custom-period-dropdown .dropdown-menu li:hover {
   margin-left: auto;
   background: none;
   border: none;
-  color: #dc2626;
+  color: #cc3333;
   font-size: 15px;
   font-weight: 500;
 }
@@ -1231,6 +1217,13 @@ body.dark #custom-period-dropdown .dropdown-menu li:hover {
   opacity: 1;
   pointer-events: auto;
   background-color: #ece3e3;
+  cursor: pointer;
+}
+
+body.dark .all-data-reset:hover {
+  opacity: 1;
+  pointer-events: auto;
+  background-color: #9d9a9a;
   cursor: pointer;
 }
 
@@ -1367,7 +1360,10 @@ body,
 }
 
 .sort-toggle-btn:hover {
-  border-color: #7950f2;
+  border: 2px solid #5c3be6;
+  outline: none;
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
 /* 0712 조민호 정렬 토글 버튼 끝 */
 
@@ -1380,8 +1376,11 @@ body.dark .sort-toggle-btn {
 
 body.dark .sort-toggle-btn:hover {
   background-color: #171d26;
-  border-color: #7950f2;
+  border: 2px solid #5c3be6;
   color: #f1f5f9;
+  outline: none;
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
 /* 0713 조민호 정렬 토글 버튼 다크모드 끝 */
 
