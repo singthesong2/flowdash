@@ -371,15 +371,6 @@ body.dark #custom-priority-dropdown .dropdown-menu li:hover {
   cursor: pointer;
 }
 
-.all-data-reset {
-  background: none;
-  border: none;
-  color: #dc2626;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
 dialog.new-dial {
   border: 1px solid #e0e5eb;
   border-radius: 16px;
@@ -1064,10 +1055,6 @@ footer {
   padding: 0 5px;
 }
 
-.all-data-reset {
-  margin-left: auto;
-}
-
 .search-chip {
   display: inline-flex;
   align-items: center;
@@ -1236,8 +1223,14 @@ body.dark #custom-period-dropdown .dropdown-menu li:hover {
   background: none;
   border: none;
   color: #dc2626;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 500;
+}
+
+.all-data-reset:hover {
+  opacity: 1;
+  pointer-events: auto;
+  background-color: #ece3e3;
   cursor: pointer;
 }
 
@@ -1344,7 +1337,8 @@ body,
 .todo-card__content-text,
 .prio-btn,
 .search-chip,
-.theme-toggle-btn {
+.theme-toggle-btn,
+.all-data-reset:hover {
   transition:
     background-color 0.3s ease,
     color 0.3s ease,
