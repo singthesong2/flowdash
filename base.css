@@ -212,6 +212,7 @@ body.dark .theme-toggle-btn .bi-sun-fill {
 /* 0711 새할일창 css 추가 */
 .search-section {
   width: 100%;
+  margin-bottom: 30px;
 }
 
 .search-div {
@@ -232,7 +233,7 @@ body.dark .theme-toggle-btn .bi-sun-fill {
   display: flex;
   align-items: center;
   gap: 15px;
-  flex: none;
+  flex: 1.2;
 }
 
 .search-box {
@@ -242,7 +243,37 @@ body.dark .theme-toggle-btn .bi-sun-fill {
   border-radius: 8px;
   padding: 8px 12px;
   background-color: #ffffff;
-  width: 200px;
+  flex: 1;
+}
+
+.search-box input[type="search"] {
+  border: 0;
+  font-size: 14px;
+  color: #1f2937;
+  width: 100%;
+  outline: none;
+  background: transparent;
+}
+
+.search-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  border: 1px solid #dfe4ec;
+  border-radius: 8px;
+  padding: 8px 12px;
+  background-color: #ffffff;
+  flex: 1;
 }
 
 .search-box input[type="search"] {
@@ -290,190 +321,15 @@ body.dark .theme-toggle-btn .bi-sun-fill {
   color: #ffffff;
   border: none;
   border-radius: 8px;
-  padding: 12px 24px;
+  padding: 12px 30px;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  white-space: nowrap;
-  flex: 1;
+  flex: 0.3;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 35px;
-}
-
-.prio-div {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 0px;
-  margin-bottom: 24px;
-  padding: 0 5px;
-}
-
-.prio-btn {
-  background-color: #ffffff;
-  border: 1px solid #dfe4ec;
-  border-radius: 20px;
-  padding: 6px 14px;
-  font-size: 12px;
-  color: #1f2937;
-  cursor: pointer;
-}
-
-.all-data-reset {
-  background: none;
-  border: none;
-  color: #dc2626;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-dialog.new-dial {
-  border: 1px solid #e0e5eb;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-  padding: 28px;
-  width: 100%;
-  max-width: 440px;
-  background-color: #ffffff;
-}
-
-dialog.new-dial::backdrop {
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-.add-dial {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.add-dial h2 {
-  margin: 0 0 4px 0;
-  font-size: 22px;
-  font-weight: 700;
-  color: #1f2937;
-}
-
-.title-dial,
-.text-dial,
-.date-dial,
-.prio-dial,
-.status-dial {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.add-dial label {
-  font-size: 14px;
-  font-weight: 600;
-  color: #4b5563;
-}
-
-.add-dial input[type="text"],
-.add-dial input[type="date"],
-.add-dial select {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 12px 14px;
-  border: 1px solid #dfe4ec;
-  border-radius: 10px;
-  font-size: 14px;
-  color: #1f2937;
-  background-color: #ffffff;
-  outline: none;
-  appearance: none;
-}
-
-.status-dial {
-  position: relative;
-}
-
-.status-dial select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%234b5563' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: calc(100% - 14px) center;
-  padding-right: 40px;
-}
-
-.radio-group {
-  display: flex;
-  gap: 10px;
-}
-
-.radio-group input[type="radio"] {
-  display: none;
-}
-
-.radio-group label {
-  flex: 1;
-  text-align: center;
-  padding: 10px 0;
-  border: 1px solid #dfe4ec;
-  border-radius: 20px;
-  font-size: 14px;
-  cursor: pointer;
-  background-color: #ffffff;
-  transition: all 0.2s ease;
-}
-
-.radio-group .label-high {
-  color: #dc2626;
-  border-color: #fca5a5;
-}
-.radio-group .label-mid {
-  color: #d97706;
-  border-color: #fcd34d;
-}
-.radio-group .label-low {
-  color: #059669;
-  border-color: #6ee7b7;
-}
-
-.radio-group input[id="prio-high"]:checked + label {
-  background-color: #dc2626;
-  color: #ffffff;
-  border-color: #dc2626;
-}
-.radio-group input[id="prio-mid"]:checked + label {
-  background-color: #d97706;
-  color: #ffffff;
-  border-color: #d97706;
-}
-.radio-group input[id="prio-low"]:checked + label {
-  background-color: #059669;
-  color: #ffffff;
-  border-color: #059669;
-}
-
-.dial-btn {
-  display: flex;
-  justify-content: flex-end;
-  gap: 12px;
-  margin-top: 10px;
-}
-
-.dial-cancle-btn,
-.dial-add-btn {
-  padding: 12px 20px;
-  border-radius: 10px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  border: none;
-}
-
-.dial-cancle-btn {
-  background-color: #f3f4f6;
-  color: #4b5563;
-}
-
-.dial-add-btn {
-  background-color: #7950f2;
-  color: #ffffff;
 }
 
 @media (max-width: 768px) {
@@ -502,182 +358,26 @@ dialog.new-dial::backdrop {
 
   .add-work {
     width: 100%;
-  }
-}
-.prio-div {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 0px;
-  padding: 0 5px;
-}
-
-.prio-btn {
-  background-color: #ffffff;
-  border: 1px solid #dfe4ec;
-  border-radius: 20px;
-  padding: 6px 14px;
-  font-size: 12px;
-  color: #1f2937;
-  cursor: pointer;
-}
-
-.all-data-reset {
-  background: none;
-  border: none;
-  color: #dc2626;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-@media (max-width: 768px) {
-  .search-div {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 15px;
-  }
-
-  .search-left-group {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
-  }
-
-  .date-div {
-    flex-direction: column;
-    align-items: stretch;
-    gap: px;
-  }
-
-  .search-box {
-    width: 100%;
-  }
-
-  .add-work {
-    width: 100%;
     margin-left: 0;
   }
 }
 
-.prio-div {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 12px;
-  padding: 0 5px;
-}
-
-.prio-btn {
-  background-color: #ffffff;
-  border: 1px solid #dfe4ec;
-  border-radius: 20px;
-  padding: 6px 14px;
-  font-size: 12px;
-  color: #1f2937;
-  cursor: pointer;
-}
-
-.all-data-reset {
-  background: none;
-  border: none;
-  color: #dc2626;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-@media (max-width: 768px) {
-  .search-div {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 15px;
-  }
-
-  .search-left-group {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
-  }
-
-  .date-div {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 8px;
-  }
-
-  .add-work {
-    width: 100%;
-  }
-}
-
-.prio-div {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 15px;
-  padding: 0 5px;
-}
-
-.prio-btn {
-  background-color: #ffffff;
-  border: 1px solid #dfe4ec;
-  border-radius: 20px;
-  padding: 6px 14px;
-  font-size: 12px;
-  color: #1f2937;
-  cursor: pointer;
-}
-
-.all-data-reset {
-  background: none;
-  border: none;
-  color: #dc2626;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-@media (max-width: 768px) {
-  .search-div {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 15px;
-  }
-
-  .search-left-group {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
-  }
-
-  .date-div {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 8px;
-  }
-
-  .add-work {
-    width: 100%;
-  }
-}
-
 @media (max-width: 480px) {
-  .search-all-box {
+  .search-div {
     display: flex;
     flex-direction: column;
     padding: 12px;
     gap: 12px;
   }
 
-  .search-left-box {
+  .search-left-group {
     display: flex;
     flex-direction: column;
     width: 100%;
     gap: 8px;
   }
 
-  .search-search-box,
+  .search-box,
   .date-div,
   .add-work {
     width: 100%;
@@ -685,7 +385,7 @@ dialog.new-dial::backdrop {
 }
 
 @media (min-width: 480px) and (max-width: 768px) {
-  .search-all-box {
+  .search-div {
     display: flex;
     flex-wrap: wrap;
     padding: 12px;
@@ -694,7 +394,7 @@ dialog.new-dial::backdrop {
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
-  .search-all-box {
+  .search-div {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -703,7 +403,7 @@ dialog.new-dial::backdrop {
     gap: 12px;
   }
 
-  .search-left-box {
+  .search-left-group {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -711,6 +411,7 @@ dialog.new-dial::backdrop {
     flex: 1;
   }
 }
+
 dialog.new-dial {
   border: 1px solid #e0e5eb;
   border-radius: 12px;
@@ -746,6 +447,10 @@ dialog.new-dial::backdrop {
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+.date-dial {
+  display: none;
 }
 
 .add-dial label {
@@ -806,9 +511,9 @@ dialog.new-dial::backdrop {
 
 .dial-btn {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   gap: 12px;
-  margin-top: 8px;
+  margin-top: 10px;
 }
 
 .dial-cancle-btn,
@@ -838,7 +543,6 @@ dialog.new-dial::backdrop {
 
 .title-error-msg {
   color: #ff4d4f;
-
   font-size: 13px;
   font-weight: bold;
   margin-bottom: 2px;
