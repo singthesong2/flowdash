@@ -67,7 +67,12 @@ window.addEventListener("DOMContentLoaded", () => {
   if (openModalBtns.length > 0 && todoModal) {
     openModalBtns.forEach((btn) => {
       btn.onclick = () => {
-        todoModal.showModal();
+        const titleError = todoForm.querySelector("#title-error");
+        if (titleError) {
+          titleError.style.display = "none";
+
+          todoModal.showModal();
+        }
       };
     });
   }
