@@ -1438,7 +1438,6 @@ body.dark dialog.new-dial::backdrop {
   background-color: rgba(0, 0, 0, 0.65);
 }
 
-/* 날짜 input 아이콘도 다크모드에 맞게 */
 body.dark .add-dial input[type="date"] {
   color-scheme: dark;
 }
@@ -1463,11 +1462,41 @@ body.dark .radio-group .label-low {
   background-color: #131820;
 }
 
-body.dark #prio-high:checked + .label-high,
-body.dark #prio-mid:checked + .label-mid,
+body.dark #prio-high:checked + .label-high {
+  background-color: #dc2626;
+  border-color: #dc2626;
+  color: #ffffff;
+}
+
+body.dark #prio-mid:checked + .label-mid {
+  background-color: #d97706;
+  border-color: #d97706;
+  color: #ffffff;
+}
+
 body.dark #prio-low:checked + .label-low {
-  background-color: #7950f2;
-  border-color: #7950f2;
+  background-color: #16a34a;
+  border-color: #16a34a;
   color: #ffffff;
 }
 /* 0714 조민호 새 할 일 우선순위 버튼 다크모드 끝 */
+
+/* 0714 조민호 새 할 일 우선순위 버튼 라이트모드 선택 색상 시작 */
+body:not(.dark) #prio-high:checked + .label-high {
+  background-color: #ff6b6b;
+  border-color: #ff6b6b;
+  color: #ffffff;
+}
+
+body:not(.dark) #prio-mid:checked + .label-mid {
+  background-color: #f59e0b;
+  border-color: #f59e0b;
+  color: #ffffff;
+}
+
+body:not(.dark) #prio-low:checked + .label-low {
+  background-color: #22c55e;
+  border-color: #22c55e;
+  color: #ffffff;
+}
+/* 0714 조민호 새 할 일 우선순위 버튼 라이트모드 선택 색상 끝 */
