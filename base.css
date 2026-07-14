@@ -103,6 +103,26 @@ body.dark .theme-toggle-btn .bi-sun-fill {
   display: block;
 }
 
+/* 0714 정우석 우선순위 커스텀 드롭다운 다크모드 시작*/
+body.dark #custom-priority-dropdown .dropdown-trigger,
+body.dark #custom-priority-dropdown .dropdown-menu {
+  background-color: #171d26;
+  border-color: #263140;
+  color: #f1f5f9;
+}
+
+body.dark #custom-priority-dropdown .dropdown-menu li {
+  color: #f1f5f9;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+body.dark #custom-priority-dropdown .dropdown-menu li:hover {
+  background-color: #242f3e;
+  color: #765eed;
+}
+
 /* 0710 정우석 닉네임 편집 작업 시작 */
 .nickname-display {
   cursor: pointer;
@@ -1149,14 +1169,24 @@ body.dark .theme-toggle-btn:hover {
   border-color: #765eed;
   color: #765eed;
 }
-body.dark .dropdown-trigger,
-body.dark .dropdown-menu {
-  background-color: #131820;
-  border-color: #2b3547;
+
+body.dark #custom-period-dropdown .dropdown-trigger,
+body.dark #custom-period-dropdown .dropdown-menu {
+  background-color: #171d26;
+  border-color: #263140;
   color: #f1f5f9;
 }
-body.dark .dropdown-menu li:hover {
-  background-color: #1f2733;
+
+body.dark #custom-period-dropdown .dropdown-menu li {
+  color: #f1f5f9;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+body.dark #custom-period-dropdown .dropdown-menu li:hover {
+  background-color: #242f3e;
+  color: #765eed;
 }
 
 /* 0711 정우석 다크모드 작업 끝 */
@@ -1353,13 +1383,13 @@ body,
 
 /* 0713 조민호 정렬 토글 버튼 다크모드 시작 */
 body.dark .sort-toggle-btn {
-  background-color: #131820;
+  background-color: #171d26;
   border-color: #2b3547;
   color: #f1f5f9;
 }
 
 body.dark .sort-toggle-btn:hover {
-  background-color: #131820;
+  background-color: #171d26;
   border-color: #7950f2;
   color: #f1f5f9;
 }
@@ -1600,7 +1630,7 @@ body.dark dialog.delete-dial::backdrop {
   border: 1px solid #dfe4ec;
   border-radius: 8px;
   font-size: 14px;
-  color: #1f2937;
+  color: #131820;
   background-color: #fff;
   cursor: pointer;
   font-weight: 600;

@@ -816,6 +816,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // 0711 조민호 검색/기간/우선순위/정렬 필터 끝
 
 /* 0714 정우석 커스텀 드롭다운 시작 */
+
 const customDropdown = document.querySelector("#custom-period-dropdown");
 if (customDropdown) {
   const trigger = customDropdown.querySelector(".dropdown-trigger");
@@ -824,6 +825,14 @@ if (customDropdown) {
 
   trigger.addEventListener("click", (e) => {
     e.stopPropagation();
+
+    if (
+      typeof customPriorityDropdown !== "undefined" &&
+      customPriorityDropdown
+    ) {
+      customPriorityDropdown.classList.remove("is-active");
+    }
+
     customDropdown.classList.toggle("is-active");
   });
 
@@ -840,8 +849,44 @@ if (customDropdown) {
     }
     customDropdown.classList.remove("is-active");
   });
+}
 
-  document.addEventListener("click", () => {
-    customDropdown.classList.remove("is-active");
+const customPriorityDropdown = document.querySelector(
+  "#custom-priority-dropdown",
+);
+if (customPriorityDropdown) {
+  const trigger = customPriorityDropdown.querySelector(".dropdown-trigger");
+  const menu = customPriorityDropdown.querySelector(".dropdown-menu");
+  const realPrioritySelect = document.querySelector("#priority-select");
+
+  trigger.addEventListener("click", (e) => {
+    e.stopPropagation();
+
+    if (customDropdown) {
+      customDropdown.classList.remove("is-active");
+    }
+
+    customPriorityDropdown.classList.toggle("is-active");
+  });
+
+  menu.addEventListener("click", (e) => {
+    const li = e.target.closest("li");
+    if (!li) return;
+
+    const selectedValue = li.dataset.value;
+    trigger.textContent = selectedValue;
+
+    if (realPrioritySelect) {
+      realPrioritySelect.value = selectedValue;
+      realPrioritySelect.dispatchEvent(new Event("change"));
+    }
+    customPriorityDropdown.classList.remove("is-active");
   });
 }
+
+document.addEventListener("click", () => {
+  if (customDropdown) customDropdown.classList.remove("is-active");
+  if (customPriorityDropdown)
+    customPriorityDropdown.classList.remove("is-active");
+});
+/* 0714 정우석 커스텀 드롭다운 끝 */
