@@ -24,19 +24,6 @@ window.addEventListener("DOMContentLoaded", () => {
   const closeModalBtn = document.querySelector(".dial-cancle-btn");
   const todoForm = document.querySelector(".add-dial");
   const allDeleteData = document.querySelector(".all-data-reset");
-  // 0714 조민호 삭제 확인 모달 시작
-  const deleteModal = document.querySelector(".delete-dial");
-  const deleteModalTitle = document.querySelector("#delete-modal-title");
-  const deleteModalMessage = document.querySelector("#delete-modal-message");
-  const deleteCancelBtn = document.querySelector(".delete-cancel-btn");
-  const deleteConfirmBtn = document.querySelector(".delete-confirm-btn");
-
-  let deleteMode = "";
-  let deleteTargetCard = null;
-  let deleteTargetItems = null;
-  let deleteTargetCount = null;
-  let deleteTargetEmpty = null;
-  // 0714 조민호 삭제 확인 모달 끝
 
   const todoList = document.querySelector(".todo-list");
   const inProgressList = document.querySelector(".in-progress-list");
@@ -86,17 +73,39 @@ window.addEventListener("DOMContentLoaded", () => {
     items.addEventListener("click", (e) => {
       if (!e.target.classList.contains("todo_card_delete")) return;
 
-      deleteMode = "single";
-      deleteTargetCard = e.target.closest(".todo-card");
-      deleteTargetItems = items;
-      deleteTargetCount = count;
-      deleteTargetEmpty = empty;
+      e.target.closest(".todo-card").remove();
+      // 0712 조민호 상단 통계 자동 갱신 시작
+      const updateStats = () => {
+        const todoNum = todoItems.children.length;
+        const doingNum = inProgressItems.children.length;
+        const doneNum = doneItems.children.length;
+        const totalNum = todoNum + doingNum + doneNum;
 
-      deleteModalTitle.textContent = "할 일 삭제";
-      deleteModalMessage.innerHTML =
-        "이 할 일을 정말로 삭제하시겠습니까?<br />삭제한 할 일은 복구할 수 없습니다.";
+        const achievementNum =
+          totalNum === 0 ? 0 : Math.round((doneNum / totalNum) * 100);
 
-      deleteModal.showModal();
+        if (statTotal) {
+          statTotal.textContent = totalNum;
+        }
+
+        if (statTodo) {
+          statTodo.textContent = todoNum;
+        }
+
+        if (statDoing) {
+          statDoing.textContent = doingNum;
+        }
+
+        if (statDone) {
+          statDone.textContent = doneNum;
+        }
+
+        if (statAchievement) {
+          statAchievement.textContent = `${achievementNum}%`;
+        }
+      };
+      // 0712 조민호 상단 통계 자동 갱신 끝
+      updateHiddenMsg(items, count, empty);
     });
   };
 
@@ -154,90 +163,50 @@ window.addEventListener("DOMContentLoaded", () => {
   };
 
   allDeleteData.addEventListener("click", () => {
-    deleteMode = "all";
+    updateHiddenMsg(todoItems, todoCount, todoEmpty);
+    updateHiddenMsg(inProgressItems, inProgressCount, inProgressEmpty);
+    updateHiddenMsg(doneItems, doneCount, doneEmpty);
 
-    deleteModalTitle.textContent = "전체 데이터 초기화";
-    deleteModalMessage.innerHTML =
-      "모든 할 일을 정말로 삭제하시겠습니까?<br />삭제한 데이터는 복구할 수 없습니다.";
+    document.querySelectorAll(".todo-card").forEach((card) => {
+      card.remove();
+    });
 
-    deleteModal.showModal();
+    todoItems.replaceChildren();
+    inProgressItems.replaceChildren();
+    doneItems.replaceChildren();
+
+    updateHiddenMsg(todoItems, todoCount, todoEmpty);
+    updateHiddenMsg(inProgressItems, inProgressCount, inProgressEmpty);
+    updateHiddenMsg(doneItems, doneCount, doneEmpty);
+
+    const searchInput = document.querySelector("#todo-search-input");
+    const periodSelect = document.querySelector("#period-select");
+    const prioritySelect = document.querySelector("#priority-select");
+    const sortButton = document.querySelector("#sort-toggle-btn");
+
+    if (searchInput) {
+      searchInput.value = "";
+    }
+
+    if (periodSelect) {
+      periodSelect.value = "전체 기간";
+    }
+
+    if (prioritySelect) {
+      prioritySelect.value = "전체 우선순위";
+    }
+
+    if (sortButton) {
+      sortButton.dataset.sort = "asc";
+      sortButton.textContent = "정렬: 오름차순 ↑";
+    }
+
+    if (searchInput) {
+      searchInput.dispatchEvent(new Event("input"));
+    }
   });
 
   // 7/11 새벽, 전체 삭제 및 완료된일 없음 메세지 처리 끝
-
-  // 0714 조민호 삭제 확인 모달 버튼 기능 시작
-  if (deleteModal && deleteCancelBtn && deleteConfirmBtn) {
-    deleteCancelBtn.addEventListener("click", () => {
-      deleteModal.close();
-
-      deleteMode = "";
-      deleteTargetCard = null;
-      deleteTargetItems = null;
-      deleteTargetCount = null;
-      deleteTargetEmpty = null;
-    });
-
-    deleteConfirmBtn.addEventListener("click", () => {
-      if (deleteMode === "single" && deleteTargetCard) {
-        deleteTargetCard.remove();
-
-        updateHiddenMsg(
-          deleteTargetItems,
-          deleteTargetCount,
-          deleteTargetEmpty,
-        );
-      }
-
-      if (deleteMode === "all") {
-        document.querySelectorAll(".todo-card").forEach((card) => {
-          card.remove();
-        });
-
-        todoItems.replaceChildren();
-        inProgressItems.replaceChildren();
-        doneItems.replaceChildren();
-
-        updateHiddenMsg(todoItems, todoCount, todoEmpty);
-        updateHiddenMsg(inProgressItems, inProgressCount, inProgressEmpty);
-        updateHiddenMsg(doneItems, doneCount, doneEmpty);
-
-        const searchInput = document.querySelector("#todo-search-input");
-        const periodSelect = document.querySelector("#period-select");
-        const prioritySelect = document.querySelector("#priority-select");
-        const sortButton = document.querySelector("#sort-toggle-btn");
-
-        if (searchInput) {
-          searchInput.value = "";
-        }
-
-        if (periodSelect) {
-          periodSelect.value = "전체 기간";
-        }
-
-        if (prioritySelect) {
-          prioritySelect.value = "전체 우선순위";
-        }
-
-        if (sortButton) {
-          sortButton.dataset.sort = "asc";
-          sortButton.textContent = "정렬: 오름차순 ↑";
-        }
-
-        if (searchInput) {
-          searchInput.dispatchEvent(new Event("input"));
-        }
-      }
-
-      deleteModal.close();
-
-      deleteMode = "";
-      deleteTargetCard = null;
-      deleteTargetItems = null;
-      deleteTargetCount = null;
-      deleteTargetEmpty = null;
-    });
-  }
-  // 0714 조민호 삭제 확인 모달 버튼 기능 끝
 
   // 7/13 개별 todo 클릭시 수정 시작
   let modifyCard = null;
@@ -343,23 +312,10 @@ window.addEventListener("DOMContentLoaded", () => {
           .querySelector(".todo-card__title-text")
           .classList.remove("todo-card__title-deleteline");
 
-        // 7/14 최우원 완료로 변경시, 완료시점으로 시간 변경 그리고 다시 수정때 다시 마감일과 수정시간 출력 시작
         if (statusValue === "할 일") {
           todoItems.appendChild(modifyCard);
-          modify.classList.remove("hidden");
-          modifyCard.querySelector(".todo-card__date-text").textContent =
-            modifyCard.dataset.originalDate;
-
-          modifyCard.querySelector(".todo-card__time").textContent =
-            modifyCard.dataset.originalTime;
         } else if (statusValue === "진행중") {
           inProgressItems.appendChild(modifyCard);
-          modify.classList.remove("hidden");
-          modifyCard.querySelector(".todo-card__date-text").textContent =
-            modifyCard.dataset.originalDate;
-
-          modifyCard.querySelector(".todo-card__time").textContent =
-            modifyCard.dataset.originalTime;
         } else {
           doneItems.appendChild(modifyCard);
 
@@ -368,20 +324,15 @@ window.addEventListener("DOMContentLoaded", () => {
           modifyCard
             .querySelector(".todo-card__title-text")
             .classList.add("todo-card__title-deleteline");
-
-          modifyCard.querySelector(".todo-card__date-text").textContent =
-            modifyDate;
-          modifyCard.querySelector(".todo-card__time").textContent = modifyTime;
-
-          modify.classList.add("hidden");
         }
+
+        modify.classList.remove("hidden");
 
         modify.querySelector(".todo-card__modify-date-text").textContent =
           modifyDate;
 
         modify.querySelector(".todo-card__modify-time").textContent =
           modifyTime;
-        // 7/14 최우원 완료로 변경시, 완료시점으로 시간 변경 그리고 다시 수정때 다시 마감일과 수정시간 출력 끝
 
         updateHiddenMsg(todoItems, todoCount, todoEmpty);
         updateHiddenMsg(inProgressItems, inProgressCount, inProgressEmpty);
@@ -390,11 +341,6 @@ window.addEventListener("DOMContentLoaded", () => {
         modifyCard = null;
       } else {
         const newCard = template.content.firstElementChild.cloneNode(true);
-
-        // 7/14 최우원 시간 변경위한 시간 저장 데이터 시작
-        newCard.dataset.originalDate = dateValue || "기한 없음";
-        newCard.dataset.originalTime = timeValue;
-        // 7/14 최우원 시간 변경위한 시간 저장 데이터 끝
 
         newCard.addEventListener("click", (e) => {
           if (e.target.closest(".todo_card_delete")) return;
@@ -812,3 +758,34 @@ document.addEventListener("DOMContentLoaded", () => {
   handleFilterChange();
 });
 // 0711 조민호 검색/기간/우선순위/정렬 필터 끝
+
+/* 0714 정우석 커스텀 드롭다운 시작 */
+const customDropdown = document.querySelector("#custom-period-dropdown");
+if (customDropdown) {
+  const trigger = customDropdown.querySelector(".dropdown-trigger");
+  const menu = customDropdown.querySelector(".dropdown-menu");
+  const realSelect = document.querySelector("#period-select");
+
+  trigger.addEventListener("click", (e) => {
+    e.stopPropagation();
+    customDropdown.classList.toggle("is-active");
+  });
+
+  menu.addEventListener("click", (e) => {
+    const li = e.target.closest("li");
+    if (!li) return;
+
+    const selectedValue = li.dataset.value;
+    trigger.textContent = selectedValue;
+
+    if (realSelect) {
+      realSelect.value = selectedValue;
+      realSelect.dispatchEvent(new Event("change"));
+    }
+    customDropdown.classList.remove("is-active");
+  });
+
+  document.addEventListener("click", () => {
+    customDropdown.classList.remove("is-active");
+  });
+}
