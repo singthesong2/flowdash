@@ -1,21 +1,29 @@
 @font-face {
-  font-family: "PretendardVariable";
-  src: url("./fonts/PretendardVariable.ttf") format("truetype");
+  font-family: "Noto Sans KR";
+  src: url("/fonts/NotoSansKR-Regular.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 body {
   margin: 0;
-  background-color: #e0e5eb;
   font-family: "PretendardVariable", Arial, sans-serif;
-  color: #131820;
+  font-family: Arial, sans-serif;
+  background-color: #f6f8fc;
+  color: #1f2937;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.add-willchange {
+  will-change: transform;
 }
 
 /* 0708 정우석*/
 .container {
   max-width: 1200px;
-  /*width: 100%;*/
   width: 80%;
   margin: 40px auto;
 }
@@ -25,7 +33,6 @@ body {
   justify-content: space-between;
   align-items: center;
   background-color: #fff;
-  /*padding: 22px;*/
   padding: 20px;
   border-radius: 12px;
   border: 1px solid #e0e5eb;
@@ -71,15 +78,6 @@ body {
 /* 0708 정우석 헤더 작업 끝*/
 
 /* 0711 정우석 다크모드 추가 */
-body {
-  margin: 0;
-  background-color: #f6f8fc;
-  font-family: "PretendardVariable", Arial, sans-serif;
-  color: #1f2937;
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
-}
 
 .theme-toggle-btn .bi-sun-fill,
 .theme-toggle-btn .bi-moon-stars {
@@ -92,6 +90,26 @@ body:not(.dark) .theme-toggle-btn .bi-moon-stars {
 
 body.dark .theme-toggle-btn .bi-sun-fill {
   display: block;
+}
+
+/* 0714 정우석 우선순위 커스텀 드롭다운 다크모드 시작*/
+body.dark #custom-priority-dropdown .dropdown-trigger,
+body.dark #custom-priority-dropdown .dropdown-menu {
+  background-color: #171d26;
+  border-color: #263140;
+  color: #f1f5f9;
+}
+
+body.dark #custom-priority-dropdown .dropdown-menu li {
+  color: #f1f5f9;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+body.dark #custom-priority-dropdown .dropdown-menu li:hover {
+  background-color: #242f3e;
+  color: #765eed;
 }
 
 /* 0710 정우석 닉네임 편집 작업 시작 */
@@ -126,12 +144,10 @@ body.dark .theme-toggle-btn .bi-sun-fill {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 18px;
-  /*padding: 16px 24px;*/
   padding: 16px 0;
 }
 
 .stat-card {
-  /*min-height: 86px;*/
   height: 12vh;
   padding: 20px 24px;
   background-color: #ffffff;
@@ -167,9 +183,7 @@ body.dark .theme-toggle-btn .bi-sun-fill {
 
 @media (min-width: 320px) and (max-width: 768px) {
   .stats-section {
-    /*grid-template-columns: 1fr;*/
     grid-template-columns: repeat(2, 1fr);
-    /*padding: 12px;*/
     padding: 12px 0 12px;
     gap: 12px;
   }
@@ -185,7 +199,6 @@ body.dark .theme-toggle-btn .bi-sun-fill {
   }
 
   .stat-card:last-child {
-    /*grid-column: span 2;*/
     grid-column: span 1;
   }
 }
@@ -203,6 +216,7 @@ body.dark .theme-toggle-btn .bi-sun-fill {
 /* 0711 새할일창 css 추가 */
 .search-section {
   width: 100%;
+  margin-bottom: 30px;
 }
 
 .search-div {
@@ -216,13 +230,14 @@ body.dark .theme-toggle-btn .bi-sun-fill {
   gap: 15px;
   width: 100%;
   box-sizing: border-box;
+  margin-bottom: 24px;
 }
 
 .search-left-group {
   display: flex;
   align-items: center;
   gap: 15px;
-  flex: none;
+  flex: 1.2;
 }
 
 .search-box {
@@ -232,7 +247,7 @@ body.dark .theme-toggle-btn .bi-sun-fill {
   border-radius: 8px;
   padding: 8px 12px;
   background-color: #ffffff;
-  width: 200px;
+  flex: 1;
 }
 
 .search-box input[type="search"] {
@@ -280,12 +295,11 @@ body.dark .theme-toggle-btn .bi-sun-fill {
   color: #ffffff;
   border: none;
   border-radius: 8px;
-  padding: 12px 24px;
+  padding: 12px 30px;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  white-space: nowrap;
-  flex: 1;
+  flex: 0.3;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -296,36 +310,33 @@ body.dark .theme-toggle-btn .bi-sun-fill {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
   margin-top: 15px;
   padding: 0 5px;
 }
 
-.prio-btn {
+.prio-btn,
+.search-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   background-color: #ffffff;
   border: 1px solid #dfe4ec;
   border-radius: 20px;
   padding: 6px 14px;
   font-size: 12px;
   color: #1f2937;
-  cursor: pointer;
-}
-
-.all-data-reset {
-  background: none;
-  border: none;
-  color: #dc2626;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
+  cursor: default;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
 }
 
 dialog.new-dial {
   border: 1px solid #e0e5eb;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-  padding: 28px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  padding: 24px;
   width: 100%;
-  max-width: 440px;
+  max-width: 400px;
   background-color: #ffffff;
 }
 
@@ -336,13 +347,13 @@ dialog.new-dial::backdrop {
 .add-dial {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
 }
 
 .add-dial h2 {
   margin: 0 0 4px 0;
-  font-size: 22px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: bold;
   color: #1f2937;
 }
 
@@ -388,15 +399,6 @@ dialog.new-dial::backdrop {
   padding-right: 40px;
 }
 
-.radio-group {
-  display: flex;
-  gap: 10px;
-}
-
-.radio-group input[type="radio"] {
-  display: none;
-}
-
 .radio-group label {
   flex: 1;
   text-align: center;
@@ -438,37 +440,11 @@ dialog.new-dial::backdrop {
   border-color: #059669;
 }
 
-.dial-btn {
-  display: flex;
-  justify-content: flex-end;
-  gap: 12px;
-  margin-top: 10px;
-}
-
-.dial-cancle-btn,
-.dial-add-btn {
-  padding: 12px 20px;
-  border-radius: 10px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  border: none;
-}
-
-.dial-cancle-btn {
-  background-color: #f3f4f6;
-  color: #4b5563;
-}
-
-.dial-add-btn {
-  background-color: #7950f2;
-  color: #ffffff;
-}
-
 @media (max-width: 768px) {
   .search-div {
     flex-direction: column;
     align-items: stretch;
+    margin-bottom: 24px;
     gap: 15px;
   }
 
@@ -482,60 +458,6 @@ dialog.new-dial::backdrop {
     flex-direction: column;
     align-items: stretch;
     gap: 8px;
-  }
-
-  .search-box {
-    width: 100%;
-  }
-
-  .add-work {
-    width: 100%;
-  }
-}
-.prio-div {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 15px;
-  padding: 0 5px;
-}
-
-.prio-btn {
-  background-color: #ffffff;
-  border: 1px solid #dfe4ec;
-  border-radius: 20px;
-  padding: 6px 14px;
-  font-size: 12px;
-  color: #1f2937;
-  cursor: pointer;
-}
-
-.all-data-reset {
-  background: none;
-  border: none;
-  color: #dc2626;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-@media (max-width: 768px) {
-  .search-div {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 15px;
-  }
-
-  .search-left-group {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
-  }
-
-  .date-div {
-    flex-direction: column;
-    align-items: stretch;
-    gap: px;
   }
 
   .search-box {
@@ -548,124 +470,22 @@ dialog.new-dial::backdrop {
   }
 }
 
-.prio-div {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 12px;
-  padding: 0 5px;
-}
-
-.prio-btn {
-  background-color: #ffffff;
-  border: 1px solid #dfe4ec;
-  border-radius: 20px;
-  padding: 6px 14px;
-  font-size: 12px;
-  color: #1f2937;
-  cursor: pointer;
-}
-
-.all-data-reset {
-  background: none;
-  border: none;
-  color: #dc2626;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-@media (max-width: 768px) {
-  .search-div {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 15px;
-  }
-
-  .search-left-group {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
-  }
-
-  .date-div {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 8px;
-  }
-
-  .add-work {
-    width: 100%;
-  }
-}
-
-.prio-div {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 15px;
-  padding: 0 5px;
-}
-
-.prio-btn {
-  background-color: #ffffff;
-  border: 1px solid #dfe4ec;
-  border-radius: 20px;
-  padding: 6px 14px;
-  font-size: 12px;
-  color: #1f2937;
-  cursor: pointer;
-}
-
-.all-data-reset {
-  background: none;
-  border: none;
-  color: #dc2626;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-@media (max-width: 768px) {
-  .search-div {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 15px;
-  }
-
-  .search-left-group {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
-  }
-
-  .date-div {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 8px;
-  }
-
-  .add-work {
-    width: 100%;
-  }
-}
-
 @media (max-width: 480px) {
-  .search-all-box {
+  .search-div {
     display: flex;
     flex-direction: column;
     padding: 12px;
     gap: 12px;
   }
 
-  .search-left-box {
+  .search-left-group {
     display: flex;
     flex-direction: column;
     width: 100%;
     gap: 8px;
   }
 
-  .search-search-box,
+  .search-box,
   .date-div,
   .add-work {
     width: 100%;
@@ -673,7 +493,7 @@ dialog.new-dial::backdrop {
 }
 
 @media (min-width: 480px) and (max-width: 768px) {
-  .search-all-box {
+  .search-div {
     display: flex;
     flex-wrap: wrap;
     padding: 12px;
@@ -682,7 +502,7 @@ dialog.new-dial::backdrop {
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
-  .search-all-box {
+  .search-div {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -691,7 +511,7 @@ dialog.new-dial::backdrop {
     gap: 12px;
   }
 
-  .search-left-box {
+  .search-left-group {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -699,49 +519,11 @@ dialog.new-dial::backdrop {
     flex: 1;
   }
 }
-dialog.new-dial {
-  border: 1px solid #e0e5eb;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  padding: 24px;
-  width: 100%;
-  max-width: 400px;
-  background-color: #ffffff;
-}
 
 dialog.new-dial::backdrop {
   background-color: rgba(0, 0, 0, 0.4);
 }
-
-.add-dial {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.add-dial h2 {
-  margin: 0 0 4px 0;
-  font-size: 20px;
-  font-weight: bold;
-  color: #1f2937;
-}
-
-.title-dial,
-.content-dial,
-.date-dial,
-.prio-dial,
-.dial-dial {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.add-dial label {
-  font-size: 14px;
-  font-weight: 600;
-  color: #4b5563;
-}
-
+/*
 .add-dial input[type="text"],
 .add-dial input[type="date"],
 .add-dial textarea {
@@ -754,7 +536,7 @@ dialog.new-dial::backdrop {
   color: #1f2937;
   background-color: #ffffff;
   outline: none;
-}
+}*/
 
 .add-dial textarea {
   resize: none;
@@ -794,9 +576,9 @@ dialog.new-dial::backdrop {
 
 .dial-btn {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   gap: 12px;
-  margin-top: 8px;
+  margin-top: 10px;
 }
 
 .dial-cancle-btn,
@@ -826,10 +608,57 @@ dialog.new-dial::backdrop {
 
 .title-error-msg {
   color: #ff4d4f;
-
   font-size: 13px;
   font-weight: bold;
   margin-bottom: 2px;
+}
+
+.search-section .search-box:focus-within {
+  border-color: #5c3be6;
+  box-shadow: 0 0 0 1px #5c3be6;
+}
+
+body .custom-dropdown.is-active .dropdown-trigger,
+body.dark .custom-dropdown.is-active .dropdown-trigger,
+body.khaki .custom-dropdown.is-active .dropdown-trigger {
+  border: 2px solid #5c3be6;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.add-dial input[type="text"]:focus,
+.add-dial select:focus {
+  border: 2px solid #5c3be6;
+  outline: none;
+  padding-top: 11px;
+  padding-bottom: 11px;
+}
+
+.add-dial textarea:focus {
+  padding-top: 9px;
+  padding-bottom: 9px;
+}
+
+.add-dial .custom-dropdown.is-active .dropdown-trigger {
+  border: 2px solid #5c3be6;
+  padding-top: 9px;
+  padding-bottom: 9px;
+}
+
+body.dark .add-dial .dropdown-menu {
+  background-color: #171d26;
+  border-color: #2b3547;
+  color: #f1f5f9;
+}
+
+body.dark .add-dial .dropdown-menu li:hover {
+  background-color: #1f2733;
+  color: #7950f2;
+}
+
+.add-dial .dropdown-menu li:hover {
+  background-color: #f3f4f6;
+  color: #5c3be6;
 }
 
 /* 0708 정현우 css 끝 */
@@ -852,6 +681,7 @@ dialog.new-dial::backdrop {
 .todo-card:hover {
   box-shadow: 0 0 8px #7a68fc;
   transform: translateY(-1px);
+  will-change: transform;
 }
 
 .todo-card:hover .todo_card_delete {
@@ -860,7 +690,8 @@ dialog.new-dial::backdrop {
 }
 
 .todo-card__title-text {
-  margin-bottom: 6px;
+  margin-top: 6px;
+  margin-bottom: 0;
   font-size: 15px;
   font-weight: bold;
 }
@@ -969,10 +800,8 @@ dialog.new-dial::backdrop {
 .todo_section {
   display: flex;
   flex-wrap: nowrap;
-  /*justify-content: center;*/
   justify-content: space-between;
   gap: 2rem;
-  /*height: 60vh;*/
   margin-bottom: 4rem;
 }
 
@@ -997,13 +826,15 @@ dialog.new-dial::backdrop {
   align-items: center;
   border-bottom: 3px solid #dbdbdb;
   padding: 0 0.6vw 0.6vw;
+  margin-top: 3px;
+  margin-bottom: 0;
 }
 
 .in-progress-list .title {
   border-bottom: 3px solid #ab72fb;
 }
 
-h2 {
+h3 {
   font-size: 1rem;
 }
 
@@ -1063,34 +894,6 @@ footer {
 }
 /* 07/10 최우원 작업 끝 */
 /* 0710 조민호 검색 칩 시작 */
-
-.prio-div {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 10px;
-  margin-top: 15px;
-  padding: 0 5px;
-}
-
-.all-data-reset {
-  margin-left: auto;
-}
-
-.search-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  background-color: #ffffff;
-  border: 1px solid #dfe4ec;
-  border-radius: 20px;
-  padding: 6px 14px;
-  font-size: 12px;
-  color: #1f2937;
-  cursor: default;
-  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
-}
-
 /* 검색어 부분 강조 */
 .search-chip #search-chip-text {
   color: #5c3be6;
@@ -1175,38 +978,38 @@ body.dark .theme-toggle-btn:hover {
   color: #765eed;
 }
 
+body.dark #custom-period-dropdown .dropdown-trigger,
+body.dark #custom-period-dropdown .dropdown-menu {
+  background-color: #171d26;
+  border-color: #263140;
+  color: #f1f5f9;
+}
+
+body.dark #custom-period-dropdown .dropdown-menu li {
+  color: #f1f5f9;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+body.dark #custom-period-dropdown .dropdown-menu li:hover {
+  background-color: #242f3e;
+  color: #765eed;
+}
+
+body.dark #custom-priority-dropdown.is-active .dropdown-trigger,
+body.dark #custom-period-dropdown.is-active .dropdown-trigger {
+  border: 2px solid #5c3be6;
+}
+
 /* 0711 정우석 다크모드 작업 끝 */
 
 /* 0711 조민호 필터 칩 개선 작업 시작 */
-.prio-div {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-top: 15px;
-  padding: 0 5px;
-}
-
 .filter-chip-group {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 8px;
-}
-
-.prio-btn,
-.search-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  background-color: #ffffff;
-  border: 1px solid #dfe4ec;
-  border-radius: 20px;
-  padding: 6px 14px;
-  font-size: 12px;
-  color: #1f2937;
-  cursor: default;
-  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
 }
 
 .search-chip span,
@@ -1225,10 +1028,25 @@ body.dark .theme-toggle-btn:hover {
   margin-left: auto;
   background: none;
   border: none;
-  color: #dc2626;
-  font-size: 13px;
+  color: #cc3333;
+  font-size: 15px;
   font-weight: 500;
+}
+
+.all-data-reset:hover {
+  opacity: 1;
+  pointer-events: auto;
+  background-color: #ece3e3;
   cursor: pointer;
+  will-change: transform;
+}
+
+body.dark .all-data-reset:hover {
+  opacity: 1;
+  pointer-events: auto;
+  background-color: #9d9a9a;
+  cursor: pointer;
+  will-change: transform;
 }
 
 @media (max-width: 768px) {
@@ -1334,7 +1152,9 @@ body,
 .todo-card__content-text,
 .prio-btn,
 .search-chip,
-.theme-toggle-btn {
+.theme-toggle-btn,
+.dropdown-trigger,
+.all-data-reset:hover {
   transition:
     background-color 0.3s ease,
     color 0.3s ease,
@@ -1363,21 +1183,27 @@ body,
 }
 
 .sort-toggle-btn:hover {
-  border-color: #7950f2;
+  border: 2px solid #5c3be6;
+  outline: none;
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
 /* 0712 조민호 정렬 토글 버튼 끝 */
 
 /* 0713 조민호 정렬 토글 버튼 다크모드 시작 */
 body.dark .sort-toggle-btn {
-  background-color: #131820;
+  background-color: #171d26;
   border-color: #2b3547;
   color: #f1f5f9;
 }
 
 body.dark .sort-toggle-btn:hover {
-  background-color: #131820;
-  border-color: #7950f2;
+  background-color: #171d26;
+  border: 2px solid #5c3be6;
   color: #f1f5f9;
+  outline: none;
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
 /* 0713 조민호 정렬 토글 버튼 다크모드 끝 */
 
@@ -1388,3 +1214,532 @@ select,
 textarea {
   font-family: "PretendardVariable", Arial, sans-serif;
 }
+
+/* 0714 조민호 새 할 일 모달 다크모드 시작 */
+body.dark dialog.new-dial {
+  background-color: #171d26;
+  border-color: #2b3547;
+  color: #f1f5f9;
+}
+
+body.dark .add-dial h2,
+body.dark .add-dial label {
+  color: #f1f5f9;
+}
+
+body.dark .add-dial input[type="text"],
+body.dark .add-dial input[type="date"],
+body.dark .add-dial select,
+body.dark .add-dial textarea {
+  background-color: #131820;
+  border-color: #2b3547;
+  color: #f1f5f9;
+}
+
+body.dark .add-dial input::placeholder,
+body.dark .add-dial textarea::placeholder {
+  color: #64748b;
+}
+
+body.dark .radio-group label,
+body.dark .dial-check label {
+  background-color: #131820;
+  border-color: #2b3547;
+  color: #f1f5f9;
+}
+
+body.dark .dial-cancle-btn {
+  background-color: #1f2733;
+  border: 1px solid #2b3547;
+  color: #f1f5f9;
+}
+
+body.dark .dial-add-btn {
+  background-color: #7950f2;
+  border: 1px solid #7950f2;
+  color: #ffffff;
+}
+
+body.dark dialog.new-dial::backdrop {
+  background-color: rgba(0, 0, 0, 0.65);
+}
+
+body.dark .add-dial input[type="date"] {
+  color-scheme: dark;
+}
+/* 0714 조민호 새 할 일 모달 다크모드 끝 */
+
+/* 0714 조민호 새 할 일 우선순위 버튼 다크모드 시작 */
+body.dark .radio-group .label-high {
+  color: #ff6b6b;
+  border-color: #ff6b6b;
+  background-color: #131820;
+}
+
+body.dark .radio-group .label-mid {
+  color: #f59e0b;
+  border-color: #f59e0b;
+  background-color: #131820;
+}
+
+body.dark .radio-group .label-low {
+  color: #22c55e;
+  border-color: #22c55e;
+  background-color: #131820;
+}
+
+body.dark #prio-high:checked + .label-high {
+  background-color: #dc2626;
+  border-color: #dc2626;
+  color: #ffffff;
+}
+
+body.dark #prio-mid:checked + .label-mid {
+  background-color: #d97706;
+  border-color: #d97706;
+  color: #ffffff;
+}
+
+body.dark #prio-low:checked + .label-low {
+  background-color: #16a34a;
+  border-color: #16a34a;
+  color: #ffffff;
+}
+/* 0714 조민호 새 할 일 우선순위 버튼 다크모드 끝 */
+
+/* 0714 조민호 새 할 일 우선순위 버튼 라이트모드 선택 색상 시작 */
+body:not(.dark) #prio-high:checked + .label-high {
+  background-color: #ff6b6b;
+  border-color: #ff6b6b;
+  color: #ffffff;
+}
+
+body:not(.dark) #prio-mid:checked + .label-mid {
+  background-color: #f59e0b;
+  border-color: #f59e0b;
+  color: #ffffff;
+}
+
+body:not(.dark) #prio-low:checked + .label-low {
+  background-color: #22c55e;
+  border-color: #22c55e;
+  color: #ffffff;
+}
+/* 0714 조민호 새 할 일 우선순위 버튼 라이트모드 선택 색상 끝 */
+/* 0714 조민호 푸터 다크모드 시작 */
+body.dark footer {
+  border-top-color: #263140;
+  color: #abb1ba;
+}
+/* 0714 조민호 푸터 다크모드 끝 */
+/* 0714 조민호 보드 카운트 라이트모드 색상 시작 */
+body:not(.dark) .todo-count,
+body:not(.dark) .in-progress-count,
+body:not(.dark) .done-count {
+  background-color: #ffffff;
+  color: #000000;
+}
+/* 0714 조민호 보드 카운트 라이트모드 색상 끝 */
+
+/* 0714 조민호 삭제 확인 문구 시작 */
+dialog.delete-dial {
+  border: 1px solid #e0e5eb;
+  border-radius: 16px;
+  padding: 28px;
+  width: 100%;
+  max-width: 420px;
+  background-color: #ffffff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+dialog.delete-dial::backdrop {
+  background-color: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+}
+
+.delete-dial-box h2 {
+  margin: 0 0 20px;
+  font-size: 22px;
+  font-weight: 800;
+  color: #1f2937;
+}
+
+.delete-dial-box p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #4b5563;
+}
+
+.delete-dial-btn {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 60px;
+}
+
+.delete-cancel-btn,
+.delete-confirm-btn {
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.delete-cancel-btn {
+  background-color: transparent;
+  border: none;
+  color: #4b5563;
+}
+
+.delete-confirm-btn {
+  background-color: #ffffff;
+  border: 1px solid #f3c6c6;
+  color: #dc2626;
+}
+
+/* 삭제 확인 문구 다크모드 */
+body.dark dialog.delete-dial {
+  background-color: #171d26;
+  border-color: #2b3547;
+  color: #f1f5f9;
+}
+
+body.dark .delete-dial-box h2 {
+  color: #f1f5f9;
+}
+
+body.dark .delete-dial-box p {
+  color: #cbd5e1;
+}
+
+body.dark .delete-cancel-btn {
+  color: #cbd5e1;
+}
+
+body.dark .delete-confirm-btn {
+  background-color: #1f2733;
+  border-color: #7f1d1d;
+  color: #f87171;
+}
+
+body.dark dialog.delete-dial::backdrop {
+  background-color: rgba(0, 0, 0, 0.65);
+}
+/* 0714 조민호 삭제 확인 문구 끝 */
+
+/* 0714 정우석 커스텀 드롭다운 시작 */
+.custom-dropdown {
+  position: relative;
+  min-width: 120px;
+  font-family: inherit;
+}
+
+.dropdown-trigger {
+  width: 100%;
+  padding: 8px 32px 8px 12px;
+  border: 1px solid #dfe4ec;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #131820;
+  background-color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  text-align: left;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%234b5563' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 12px) center;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #dfe4ec;
+  border-radius: 8px;
+  margin-top: 4px;
+  padding: 0;
+  list-style: none;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition:
+    max-height 0.25s ease-in-out,
+    opacity 0.2s ease-in-out;
+}
+
+.dropdown-menu li {
+  padding: 10px 12px;
+  font-size: 14px;
+  color: #1f2937;
+  cursor: pointer;
+}
+.dropdown-menu li:hover {
+  background-color: #f3f4f6;
+  color: #5c3be6;
+}
+
+.custom-dropdown.is-active .dropdown-menu {
+  max-height: 150px;
+  opacity: 1;
+  overflow: visible;
+}
+#custom-priority-dropdown:has(.dropdown-trigger:contains-text("전체 우선순위"))
+  .default-option {
+  display: none;
+}
+/* 0714 정우석 커스텀 드롭다운 끝 */
+
+/* 0715 조민호 삭제 확인 문구 애니메이션 시작 */
+
+dialog.delete-dial[open] {
+  animation: deleteModalSlideUp 0.18s ease-out forwards;
+}
+
+dialog.delete-dial[open]::backdrop {
+  animation: deleteBackdropFadeIn 0.18s ease-out forwards;
+}
+
+dialog.delete-dial.closing {
+  animation: deleteModalSlideDown 0.18s ease-in forwards;
+}
+
+dialog.delete-dial.closing::backdrop {
+  animation: deleteBackdropFadeOut 0.18s ease-in forwards;
+}
+
+@keyframes deleteModalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes deleteModalSlideDown {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+}
+
+@keyframes deleteBackdropFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes deleteBackdropFadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+/* 0715 조민호 삭제 확인 문구 애니메이션 끝 */
+
+/* 0715 조민호 삭제 확인 문구 버튼 hover 시작 */
+.delete-cancel-btn:hover {
+  background-color: #f3f4f6;
+  color: #1f2937;
+}
+
+.delete-confirm-btn:hover {
+  background-color: #fef2f2;
+  border-color: #fca5a5;
+  color: #dc2626;
+}
+
+body.dark .delete-cancel-btn:hover {
+  background-color: #2b3547;
+  color: #f1f5f9;
+}
+
+body.dark .delete-confirm-btn:hover {
+  background-color: #3f1d1d;
+  border-color: #ef4444;
+  color: #fca5a5;
+}
+/* 0715 조민호 삭제 확인 문구 버튼 hover 끝 */
+/* 0715 조민호 새 할 일/수정 모달 애니메이션 시작 */
+dialog.new-dial[open]:not(.closing) {
+  animation: todoModalSlideUp 0.18s ease-out forwards;
+}
+
+dialog.new-dial[open]:not(.closing)::backdrop {
+  animation: todoBackdropFadeIn 0.18s ease-out forwards;
+}
+
+dialog.new-dial.closing {
+  animation: todoModalSlideDown 0.18s ease-in forwards;
+}
+
+dialog.new-dial.closing::backdrop {
+  animation: todoBackdropFadeOut 0.18s ease-in forwards;
+}
+
+@keyframes todoModalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes todoModalSlideDown {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+}
+
+@keyframes todoBackdropFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes todoBackdropFadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+/* 7/15 최우원 prefers-reduced-motion 추가 시작*/
+@media (prefers-reduced-motion: reduce) {
+  dialog.delete-dial[open],
+  dialog.delete-dial[open]::backdrop,
+  dialog.delete-dial.closing,
+  dialog.delete-dial.closing::backdrop,
+  dialog.new-dial[open]:not(.closing),
+  dialog.new-dial[open]:not(.closing)::backdrop,
+  dialog.new-dial.closing,
+  dialog.new-dial.closing::backdrop {
+    animation-duration: 0s;
+  }
+}
+/* 7/15 최우원 prefers-reduced-motion 추가 끝 */
+
+/* 0715 조민호 새 할 일/수정 모달 애니메이션 끝 */
+/* 0715 조민호 검색 영역 반응형 정리 시작 */
+@media (min-width: 769px) {
+  .search-div {
+    display: grid;
+    grid-template-columns:
+      minmax(180px, 1fr)
+      minmax(70px, 120px)
+      minmax(95px, 145px)
+      minmax(110px, 120px)
+      minmax(180px, 1fr);
+    align-items: center;
+    gap: 15px;
+  }
+
+  .search-left-group,
+  .date-div {
+    display: contents;
+  }
+
+  .search-box,
+  .add-work,
+  .sort-toggle-btn,
+  #custom-period-dropdown,
+  #custom-priority-dropdown {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    box-sizing: border-box;
+  }
+
+  .search-box,
+  .add-work {
+    flex: none;
+  }
+
+  .add-work {
+    height: 36px;
+    white-space: nowrap;
+  }
+
+  .sort-toggle-btn {
+    height: 36px;
+    white-space: nowrap;
+  }
+
+  #custom-period-dropdown .dropdown-trigger,
+  #custom-priority-dropdown .dropdown-trigger,
+  .sort-toggle-btn {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1050px) {
+  .search-div {
+    grid-template-columns:
+      minmax(160px, 1fr)
+      minmax(52px, 90px)
+      minmax(52px, 90px)
+      minmax(110px, 130px)
+      minmax(160px, 1fr);
+    gap: 10px;
+  }
+
+  .sort-toggle-btn {
+    font-size: 13px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 900px) {
+  .search-div {
+    grid-template-columns:
+      minmax(145px, 1fr)
+      minmax(44px, 70px)
+      minmax(44px, 70px)
+      minmax(105px, 115px)
+      minmax(145px, 1fr);
+    gap: 8px;
+  }
+}
+/* 0715 조민호 검색 영역 반응형 정리 끝 */

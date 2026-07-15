@@ -20,7 +20,12 @@
           </h1>
           <p id="current-date" class="header-date"></p>
         </div>
-        <button id="theme-toggle" class="theme-toggle-btn" title="테마 변경">
+        <button
+          id="theme-toggle"
+          class="theme-toggle-btn"
+          title="테마 변경"
+          aria-label="라이트다크모드 전환"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="18"
@@ -52,224 +57,332 @@
         </button>
       </div>
       <!-- 0708 정우석 헤더작업 끝 -->
+      <main>
+        <!-- 0708 조민호 통계대쉬보드 작업-->
+        <section class="stats-section" aria-label="Todo statistics">
+          <article class="stat-card">
+            <h2 class="stat-title">Total Tasks</h2>
+            <p class="stat-number" id="stat-total">0</p>
+          </article>
 
-      <!-- 0708 조민호 통계대쉬보드 작업-->
-      <section class="stats-section" aria-label="Todo statistics">
-        <article class="stat-card">
-          <h3 class="stat-title">Total Tasks</h3>
-          <p class="stat-number" id="stat-total">0</p>
-        </article>
+          <article class="stat-card">
+            <h2 class="stat-title">To Do</h2>
+            <p class="stat-number" id="stat-todo">0</p>
+          </article>
 
-        <article class="stat-card">
-          <h3 class="stat-title">To Do</h3>
-          <p class="stat-number" id="stat-todo">0</p>
-        </article>
+          <article class="stat-card">
+            <h2 class="stat-title">In Progress</h2>
+            <p class="stat-number" id="stat-doing">0</p>
+          </article>
 
-        <article class="stat-card">
-          <h3 class="stat-title">In Progress</h3>
-          <p class="stat-number" id="stat-doing">0</p>
-        </article>
+          <article class="stat-card">
+            <h2 class="stat-title">Done</h2>
+            <p class="stat-number" id="stat-done">0</p>
+          </article>
 
-        <article class="stat-card">
-          <h3 class="stat-title">Done</h3>
-          <p class="stat-number" id="stat-done">0</p>
-        </article>
+          <article class="stat-card">
+            <h2 class="stat-title">Achievement</h2>
+            <p class="stat-number achievement" id="stat-achievement">0%</p>
+          </article>
+          <!-- 0708 조민호 통계대쉬보드 작업 끝 -->
+        </section>
 
-        <article class="stat-card">
-          <h3 class="stat-title">Achievement</h3>
-          <p class="stat-number achievement" id="stat-achievement">0%</p>
-        </article>
-        <!-- 0708 조민호 통계대쉬보드 작업 끝 -->
-      </section>
-
-      <!-- 0708 정현우 서치부분 시작 -->
-      <!-- 0709 정현우 서치부분 (검색창 깨짐 > 수정중) -->
-      <section class="search-section">
-        <div class="search-div">
-          <div class="search-left-group">
-            <div class="search-box">
-              <input
-                id="todo-search-input"
-                type="search"
-                placeholder="할 일 검색..."
-              />
-              <button type="button" class="search-btn">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  x="0px"
-                  y="0px"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 50 50"
-                  style="fill: #7950f2"
+        <!-- 0708 정현우 서치부분 시작 -->
+        <!-- 0709 정현우 서치부분 (검색창 깨짐 > 수정중) -->
+        <section class="search-section">
+          <div class="search-div">
+            <div class="search-left-group">
+              <div class="search-box">
+                <input
+                  id="todo-search-input"
+                  type="search"
+                  placeholder="할 일 검색..."
+                />
+                <button
+                  type="button"
+                  class="search-btn"
+                  aria-label="글자로 검색"
                 >
-                  <path
-                    d="M 21 3 C 11.601563 3 4 10.601563 4 20 C 4 29.398438 11.601563 37 21 37 C 24.355469 37 27.460938 36.015625 30.09375 34.34375 L 42.375 46.625 L 46.625 42.375 L 34.5 30.28125 C 36.679688 27.421875 38 23.878906 38 20 C 38 10.601563 30.398438 3 21 3 Z M 21 7 C 28.199219 7 34 12.800781 34 20 C 34 27.199219 28.199219 33 21 33 C 13.800781 33 8 27.199219 8 20 C 8 12.800781 13.800781 7 21 7 Z"
-                  ></path>
-                </svg>
-              </button>
-            </div>
-            <!-- 0711 조민호 현우님 부분 수정 작업 시작 -->
-            <div class="date-div">
-              <select id="period-select" name="date-select">
-                <option>전체 기간</option>
-                <option>오늘</option>
-                <option>최근 7일</option>
-              </select>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    x="0px"
+                    y="0px"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 50 50"
+                    style="fill: #7950f2"
+                  >
+                    <path
+                      d="M 21 3 C 11.601563 3 4 10.601563 4 20 C 4 29.398438 11.601563 37 21 37 C 24.355469 37 27.460938 36.015625 30.09375 34.34375 L 42.375 46.625 L 46.625 42.375 L 34.5 30.28125 C 36.679688 27.421875 38 23.878906 38 20 C 38 10.601563 30.398438 3 21 3 Z M 21 7 C 28.199219 7 34 12.800781 34 20 C 34 27.199219 28.199219 33 21 33 C 13.800781 33 8 27.199219 8 20 C 8 12.800781 13.800781 7 21 7 Z"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+              <!-- 0711 조민호 현우님 부분 수정 작업 시작 -->
+              <div class="date-div">
+                <select
+                  id="period-select"
+                  name="date-select"
+                  style="display: none"
+                >
+                  <option value="전체 기간" selected>전체 기간</option>
+                  <option value="오늘">오늘</option>
+                  <option value="최근 7일">최근 7일</option>
+                </select>
 
-              <select id="priority-select" name="prio-select">
-                <option>전체 우선순위</option>
-                <option>낮음</option>
-                <option>중간</option>
-                <option>높음</option>
-              </select>
+                <div class="custom-dropdown" id="custom-period-dropdown">
+                  <button
+                    type="button"
+                    class="dropdown-trigger"
+                    aria-label="기간으로 검색"
+                  >
+                    전체 기간
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li data-value="전체 기간">전체 기간</li>
+                    <li data-value="오늘">오늘</li>
+                    <li data-value="최근 7일">최근 7일</li>
+                  </ul>
+                </div>
+
+                <div class="custom-dropdown" id="custom-priority-dropdown">
+                  <button
+                    type="button"
+                    class="dropdown-trigger"
+                    aria-label="우선순위 선택"
+                  >
+                    전체 우선순위
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li data-value="전체 우선순위" class="default-option">
+                      전체 우선순위
+                    </li>
+                    <li data-value="낮음">낮음</li>
+                    <li data-value="중간">중간</li>
+                    <li data-value="높음">높음</li>
+                  </ul>
+                </div>
+
+                <select
+                  id="priority-select"
+                  name="prio-select"
+                  style="display: none"
+                >
+                  <option value="전체 우선순위" selected>전체 우선순위</option>
+                  <option value="낮음">낮음</option>
+                  <option value="중간">중간</option>
+                  <option value="높음">높음</option>
+                </select>
+
+                <button
+                  type="button"
+                  id="sort-toggle-btn"
+                  class="sort-toggle-btn"
+                  data-sort="asc"
+                  aria-label="오름차순 내림차순 정렬"
+                >
+                  정렬: 오름차순 ↑
+                </button>
+              </div>
+            </div>
+            <!-- 0711 조민호 현우님 부분 수정 작업 끝 -->
+            <button type="button" class="add-work">+ 새 할 일</button>
+          </div>
+          <!-- 0711 조민호 검색 칩 수정 작업 시작 -->
+          <div class="prio-div">
+            <div class="filter-chip-group">
+              <button
+                type="button"
+                class="prio-btn"
+                id="period-chip"
+                aria-label="기간 선택 표시"
+              >
+                기간: <span id="period-chip-text">전체</span>
+              </button>
 
               <button
                 type="button"
-                id="sort-toggle-btn"
-                class="sort-toggle-btn"
-                data-sort="asc"
+                class="prio-btn"
+                id="sort-chip"
+                aria-label="오름차순 내림차순 표시"
               >
-                정렬: 오름차순 ↑
+                정렬: <span id="sort-chip-text">오름차순</span>
+              </button>
+
+              <button
+                type="button"
+                class="search-chip is-hidden"
+                id="search-chip"
+                aria-label="글자로 검색 표시"
+              >
+                검색: <span id="search-chip-text"></span>
+              </button>
+
+              <button
+                type="button"
+                class="prio-btn is-hidden"
+                id="priority-chip"
+                aria-label="우선순위 표시"
+              >
+                우선순위: <span id="priority-chip-text"></span>
               </button>
             </div>
-          </div>
-          <!-- 0711 조민호 현우님 부분 수정 작업 끝 -->
-          <button type="button" class="add-work">+ 새 할 일</button>
-        </div>
-        <!-- 0711 조민호 검색 칩 수정 작업 시작 -->
-        <div class="prio-div">
-          <div class="filter-chip-group">
-            <button type="button" class="prio-btn" id="period-chip">
-              기간: <span id="period-chip-text">전체</span>
-            </button>
-
-            <button type="button" class="prio-btn" id="sort-chip">
-              정렬: <span id="sort-chip-text">오름차순</span>
-            </button>
 
             <button
               type="button"
-              class="search-chip is-hidden"
-              id="search-chip"
+              class="all-data-reset"
+              aria-label="전체 데이터 초기화 버튼"
             >
-              검색: <span id="search-chip-text"></span>
-            </button>
-
-            <button type="button" class="prio-btn is-hidden" id="priority-chip">
-              우선순위: <span id="priority-chip-text"></span>
+              전체 데이터 초기화
             </button>
           </div>
-
-          <button type="button" class="all-data-reset">
-            전체 데이터 초기화
-          </button>
-        </div>
-        <!-- 0711 조민호 검색 칩 수정 작업 끝 -->
-        <dialog class="new-dial">
-          <form method="dialog" class="add-dial">
-            <h2>새 할 일</h2>
-            <span id="title-error" class="title-error-msg">내용을 입력하세요</span></h2>
-            <div class="title-dial">
-              <label>제목*</label>
-              <input
-                class="title-input"
-                ,
-                type="text"
-                placeholder="할 일을 입력하세요..."
-              />
-            </div>
-
-            <div class="text-dial">
-              <label>내용</label>
-              <input
-                class="content-input"
-                ,
-                type="text"
-                placeholder="내용을 입력하세요..."
-              />
-            </div>
-
-            <div class="date-dial">
-              <label>마감일</label>
-              <input class="date-input" , type="date" />
-            </div>
-
-            <div class="prio-dial">
-              <label>우선순위</label>
-              <div class="radio-group">
+          <!-- 0711 조민호 검색 칩 수정 작업 끝 -->
+          <dialog class="new-dial">
+            <form method="dialog" class="add-dial">
+              <h2>새 할 일</h2>
+              <span id="title-error" class="title-error-msg"
+                >내용을 입력하세요</span
+              >
+              <div class="title-dial">
+                <label for="title-name">제목*</label>
                 <input
-                  type="radio"
-                  id="prio-high"
-                  name="priority"
-                  value="높음"
+                  id="title-input-msg"
+                  class="title-input"
+                  type="text"
+                  placeholder="할 일을 입력하세요..."
                 />
-                <label for="prio-high" class="label-high">높음</label>
+              </div>
 
+              <div class="text-dial">
+                <label for="content-msg">내용</label>
                 <input
-                  type="radio"
-                  id="prio-mid"
-                  name="priority"
-                  value="중간"
+                  id="content-input-msg"
+                  class="content-input"
+                  type="text"
+                  placeholder="내용을 입력하세요..."
                 />
-                <label for="prio-mid" class="label-mid">중간</label>
-                <input
-                  type="radio"
-                  id="prio-low"
-                  name="priority"
-                  value="낮음"
-                  checked
-                />
-                <label for="prio-low" class="label-low">낮음</label>
+              </div>
+
+              <div class="date-dial">
+                <label for="finish-date">마감일</label>
+                <input id="date-input-msg" class="date-input" type="date" />
+              </div>
+
+              <div class="prio-dial">
+                <label for="rank">우선순위</label>
+                <div class="radio-group">
+                  <input
+                    type="radio"
+                    id="prio-high"
+                    name="priority"
+                    value="높음"
+                  />
+                  <label for="prio-high" class="label-high">높음</label>
+
+                  <input
+                    type="radio"
+                    id="prio-mid"
+                    name="priority"
+                    value="중간"
+                  />
+                  <label for="prio-mid" class="label-mid">중간</label>
+                  <input
+                    type="radio"
+                    id="prio-low"
+                    name="priority"
+                    value="낮음"
+                    checked
+                  />
+                  <label for="prio-low" class="label-low">낮음</label>
+                </div>
+              </div>
+
+              <div class="status-dial">
+                <label for="current-status">상태</label>
+                <select>
+                  <option>할 일</option>
+                  <option>진행중</option>
+                  <option>완료</option>
+                </select>
+              </div>
+
+              <div class="dial-btn">
+                <button
+                  type="button"
+                  class="dial-cancle-btn"
+                  aria-label="취소 버튼"
+                >
+                  취소
+                </button>
+                <button
+                  type="submit"
+                  class="dial-add-btn"
+                  aria-label="추가하기 버튼"
+                >
+                  추가하기
+                </button>
+              </div>
+            </form>
+          </dialog>
+          <!-- 0714 조민호 삭제 확인 문구 시작 -->
+          <dialog class="delete-dial">
+            <div class="delete-dial-box">
+              <h2 id="delete-modal-title">할 일 삭제</h2>
+              <p id="delete-modal-message">
+                이 할 일을 정말로 삭제하시겠습니까?<br />
+                삭제한 할 일은 복구할 수 없습니다.
+              </p>
+              <div class="delete-dial-btn">
+                <button
+                  type="button"
+                  class="delete-cancel-btn"
+                  aria-label="취소 버튼"
+                >
+                  취소
+                </button>
+                <button
+                  type="button"
+                  class="delete-confirm-btn"
+                  aria-label="삭제 버튼"
+                >
+                  삭제
+                </button>
               </div>
             </div>
+          </dialog>
+          <!-- 0714 조민호 삭제 확인 문구 끝 -->
+        </section>
+        <!-- 0708 정현우 서치부분 끝-->
+        <!-- 0709 정현우 서치부분 (검색창 깨짐 > 수정중) -->
 
-            <div class="status-dial">
-              <label>상태</label>
-              <select>
-                <option>할 일</option>
-                <option>진행중</option>
-                <option>완료</option>
-              </select>
-            </div>
-
-            <div class="dial-btn">
-              <button type="button" class="dial-cancle-btn">취소</button>
-              <button type="submit" class="dial-add-btn">추가하기</button>
-            </div>
-          </form>
-        </dialog>
-      </section>
-      <!-- 0708 정현우 서치부분 끝-->
-      <!-- 0709 정현우 서치부분 (검색창 깨짐 > 수정중) -->
-
-      <!--07/08 최우원 시작-->
-      <section class="todo_section">
-        <div class="todo-list">
-          <h2 class="title">
-            할 일
-            <span class="todo-count">0</span>
-          </h2>
-          <div class="todo-items"></div>
-          <p class="hidden-message">완료된 일이 없습니다.</p>
-        </div>
-        <div class="in-progress-list">
-          <h2 class="title">
-            진행중
-            <span class="in-progress-count">0</span>
-          </h2>
-          <div class="in-progress-items"></div>
-          <p class="hidden-message">완료된 일이 없습니다.</p>
-        </div>
-        <div class="done-list">
-          <h2 class="title">
-            완료
-            <span class="done-count">0</span>
-          </h2>
-          <div class="done-items"></div>
-          <p class="hidden-message">완료된 일이 없습니다.</p>
-        </div>
-      </section>
+        <!--07/08 최우원 시작-->
+        <section class="todo_section">
+          <div class="todo-list">
+            <h3 class="title">
+              할 일
+              <span class="todo-count">0</span>
+            </h3>
+            <div class="todo-items"></div>
+            <p class="hidden-message">완료된 일이 없습니다.</p>
+          </div>
+          <div class="in-progress-list">
+            <h3 class="title">
+              진행중
+              <span class="in-progress-count">0</span>
+            </h3>
+            <div class="in-progress-items"></div>
+            <p class="hidden-message">완료된 일이 없습니다.</p>
+          </div>
+          <div class="done-list">
+            <h3 class="title">
+              완료
+              <span class="done-count">0</span>
+            </h3>
+            <div class="done-items"></div>
+            <p class="hidden-message">완료된 일이 없습니다.</p>
+          </div>
+        </section>
+      </main>
       <footer>&copy; 2026 FlowDash. All rights reserved.</footer>
       <!--07/08 최우원 끝-->
     </div>
@@ -282,7 +395,7 @@
           <span class="todo_card_delete">X</span>
         </div>
 
-        <h3 class="todo-card__title-text"></h3>
+        <h5 class="todo-card__title-text"></h5>
 
         <p class="todo-card__content-text"></p>
 
@@ -303,5 +416,8 @@
     <!--07/10 최우원 끝-->
 
     <script defer src="app.js"></script>
+    <script defer src="nickName.js"></script>
+    <script defer src="arrayFilter.js"></script>
+    <script defer src="dropDown.js"></script>
   </body>
 </html>
