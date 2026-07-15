@@ -238,12 +238,12 @@ body.dark #custom-priority-dropdown .dropdown-menu li:hover {
 .search-div {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   background-color: #ffffff;
   padding: 15px 20px;
   border-radius: 12px;
   border: 1px solid #e0e5eb;
-  gap: 15px;
+  gap: 12px;
   width: 100%;
   box-sizing: border-box;
   margin-bottom: 24px;
@@ -252,38 +252,9 @@ body.dark #custom-priority-dropdown .dropdown-menu li:hover {
 .search-left-group {
   display: flex;
   align-items: center;
-  gap: 15px;
-  flex: 1.2;
-}
-
-.search-box {
-  display: flex;
-  align-items: center;
-  border: 1px solid #dfe4ec;
-  border-radius: 8px;
-  padding: 8px 12px;
-  background-color: #ffffff;
+  gap: 12px;
   flex: 1;
-}
-
-.search-box input[type="search"] {
-  border: 0;
-  font-size: 14px;
-  color: #1f2937;
-  width: 100%;
-  outline: none;
-  background: transparent;
-}
-
-.search-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 14px;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  min-width: 0;
 }
 
 .search-box {
@@ -350,6 +321,8 @@ body.dark #custom-priority-dropdown .dropdown-menu li:hover {
   align-items: center;
   justify-content: center;
   height: 35px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .prio-div {
@@ -544,6 +517,8 @@ dialog.new-dial::backdrop {
   .add-work {
     width: 100%;
     margin-left: 0;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 }
 
@@ -566,6 +541,8 @@ dialog.new-dial::backdrop {
   .date-div,
   .add-work {
     width: 100%;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 }
 
@@ -736,14 +713,6 @@ dialog.new-dial::backdrop {
 .search-section .search-box:focus-within {
   border-color: #5c3be6;
   box-shadow: 0 0 0 1px #5c3be6;
-}
-
-body .custom-dropdown.is-active .dropdown-trigger,
-body.dark .custom-dropdown.is-active .dropdown-trigger,
-body.khaki .custom-dropdown.is-active .dropdown-trigger {
-  border: 2px solid #5c3be6;
-  padding-top: 7px;
-  padding-bottom: 7px;
 }
 
 .search-section .search-box:focus-within {
@@ -1320,7 +1289,6 @@ body,
 .search-div,
 .search-box,
 .date-div select,
-.sort-toggle-btn,
 .todo-list,
 .in-progress-list,
 .done-list,
@@ -1331,7 +1299,6 @@ body,
 .prio-btn,
 .search-chip,
 .theme-toggle-btn,
-.dropdown-trigger,
 .all-data-reset:hover {
   transition:
     background-color 0.3s ease,
@@ -1361,10 +1328,7 @@ body,
 }
 
 .sort-toggle-btn:hover {
-  border: 2px solid #5c3be6;
-  outline: none;
-  padding-top: 6px;
-  padding-bottom: 6px;
+  border-color: #7950f2;
 }
 /* 0712 조민호 정렬 토글 버튼 끝 */
 
@@ -1673,150 +1637,3 @@ body.dark dialog.delete-dial::backdrop {
   display: none;
 }
 /* 0714 정우석 커스텀 드롭다운 끝 */
-
-/* 0715 조민호 삭제 확인 문구 애니메이션 시작 */
-dialog.delete-dial[open] {
-  animation: deleteModalSlideUp 0.18s ease-out forwards;
-}
-
-dialog.delete-dial[open]::backdrop {
-  animation: deleteBackdropFadeIn 0.18s ease-out forwards;
-}
-
-dialog.delete-dial.closing {
-  animation: deleteModalSlideDown 0.18s ease-in forwards;
-}
-
-dialog.delete-dial.closing::backdrop {
-  animation: deleteBackdropFadeOut 0.18s ease-in forwards;
-}
-
-@keyframes deleteModalSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(24px) scale(0.98);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes deleteModalSlideDown {
-  from {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-
-  to {
-    opacity: 0;
-    transform: translateY(24px) scale(0.98);
-  }
-}
-
-@keyframes deleteBackdropFadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes deleteBackdropFadeOut {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
-  }
-}
-/* 0715 조민호 삭제 확인 문구 애니메이션 끝 */
-
-/* 0715 조민호 삭제 확인 문구 버튼 hover 시작 */
-.delete-cancel-btn:hover {
-  background-color: #f3f4f6;
-  color: #1f2937;
-}
-
-.delete-confirm-btn:hover {
-  background-color: #fef2f2;
-  border-color: #fca5a5;
-  color: #dc2626;
-}
-
-body.dark .delete-cancel-btn:hover {
-  background-color: #2b3547;
-  color: #f1f5f9;
-}
-
-body.dark .delete-confirm-btn:hover {
-  background-color: #3f1d1d;
-  border-color: #ef4444;
-  color: #fca5a5;
-}
-/* 0715 조민호 삭제 확인 문구 버튼 hover 끝 */
-/* 0715 조민호 새 할 일/수정 모달 애니메이션 시작 */
-dialog.new-dial[open]:not(.closing) {
-  animation: todoModalSlideUp 0.18s ease-out forwards;
-}
-
-dialog.new-dial[open]:not(.closing)::backdrop {
-  animation: todoBackdropFadeIn 0.18s ease-out forwards;
-}
-
-dialog.new-dial.closing {
-  animation: todoModalSlideDown 0.18s ease-in forwards;
-}
-
-dialog.new-dial.closing::backdrop {
-  animation: todoBackdropFadeOut 0.18s ease-in forwards;
-}
-
-@keyframes todoModalSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(24px) scale(0.98);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes todoModalSlideDown {
-  from {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-
-  to {
-    opacity: 0;
-    transform: translateY(24px) scale(0.98);
-  }
-}
-
-@keyframes todoBackdropFadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes todoBackdropFadeOut {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
-  }
-}
-/* 0715 조민호 새 할 일/수정 모달 애니메이션 끝 */
