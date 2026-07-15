@@ -1331,6 +1331,7 @@ body,
 .prio-btn,
 .search-chip,
 .theme-toggle-btn,
+.dropdown-trigger,
 .all-data-reset:hover {
   transition:
     background-color 0.3s ease,
