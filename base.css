@@ -1,30 +1,29 @@
 @font-face {
-  font-family: "PretendardVariable";
-  src: url("./fonts/PretendardVariable.ttf") format("truetype");
+  font-family: "Noto Sans KR";
+  src: url("/fonts/NotoSansKR-Regular.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 body {
   margin: 0;
-
-  background-color: #e0e5eb;
   font-family: "PretendardVariable", Arial, sans-serif;
-  color: #131820;
-
-  background-color: #e0e5eb;
   font-family: Arial, sans-serif;
-  color: #131820;
-
   background-color: #f6f8fc;
-  font-family: "PretendardVariable", Arial, sans-serif;
   color: #1f2937;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.add-willchange {
+  will-change: transform;
 }
 
 /* 0708 정우석*/
 .container {
   max-width: 1200px;
-  /*width: 100%;*/
   width: 80%;
   margin: 40px auto;
 }
@@ -34,7 +33,6 @@ body {
   justify-content: space-between;
   align-items: center;
   background-color: #fff;
-  /*padding: 22px;*/
   padding: 20px;
   border-radius: 12px;
   border: 1px solid #e0e5eb;
@@ -80,15 +78,6 @@ body {
 /* 0708 정우석 헤더 작업 끝*/
 
 /* 0711 정우석 다크모드 추가 */
-body {
-  margin: 0;
-  background-color: #f6f8fc;
-  font-family: "PretendardVariable", Arial, sans-serif;
-  color: #1f2937;
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
-}
 
 .theme-toggle-btn .bi-sun-fill,
 .theme-toggle-btn .bi-moon-stars {
@@ -155,12 +144,10 @@ body.dark #custom-priority-dropdown .dropdown-menu li:hover {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 18px;
-  /*padding: 16px 24px;*/
   padding: 16px 0;
 }
 
 .stat-card {
-  /*min-height: 86px;*/
   height: 12vh;
   padding: 20px 24px;
   background-color: #ffffff;
@@ -196,9 +183,7 @@ body.dark #custom-priority-dropdown .dropdown-menu li:hover {
 
 @media (min-width: 320px) and (max-width: 768px) {
   .stats-section {
-    /*grid-template-columns: 1fr;*/
     grid-template-columns: repeat(2, 1fr);
-    /*padding: 12px;*/
     padding: 12px 0 12px;
     gap: 12px;
   }
@@ -214,7 +199,6 @@ body.dark #custom-priority-dropdown .dropdown-menu li:hover {
   }
 
   .stat-card:last-child {
-    /*grid-column: span 2;*/
     grid-column: span 1;
   }
 }
@@ -254,36 +238,6 @@ body.dark #custom-priority-dropdown .dropdown-menu li:hover {
   align-items: center;
   gap: 15px;
   flex: 1.2;
-}
-
-.search-box {
-  display: flex;
-  align-items: center;
-  border: 1px solid #dfe4ec;
-  border-radius: 8px;
-  padding: 8px 12px;
-  background-color: #ffffff;
-  flex: 1;
-}
-
-.search-box input[type="search"] {
-  border: 0;
-  font-size: 14px;
-  color: #1f2937;
-  width: 100%;
-  outline: none;
-  background: transparent;
-}
-
-.search-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 14px;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .search-box {
@@ -356,28 +310,33 @@ body.dark #custom-priority-dropdown .dropdown-menu li:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 0px;
-  margin-bottom: 24px;
+  gap: 12px;
+  margin-top: 15px;
   padding: 0 5px;
 }
 
-.prio-btn {
+.prio-btn,
+.search-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   background-color: #ffffff;
   border: 1px solid #dfe4ec;
   border-radius: 20px;
   padding: 6px 14px;
   font-size: 12px;
   color: #1f2937;
-  cursor: pointer;
+  cursor: default;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
 }
 
 dialog.new-dial {
   border: 1px solid #e0e5eb;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-  padding: 28px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  padding: 24px;
   width: 100%;
-  max-width: 440px;
+  max-width: 400px;
   background-color: #ffffff;
 }
 
@@ -388,13 +347,13 @@ dialog.new-dial::backdrop {
 .add-dial {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
 }
 
 .add-dial h2 {
   margin: 0 0 4px 0;
-  font-size: 22px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: bold;
   color: #1f2937;
 }
 
@@ -440,15 +399,6 @@ dialog.new-dial::backdrop {
   padding-right: 40px;
 }
 
-.radio-group {
-  display: flex;
-  gap: 10px;
-}
-
-.radio-group input[type="radio"] {
-  display: none;
-}
-
 .radio-group label {
   flex: 1;
   text-align: center;
@@ -488,33 +438,6 @@ dialog.new-dial::backdrop {
   background-color: #059669;
   color: #ffffff;
   border-color: #059669;
-}
-
-.dial-btn {
-  display: flex;
-  justify-content: flex-end;
-  gap: 12px;
-  margin-top: 10px;
-}
-
-.dial-cancle-btn,
-.dial-add-btn {
-  padding: 12px 20px;
-  border-radius: 10px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  border: none;
-}
-
-.dial-cancle-btn {
-  background-color: #f3f4f6;
-  color: #4b5563;
-}
-
-.dial-add-btn {
-  background-color: #7950f2;
-  color: #ffffff;
 }
 
 @media (max-width: 768px) {
@@ -597,53 +520,10 @@ dialog.new-dial::backdrop {
   }
 }
 
-dialog.new-dial {
-  border: 1px solid #e0e5eb;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  padding: 24px;
-  width: 100%;
-  max-width: 400px;
-  background-color: #ffffff;
-}
-
 dialog.new-dial::backdrop {
   background-color: rgba(0, 0, 0, 0.4);
 }
-
-.add-dial {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.add-dial h2 {
-  margin: 0 0 4px 0;
-  font-size: 20px;
-  font-weight: bold;
-  color: #1f2937;
-}
-
-.title-dial,
-.content-dial,
-.date-dial,
-.prio-dial,
-.dial-dial {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.date-dial {
-  display: flex;
-}
-
-.add-dial label {
-  font-size: 14px;
-  font-weight: 600;
-  color: #4b5563;
-}
-
+/*
 .add-dial input[type="text"],
 .add-dial input[type="date"],
 .add-dial textarea {
@@ -656,7 +536,7 @@ dialog.new-dial::backdrop {
   color: #1f2937;
   background-color: #ffffff;
   outline: none;
-}
+}*/
 
 .add-dial textarea {
   resize: none;
@@ -746,21 +626,7 @@ body.khaki .custom-dropdown.is-active .dropdown-trigger {
   padding-bottom: 7px;
 }
 
-.search-section .search-box:focus-within {
-  border-color: #5c3be6;
-  box-shadow: 0 0 0 1px #5c3be6;
-}
-
-body .custom-dropdown.is-active .dropdown-trigger,
-body.dark .custom-dropdown.is-active .dropdown-trigger,
-body.khaki .custom-dropdown.is-active .dropdown-trigger {
-  border: 2px solid #5c3be6;
-  padding-top: 7px;
-  padding-bottom: 7px;
-}
-
 .add-dial input[type="text"]:focus,
-.add-dial textarea:focus,
 .add-dial select:focus {
   border: 2px solid #5c3be6;
   outline: none;
@@ -815,6 +681,7 @@ body.dark .add-dial .dropdown-menu li:hover {
 .todo-card:hover {
   box-shadow: 0 0 8px #7a68fc;
   transform: translateY(-1px);
+  will-change: transform;
 }
 
 .todo-card:hover .todo_card_delete {
@@ -823,7 +690,8 @@ body.dark .add-dial .dropdown-menu li:hover {
 }
 
 .todo-card__title-text {
-  margin-bottom: 6px;
+  margin-top: 6px;
+  margin-bottom: 0;
   font-size: 15px;
   font-weight: bold;
 }
@@ -932,10 +800,8 @@ body.dark .add-dial .dropdown-menu li:hover {
 .todo_section {
   display: flex;
   flex-wrap: nowrap;
-  /*justify-content: center;*/
   justify-content: space-between;
   gap: 2rem;
-  /*height: 60vh;*/
   margin-bottom: 4rem;
 }
 
@@ -960,13 +826,15 @@ body.dark .add-dial .dropdown-menu li:hover {
   align-items: center;
   border-bottom: 3px solid #dbdbdb;
   padding: 0 0.6vw 0.6vw;
+  margin-top: 3px;
+  margin-bottom: 0;
 }
 
 .in-progress-list .title {
   border-bottom: 3px solid #ab72fb;
 }
 
-h2 {
+h3 {
   font-size: 1rem;
 }
 
@@ -1026,30 +894,6 @@ footer {
 }
 /* 07/10 최우원 작업 끝 */
 /* 0710 조민호 검색 칩 시작 */
-
-.prio-div {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 10px;
-  margin-top: 15px;
-  padding: 0 5px;
-}
-
-.search-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  background-color: #ffffff;
-  border: 1px solid #dfe4ec;
-  border-radius: 20px;
-  padding: 6px 14px;
-  font-size: 12px;
-  color: #1f2937;
-  cursor: default;
-  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
-}
-
 /* 검색어 부분 강조 */
 .search-chip #search-chip-text {
   color: #5c3be6;
@@ -1161,35 +1005,11 @@ body.dark #custom-period-dropdown.is-active .dropdown-trigger {
 /* 0711 정우석 다크모드 작업 끝 */
 
 /* 0711 조민호 필터 칩 개선 작업 시작 */
-.prio-div {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-top: 15px;
-  padding: 0 5px;
-}
-
 .filter-chip-group {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 8px;
-}
-
-.prio-btn,
-.search-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  background-color: #ffffff;
-  border: 1px solid #dfe4ec;
-  border-radius: 20px;
-  padding: 6px 14px;
-  font-size: 12px;
-  color: #1f2937;
-  cursor: default;
-  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
 }
 
 .search-chip span,
@@ -1218,6 +1038,7 @@ body.dark #custom-period-dropdown.is-active .dropdown-trigger {
   pointer-events: auto;
   background-color: #ece3e3;
   cursor: pointer;
+  will-change: transform;
 }
 
 body.dark .all-data-reset:hover {
@@ -1225,6 +1046,7 @@ body.dark .all-data-reset:hover {
   pointer-events: auto;
   background-color: #9d9a9a;
   cursor: pointer;
+  will-change: transform;
 }
 
 @media (max-width: 768px) {
@@ -1675,6 +1497,7 @@ body.dark dialog.delete-dial::backdrop {
 /* 0714 정우석 커스텀 드롭다운 끝 */
 
 /* 0715 조민호 삭제 확인 문구 애니메이션 시작 */
+
 dialog.delete-dial[open] {
   animation: deleteModalSlideUp 0.18s ease-out forwards;
 }
@@ -1819,6 +1642,22 @@ dialog.new-dial.closing::backdrop {
     opacity: 0;
   }
 }
+
+/* 7/15 최우원 prefers-reduced-motion 추가 시작*/
+@media (prefers-reduced-motion: reduce) {
+  dialog.delete-dial[open],
+  dialog.delete-dial[open]::backdrop,
+  dialog.delete-dial.closing,
+  dialog.delete-dial.closing::backdrop,
+  dialog.new-dial[open]:not(.closing),
+  dialog.new-dial[open]:not(.closing)::backdrop,
+  dialog.new-dial.closing,
+  dialog.new-dial.closing::backdrop {
+    animation-duration: 0s;
+  }
+}
+/* 7/15 최우원 prefers-reduced-motion 추가 끝 */
+
 /* 0715 조민호 새 할 일/수정 모달 애니메이션 끝 */
 /* 0715 조민호 검색 영역 반응형 정리 시작 */
 @media (min-width: 769px) {
