@@ -1820,3 +1820,87 @@ dialog.new-dial.closing::backdrop {
   }
 }
 /* 0715 조민호 새 할 일/수정 모달 애니메이션 끝 */
+/* 0715 조민호 검색 영역 반응형 정리 시작 */
+@media (min-width: 769px) {
+  .search-div {
+    display: grid;
+    grid-template-columns:
+      minmax(180px, 1fr)
+      minmax(70px, 120px)
+      minmax(95px, 145px)
+      minmax(110px, 120px)
+      minmax(180px, 1fr);
+    align-items: center;
+    gap: 15px;
+  }
+
+  .search-left-group,
+  .date-div {
+    display: contents;
+  }
+
+  .search-box,
+  .add-work,
+  .sort-toggle-btn,
+  #custom-period-dropdown,
+  #custom-priority-dropdown {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    box-sizing: border-box;
+  }
+
+  .search-box,
+  .add-work {
+    flex: none;
+  }
+
+  .add-work {
+    height: 36px;
+    white-space: nowrap;
+  }
+
+  .sort-toggle-btn {
+    height: 36px;
+    white-space: nowrap;
+  }
+
+  #custom-period-dropdown .dropdown-trigger,
+  #custom-priority-dropdown .dropdown-trigger,
+  .sort-toggle-btn {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1050px) {
+  .search-div {
+    grid-template-columns:
+      minmax(160px, 1fr)
+      minmax(52px, 90px)
+      minmax(52px, 90px)
+      minmax(110px, 130px)
+      minmax(160px, 1fr);
+    gap: 10px;
+  }
+
+  .sort-toggle-btn {
+    font-size: 13px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 900px) {
+  .search-div {
+    grid-template-columns:
+      minmax(145px, 1fr)
+      minmax(44px, 70px)
+      minmax(44px, 70px)
+      minmax(105px, 115px)
+      minmax(145px, 1fr);
+    gap: 8px;
+  }
+}
+/* 0715 조민호 검색 영역 반응형 정리 끝 */
