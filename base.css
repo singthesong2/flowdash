@@ -1673,3 +1673,58 @@ body.dark dialog.delete-dial::backdrop {
   display: none;
 }
 /* 0714 정우석 커스텀 드롭다운 끝 */
+
+/* 0715 조민호 삭제 확인 문구 애니메이션 시작 */
+dialog.delete-dial[open] {
+  animation: deleteModalSlideUp 0.15s ease-out;
+}
+
+dialog.delete-dial[open]::backdrop {
+  animation: deleteBackdropFade 0.25s ease-out;
+}
+
+@keyframes deleteModalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes deleteBackdropFade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+/* 0715 조민호 삭제 확인 문구 애니메이션 끝 */
+/* 0715 조민호 삭제 확인 문구 버튼 hover 시작 */
+.delete-cancel-btn:hover {
+  background-color: #f3f4f6;
+  color: #1f2937;
+}
+
+.delete-confirm-btn:hover {
+  background-color: #fef2f2;
+  border-color: #fca5a5;
+  color: #dc2626;
+}
+
+body.dark .delete-cancel-btn:hover {
+  background-color: #2b3547;
+  color: #f1f5f9;
+}
+
+body.dark .delete-confirm-btn:hover {
+  background-color: #3f1d1d;
+  border-color: #ef4444;
+  color: #fca5a5;
+}
+/* 0715 조민호 삭제 확인 문구 버튼 hover 끝 */
