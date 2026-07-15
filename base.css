@@ -1676,11 +1676,19 @@ body.dark dialog.delete-dial::backdrop {
 
 /* 0715 조민호 삭제 확인 문구 애니메이션 시작 */
 dialog.delete-dial[open] {
-  animation: deleteModalSlideUp 0.15s ease-out;
+  animation: deleteModalSlideUp 0.18s ease-out forwards;
 }
 
 dialog.delete-dial[open]::backdrop {
-  animation: deleteBackdropFade 0.25s ease-out;
+  animation: deleteBackdropFadeIn 0.18s ease-out forwards;
+}
+
+dialog.delete-dial.closing {
+  animation: deleteModalSlideDown 0.18s ease-in forwards;
+}
+
+dialog.delete-dial.closing::backdrop {
+  animation: deleteBackdropFadeOut 0.18s ease-in forwards;
 }
 
 @keyframes deleteModalSlideUp {
@@ -1695,7 +1703,19 @@ dialog.delete-dial[open]::backdrop {
   }
 }
 
-@keyframes deleteBackdropFade {
+@keyframes deleteModalSlideDown {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+}
+
+@keyframes deleteBackdropFadeIn {
   from {
     opacity: 0;
   }
@@ -1704,7 +1724,18 @@ dialog.delete-dial[open]::backdrop {
     opacity: 1;
   }
 }
+
+@keyframes deleteBackdropFadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
 /* 0715 조민호 삭제 확인 문구 애니메이션 끝 */
+
 /* 0715 조민호 삭제 확인 문구 버튼 hover 시작 */
 .delete-cancel-btn:hover {
   background-color: #f3f4f6;
@@ -1728,3 +1759,64 @@ body.dark .delete-confirm-btn:hover {
   color: #fca5a5;
 }
 /* 0715 조민호 삭제 확인 문구 버튼 hover 끝 */
+/* 0715 조민호 새 할 일/수정 모달 애니메이션 시작 */
+dialog.new-dial[open]:not(.closing) {
+  animation: todoModalSlideUp 0.18s ease-out forwards;
+}
+
+dialog.new-dial[open]:not(.closing)::backdrop {
+  animation: todoBackdropFadeIn 0.18s ease-out forwards;
+}
+
+dialog.new-dial.closing {
+  animation: todoModalSlideDown 0.18s ease-in forwards;
+}
+
+dialog.new-dial.closing::backdrop {
+  animation: todoBackdropFadeOut 0.18s ease-in forwards;
+}
+
+@keyframes todoModalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes todoModalSlideDown {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+}
+
+@keyframes todoBackdropFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes todoBackdropFadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+/* 0715 조민호 새 할 일/수정 모달 애니메이션 끝 */
