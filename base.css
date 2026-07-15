@@ -238,12 +238,12 @@ body.dark #custom-priority-dropdown .dropdown-menu li:hover {
 .search-div {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   background-color: #ffffff;
   padding: 15px 20px;
   border-radius: 12px;
   border: 1px solid #e0e5eb;
-  gap: 12px;
+  gap: 15px;
   width: 100%;
   box-sizing: border-box;
   margin-bottom: 24px;
@@ -252,9 +252,38 @@ body.dark #custom-priority-dropdown .dropdown-menu li:hover {
 .search-left-group {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 15px;
+  flex: 1.2;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  border: 1px solid #dfe4ec;
+  border-radius: 8px;
+  padding: 8px 12px;
+  background-color: #ffffff;
   flex: 1;
-  min-width: 0;
+}
+
+.search-box input[type="search"] {
+  border: 0;
+  font-size: 14px;
+  color: #1f2937;
+  width: 100%;
+  outline: none;
+  background: transparent;
+}
+
+.search-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .search-box {
@@ -321,8 +350,6 @@ body.dark #custom-priority-dropdown .dropdown-menu li:hover {
   align-items: center;
   justify-content: center;
   height: 35px;
-  white-space: nowrap;
-  flex-shrink: 0;
 }
 
 .prio-div {
@@ -517,8 +544,6 @@ dialog.new-dial::backdrop {
   .add-work {
     width: 100%;
     margin-left: 0;
-    white-space: nowrap;
-    flex-shrink: 0;
   }
 }
 
@@ -541,8 +566,6 @@ dialog.new-dial::backdrop {
   .date-div,
   .add-work {
     width: 100%;
-    white-space: nowrap;
-    flex-shrink: 0;
   }
 }
 
@@ -713,6 +736,14 @@ dialog.new-dial::backdrop {
 .search-section .search-box:focus-within {
   border-color: #5c3be6;
   box-shadow: 0 0 0 1px #5c3be6;
+}
+
+body .custom-dropdown.is-active .dropdown-trigger,
+body.dark .custom-dropdown.is-active .dropdown-trigger,
+body.khaki .custom-dropdown.is-active .dropdown-trigger {
+  border: 2px solid #5c3be6;
+  padding-top: 7px;
+  padding-bottom: 7px;
 }
 
 .search-section .search-box:focus-within {
@@ -1289,6 +1320,7 @@ body,
 .search-div,
 .search-box,
 .date-div select,
+.sort-toggle-btn,
 .todo-list,
 .in-progress-list,
 .done-list,
@@ -1299,6 +1331,7 @@ body,
 .prio-btn,
 .search-chip,
 .theme-toggle-btn,
+.dropdown-trigger,
 .all-data-reset:hover {
   transition:
     background-color 0.3s ease,
@@ -1328,7 +1361,10 @@ body,
 }
 
 .sort-toggle-btn:hover {
-  border-color: #7950f2;
+  border: 2px solid #5c3be6;
+  outline: none;
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
 /* 0712 조민호 정렬 토글 버튼 끝 */
 
