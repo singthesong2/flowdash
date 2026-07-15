@@ -25,6 +25,31 @@ window.addEventListener("DOMContentLoaded", () => {
   const todoForm = document.querySelector(".add-dial");
   const allDeleteData = document.querySelector(".all-data-reset");
 
+  // 0715 조민호 새 할 일/수정 모달 애니메이션 시작
+  const closeTodoModal = (afterClose) => {
+    if (!todoModal) return;
+
+    if (!todoModal.open) {
+      if (afterClose) {
+        afterClose();
+      }
+
+      return;
+    }
+
+    todoModal.classList.add("closing");
+
+    setTimeout(() => {
+      todoModal.classList.remove("closing");
+      todoModal.close();
+
+      if (afterClose) {
+        afterClose();
+      }
+    }, 220);
+  };
+  // 0715 조민호 새 할 일/수정 모달 애니메이션 끝
+
   // 0714 조민호 삭제 확인 모달 시작
   const deleteModal = document.querySelector(".delete-dial");
   const deleteModalTitle = document.querySelector("#delete-modal-title");
@@ -37,6 +62,28 @@ window.addEventListener("DOMContentLoaded", () => {
   let deleteTargetItems = null;
   let deleteTargetCount = null;
   let deleteTargetEmpty = null;
+
+  const closeDeleteModal = () => {
+    if (!deleteModal || !deleteModal.open) return;
+
+    let isClosed = false;
+
+    const finishClose = () => {
+      if (isClosed) return;
+
+      isClosed = true;
+      deleteModal.classList.remove("closing");
+      deleteModal.close();
+
+      deleteModal.removeEventListener("animationend", finishClose);
+    };
+
+    deleteModal.classList.add("closing");
+
+    deleteModal.addEventListener("animationend", finishClose);
+
+    setTimeout(finishClose, 250);
+  };
   // 0714 조민호 삭제 확인 모달 끝
 
   const todoList = document.querySelector(".todo-list");
@@ -64,26 +111,39 @@ window.addEventListener("DOMContentLoaded", () => {
   const titleInput = document.querySelector(".title-input");
   const titleError = document.getElementById("title-error");
 
-  if (openModalBtns.length > 0 && todoModal) {
+  if (openModalBtns.length > 0 && todoModal && todoForm) {
     openModalBtns.forEach((btn) => {
       btn.onclick = () => {
+        modifyCard = null;
+
+        todoForm.reset();
+
         const titleError = todoForm.querySelector("#title-error");
         if (titleError) {
           titleError.style.display = "none";
+        }
 
-          todoModal.showModal();
+        todoModal.classList.remove("closing");
+
+        if (!todoModal.open) {
+        todoModal.showModal();
         }
       };
     });
   }
-
   if (closeModalBtn && todoModal && todoForm) {
-    closeModalBtn.onclick = () => {
-      todoModal.close();
-      todoForm.reset();
+    closeModalBtn.onclick = (e) => {
+      e.preventDefault();
 
-      const titleError = todoForm.querySelector("#title-error");
-      if (titleError) titleError.style.display = "none";
+      closeTodoModal(() => {
+        todoForm.reset();
+        modifyCard = null;
+
+        const titleError = todoForm.querySelector("#title-error");
+        if (titleError) {
+          titleError.style.display = "none";
+        }
+      });
     };
   }
 
@@ -173,7 +233,7 @@ window.addEventListener("DOMContentLoaded", () => {
   // 0714 조민호 삭제 확인 모달 버튼 기능 시작
   if (deleteModal && deleteCancelBtn && deleteConfirmBtn) {
     deleteCancelBtn.addEventListener("click", () => {
-      deleteModal.close();
+      closeDeleteModal();
 
       deleteMode = "";
       deleteTargetCard = null;
@@ -233,7 +293,7 @@ window.addEventListener("DOMContentLoaded", () => {
         }
       }
 
-      deleteModal.close();
+      closeDeleteModal();
 
       deleteMode = "";
       deleteTargetCard = null;
@@ -404,47 +464,52 @@ window.addEventListener("DOMContentLoaded", () => {
         // 7/14 최우원 시간 변경위한 시간 저장 데이터 끝
 
         newCard.addEventListener("click", (e) => {
-          if (e.target.closest(".todo_card_delete")) return;
-          modifyCard = newCard;
+        if (e.target.closest(".todo_card_delete")) return;
+        modifyCard = newCard;
 
-          titleInput.value = modifyCard.querySelector(
-            ".todo-card__title-text",
-          ).textContent;
+        titleInput.value = modifyCard.querySelector(
+        ".todo-card__title-text",
+        ).textContent;
 
-          textInput.value = modifyCard.querySelector(
-            ".todo-card__content-text",
-          ).textContent;
+        textInput.value = modifyCard.querySelector(
+        ".todo-card__content-text",
+        ).textContent;
 
-          const date = modifyCard.querySelector(
-            ".todo-card__date-text",
-          ).textContent;
+        const date = modifyCard.querySelector(
+        ".todo-card__date-text",
+        ).textContent;
 
-          dateInput.value = date === "기한 없음" ? "" : date;
+        dateInput.value = date === "기한 없음" ? "" : date;
 
-          const cardPrio = modifyCard
-            .querySelector(".todo-card__priority")
-            .textContent.trim();
-          if (cardPrio.includes("낮음")) {
-            const radioLow = todoForm.querySelector("#prio-low");
-            if (radioLow) radioLow.checked = true;
-          } else if (cardPrio.includes("중간")) {
-            const radioMid = todoForm.querySelector("#prio-mid");
-            if (radioMid) radioMid.checked = true;
-          } else if (cardPrio.includes("높음")) {
-            const radioHigh = todoForm.querySelector("#prio-high");
-            if (radioHigh) radioHigh.checked = true;
-          }
+        const cardPrio = modifyCard
+        .querySelector(".todo-card__priority")
+        .textContent.trim();
 
-          if (modifyCard.parentElement === todoItems) {
-            statusSelect.value = "할 일";
-          } else if (modifyCard.parentElement === inProgressItems) {
-            statusSelect.value = "진행중";
-          } else {
-            statusSelect.value = "완료";
-          }
+      if (cardPrio.includes("낮음")) {
+      const radioLow = todoForm.querySelector("#prio-low");
+      if (radioLow) radioLow.checked = true;
+      } else if (cardPrio.includes("중간")) {
+      const radioMid = todoForm.querySelector("#prio-mid");
+      if (radioMid) radioMid.checked = true;
+      } else if (cardPrio.includes("높음")) {
+      const radioHigh = todoForm.querySelector("#prio-high");
+      if (radioHigh) radioHigh.checked = true;
+      }
 
-          todoModal.showModal();
-        });
+      if (modifyCard.parentElement === todoItems) {
+        statusSelect.value = "할 일";
+      } else if (modifyCard.parentElement === inProgressItems) {
+      statusSelect.value = "진행중";
+      } else {
+      statusSelect.value = "완료";
+    }
+
+      todoModal.classList.remove("closing");
+
+      if (!todoModal.open) {
+      todoModal.showModal();
+      }
+  });
 
         newCard.querySelector(".todo-card__title-text").textContent =
           titleValue;
@@ -491,8 +556,10 @@ window.addEventListener("DOMContentLoaded", () => {
       }
 
       modifyCard = null;
-      todoModal.close();
-      todoForm.reset();
+
+      closeTodoModal(() => {
+        todoForm.reset();
+      });
     };
   }
 });
