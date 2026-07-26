@@ -696,6 +696,15 @@ body.dark .add-dial .dropdown-menu li:hover {
   font-weight: bold;
 }
 
+@media (max-width: 768px) {
+  .todo-card {
+    padding: 5px;
+  }
+  .todo-card__title-text {
+    margin: 0;
+  }
+}
+
 /* 7/13 새벽, 완료된 할일 배경색 및 폰트 색상 변경 시작*/
 
 .todo-card-deletebackgroundcolor {
@@ -744,6 +753,12 @@ body.dark .add-dial .dropdown-menu li:hover {
 .todo-card__content-text {
   margin-bottom: 6px;
   font-size: 10px;
+}
+
+@media (max-width: 768px) {
+  .todo-card__content-text {
+    margin-bottom: 2px;
+  }
 }
 
 .todo-card__info {
