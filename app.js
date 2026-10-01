@@ -105,6 +105,43 @@ const doneEmpty = document.querySelector(".done-list .hidden-message");
 const addForm = document.querySelector(".add-dial");
 const titleInput = document.querySelector(".title-input");
 const titleError = document.getElementById("title-error");
+const TODO_STORAGE_KEY = "flowdash-todos";
+
+const saveTodosToLocalStorage = () => {
+  const cards = document.querySelectorAll(".todo-card");
+
+  const todos = Array.from(cards).map((card) => {
+    let status = "할 일";
+
+    if (card.parentElement === inProgressItems) {
+      status = "진행중";
+    } else if (card.parentElement === doneItems) {
+      status = "완료";
+    }
+
+    return {
+      title:
+        card.querySelector(".todo-card__title-text")?.textContent.trim() || "",
+      content:
+        card.querySelector(".todo-card__content-text")?.textContent.trim() ||
+        "",
+      date:
+        card.querySelector(".todo-card__date-text")?.textContent.trim() ||
+        "기한 없음",
+      time: card.querySelector(".todo-card__time")?.textContent.trim() || "",
+      priority:
+        card.querySelector(".todo-card__priority")?.textContent.trim() ||
+        "낮음",
+
+      originalDate: card.dataset.originalDate || "기한 없음",
+      originalTime: card.dataset.originalTime || "",
+
+      status,
+    };
+  });
+
+  localStorage.setItem(TODO_STORAGE_KEY, JSON.stringify(todos));
+};
 
 if (openModalBtns.length > 0 && todoModal && todoForm) {
   openModalBtns.forEach((btn) => {
@@ -283,7 +320,7 @@ if (deleteModal && deleteCancelBtn && deleteConfirmBtn) {
         searchInput.dispatchEvent(new Event("input"));
       }
     }
-
+    saveTodosToLocalStorage();
     closeDeleteModal();
 
     deleteMode = "";
@@ -297,8 +334,129 @@ if (deleteModal && deleteCancelBtn && deleteConfirmBtn) {
 // 0714 조민호 삭제 확인 모달 버튼 기능 끝
 // 7/11 새벽, 전체 삭제 및 완료된일 없음 메세지 처리 끝
 
+const addCardEvent = (card) => {
+  card.addEventListener("click", (e) => {
+    if (e.target.closest(".todo_card_delete")) return;
+
+    modifyCard = card;
+
+    const titleInput = todoForm.querySelector(".title-input");
+    const textInput = todoForm.querySelector(".content-input");
+    const dateInput = todoForm.querySelector(".date-input");
+    const statusSelect = todoForm.querySelector(".status-dial select");
+
+    titleInput.value =
+      card.querySelector(".todo-card__title-text")?.textContent || "";
+
+    textInput.value =
+      card.querySelector(".todo-card__content-text")?.textContent || "";
+
+    const date = card.querySelector(".todo-card__date-text")?.textContent || "";
+
+    dateInput.value = date === "기한 없음" ? "" : date;
+
+    const cardPrio =
+      card.querySelector(".todo-card__priority")?.textContent.trim() || "";
+
+    if (cardPrio.includes("낮음")) {
+      const radioLow = todoForm.querySelector("#prio-low");
+      if (radioLow) radioLow.checked = true;
+    } else if (cardPrio.includes("중간")) {
+      const radioMid = todoForm.querySelector("#prio-mid");
+      if (radioMid) radioMid.checked = true;
+    } else if (cardPrio.includes("높음")) {
+      const radioHigh = todoForm.querySelector("#prio-high");
+      if (radioHigh) radioHigh.checked = true;
+    }
+
+    if (card.parentElement === todoItems) {
+      statusSelect.value = "할 일";
+    } else if (card.parentElement === inProgressItems) {
+      statusSelect.value = "진행중";
+    } else {
+      statusSelect.value = "완료";
+    }
+
+    todoModal.classList.remove("closing");
+
+    if (!todoModal.open) {
+      todoModal.showModal();
+    }
+  });
+};
+
+const loadTodosFromLocalStorage = () => {
+  const savedData = localStorage.getItem(TODO_STORAGE_KEY);
+
+  if (savedData === null) return;
+
+  const savedTodos = JSON.parse(savedData);
+  const template = document.querySelector(".todo-template");
+
+  todoItems.replaceChildren();
+  inProgressItems.replaceChildren();
+  doneItems.replaceChildren();
+
+  savedTodos.forEach((todo) => {
+    const card = template.content.firstElementChild.cloneNode(true);
+
+    card.dataset.originalDate = todo.originalDate;
+    card.dataset.originalTime = todo.originalTime;
+    card.querySelector(".todo-card__title-text").textContent = todo.title;
+    card.querySelector(".todo-card__content-text").textContent = todo.content;
+    card.querySelector(".todo-card__date-text").textContent = todo.date;
+    card.querySelector(".todo-card__time").textContent = todo.time;
+
+    const priority = card.querySelector(".todo-card__priority");
+
+    priority.textContent = todo.priority;
+
+    priority.classList.remove(
+      "todo-card__priority_low",
+      "todo-card__priority_medium",
+      "todo-card__priority_high",
+    );
+
+    if (todo.priority === "낮음") {
+      priority.classList.add("todo-card__priority_low");
+    } else if (todo.priority === "중간") {
+      priority.classList.add("todo-card__priority_medium");
+    } else if (todo.priority === "높음") {
+      priority.classList.add("todo-card__priority_high");
+    }
+
+    addCardEvent(card);
+
+    if (todo.status === "할 일") {
+      todoItems.appendChild(card);
+    } else if (todo.status === "진행중") {
+      inProgressItems.appendChild(card);
+    } else {
+      doneItems.appendChild(card);
+
+      card.classList.add("todo-card-deletebackgroundcolor");
+
+      card
+        .querySelector(".todo-card__title-text")
+        .classList.add("todo-card__title-deleteline");
+
+      const modify = card.querySelector(".todo-card__modify");
+
+      if (modify) {
+        modify.classList.add("hidden");
+      }
+    }
+  });
+
+  updateHiddenMsg(todoItems, todoCount, todoEmpty);
+  updateHiddenMsg(inProgressItems, inProgressCount, inProgressEmpty);
+  updateHiddenMsg(doneItems, doneCount, doneEmpty);
+};
+
 // 7/13 개별 todo 클릭시 수정 시작
 let modifyCard = null;
+
+loadTodosFromLocalStorage();
 
 if (todoForm) {
   todoForm.onsubmit = (e) => {
@@ -452,54 +610,7 @@ if (todoForm) {
       newCard.dataset.originalDate = dateValue || "기한 없음";
       newCard.dataset.originalTime = timeValue;
       // 7/14 최우원 시간 변경위한 시간 저장 데이터 끝
-
-      newCard.addEventListener("click", (e) => {
-        if (e.target.closest(".todo_card_delete")) return;
-        modifyCard = newCard;
-
-        titleInput.value = modifyCard.querySelector(
-          ".todo-card__title-text",
-        ).textContent;
-
-        textInput.value = modifyCard.querySelector(
-          ".todo-card__content-text",
-        ).textContent;
-
-        const date = modifyCard.querySelector(
-          ".todo-card__date-text",
-        ).textContent;
-
-        dateInput.value = date === "기한 없음" ? "" : date;
-
-        const cardPrio = modifyCard
-          .querySelector(".todo-card__priority")
-          .textContent.trim();
-
-        if (cardPrio.includes("낮음")) {
-          const radioLow = todoForm.querySelector("#prio-low");
-          if (radioLow) radioLow.checked = true;
-        } else if (cardPrio.includes("중간")) {
-          const radioMid = todoForm.querySelector("#prio-mid");
-          if (radioMid) radioMid.checked = true;
-        } else if (cardPrio.includes("높음")) {
-          const radioHigh = todoForm.querySelector("#prio-high");
-          if (radioHigh) radioHigh.checked = true;
-        }
-
-        if (modifyCard.parentElement === todoItems) {
-          statusSelect.value = "할 일";
-        } else if (modifyCard.parentElement === inProgressItems) {
-          statusSelect.value = "진행중";
-        } else {
-          statusSelect.value = "완료";
-        }
-
-        todoModal.classList.remove("closing");
-
-        if (!todoModal.open) {
-          todoModal.showModal();
-        }
-      });
+      addCardEvent(newCard);
 
       newCard.querySelector(".todo-card__title-text").textContent = titleValue;
       newCard.querySelector(".todo-card__content-text").textContent = textValue;
@@ -537,6 +648,8 @@ if (todoForm) {
         updateHiddenMsg(doneItems, doneCount, doneEmpty);
       }
     }
+    saveTodosToLocalStorage();
+
     const searchInputForUpdate = document.querySelector("#todo-search-input");
 
     if (searchInputForUpdate) {
