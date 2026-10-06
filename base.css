@@ -440,103 +440,9 @@ dialog.new-dial::backdrop {
   border-color: #059669;
 }
 
-@media (max-width: 768px) {
-  .search-div {
-    flex-direction: column;
-    align-items: stretch;
-    margin-bottom: 24px;
-    gap: 15px;
-  }
-
-  .search-left-group {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
-  }
-
-  .date-div {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 8px;
-  }
-
-  .search-box {
-    width: 100%;
-  }
-
-  .add-work {
-    width: 100%;
-    margin-left: 0;
-  }
-}
-
-@media (max-width: 480px) {
-  .search-div {
-    display: flex;
-    flex-direction: column;
-    padding: 12px;
-    gap: 12px;
-  }
-
-  .search-left-group {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 8px;
-  }
-
-  .search-box,
-  .date-div,
-  .add-work {
-    width: 100%;
-  }
-}
-
-@media (min-width: 480px) and (max-width: 768px) {
-  .search-div {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 12px;
-    gap: 12px;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1199px) {
-  .search-div {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px;
-    gap: 12px;
-  }
-
-  .search-left-group {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 12px;
-    flex: 1;
-  }
-}
-
 dialog.new-dial::backdrop {
   background-color: rgba(0, 0, 0, 0.4);
 }
-/*
-.add-dial input[type="text"],
-.add-dial input[type="date"],
-.add-dial textarea {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 10px 12px;
-  border: 1px solid #dfe4ec;
-  border-radius: 8px;
-  font-size: 14px;
-  color: #1f2937;
-  background-color: #ffffff;
-  outline: none;
-}*/
 
 .add-dial textarea {
   resize: none;
@@ -611,6 +517,117 @@ dialog.new-dial::backdrop {
   font-size: 13px;
   font-weight: bold;
   margin-bottom: 2px;
+}
+
+@media (max-width: 768px) {
+  .search-div {
+    flex-direction: column;
+    align-items: stretch;
+    margin-bottom: 24px;
+    gap: 15px;
+  }
+
+  .search-left-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .date-div {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .add-work {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-text-box h1 {
+    font-size: clamp(12px, calc(6.25vw - 8px), 22px);
+  }
+
+  #random-icon svg {
+    width: clamp(14px, calc(5vw - 2px), 22px);
+    height: clamp(14px, calc(5vw - 2px), 22px);
+  }
+
+  .search-div {
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .search-left-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+  }
+
+  .search-box,
+  .date-div,
+  .add-work {
+    width: 100%;
+  }
+
+  dialog.new-dial {
+    width: calc(100% - 40px);
+    max-width: 330px;
+    padding: 16px;
+    box-sizing: border-box;
+  }
+
+  dialog.delete-dial {
+    width: calc(100% - 40px);
+    max-width: 330px;
+    padding: 18px;
+    box-sizing: border-box;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 768px) {
+  .search-div {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 12px;
+    gap: 12px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .search-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .search-left-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+  }
+}
+
+@media (max-width: 360px) {
+  dialog.new-dial,
+  dialog.delete-dial {
+    width: calc(100% - 32px);
+    max-width: 290px;
+  }
 }
 
 .search-section .search-box:focus-within {
@@ -696,6 +713,15 @@ body.dark .add-dial .dropdown-menu li:hover {
   font-weight: bold;
 }
 
+@media (max-width: 768px) {
+  .todo-card {
+    padding: 5px;
+  }
+  .todo-card__title-text {
+    margin: 0;
+  }
+}
+
 /* 7/13 새벽, 완료된 할일 배경색 및 폰트 색상 변경 시작*/
 
 .todo-card-deletebackgroundcolor {
@@ -728,7 +754,6 @@ body.dark .add-dial .dropdown-menu li:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  /*cursor: pointer;*/
   font-size: 13px;
   border-radius: 50%;
   background-color: #6c757d;
@@ -744,6 +769,12 @@ body.dark .add-dial .dropdown-menu li:hover {
 .todo-card__content-text {
   margin-bottom: 6px;
   font-size: 10px;
+}
+
+@media (max-width: 768px) {
+  .todo-card__content-text {
+    margin-bottom: 2px;
+  }
 }
 
 .todo-card__info {

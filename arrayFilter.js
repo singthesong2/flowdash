@@ -1,5 +1,17 @@
 // 0711 조민호 검색/기간/우선순위/정렬 필터 시작
 document.addEventListener("DOMContentLoaded", () => {
+  function debounce(callback, delay) {
+    let timer;
+
+    return (...args) => {
+      clearTimeout(timer);
+
+      timer = setTimeout(() => {
+        callback(...args);
+      }, delay);
+    };
+  }
+
   const searchInput = document.querySelector("#todo-search-input");
 
   const periodSelect = document.querySelector("#period-select");
@@ -178,7 +190,8 @@ document.addEventListener("DOMContentLoaded", () => {
     filterTodoCards();
   }
 
-  searchInput.addEventListener("input", handleFilterChange);
+  const debouncedFilterChange = debounce(handleFilterChange, 300);
+  searchInput.addEventListener("input", debouncedFilterChange);
   periodSelect.addEventListener("change", handleFilterChange);
   prioritySelect.addEventListener("change", handleFilterChange);
   sortButton.addEventListener("click", () => {
